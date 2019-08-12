@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"noImplicitAny": true,
+		"module": "commonjs",
+		"target": "esnext",
+		"jsx": "react",
+		"allowJs": true,
+		"esModuleInterop": true,
+		"typeRoots": ["node_modules/@types"]
+	},
+    "include": [
+		"./src/"
+    ]
+}
