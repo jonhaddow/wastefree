@@ -5,6 +5,10 @@
  */
 
 module.exports = {
+	siteMetadata: {
+		title: "Waste Free Mama",
+		description: "My journey to waste free living"
+	},
 	plugins: [
 		"gatsby-plugin-typescript",
 		{

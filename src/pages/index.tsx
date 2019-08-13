@@ -6,6 +6,7 @@ import { Link } from "gatsby";
 import BlogsImage from "../assets/img/dog-and-baby.jpg";
 import AboutImage from "../assets/img/about-portrait.jpg";
 import RecipesImage from "../assets/img/recipes-strawberries.jpg";
+import Layout from "../components/layout";
 
 export default function Home(): JSX.Element {
 	const itemDetails = [
@@ -42,10 +43,12 @@ export default function Home(): JSX.Element {
 	);
 
 	return (
-		<section className={Styles.home}>
-			<Slider />
+		<Layout>
+			<section className={Styles.home}>
+				<Slider />
 
-			<ul>{links}</ul>
-		</section>
+				<ul>{links}</ul>
+			</section>
+		</Layout>
 	);
 }

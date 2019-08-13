@@ -1,0 +1,43 @@
+.header {
+	background-image: url("../../assets/img/optimized/header-image.jpg");
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	> h1 {
+		text-align: center;
+
+		> a {
+			font-family: "Kaushan Script", cursive;
+			text-transform: capitalize;
+			color: white;
+			font-size: 3em;
+			text-decoration: none;
+			font-weight: 100;
+
+			@media screen and (max-width: 830px) {
+				font-size: 2em;
+			}
+
+			@media screen and (max-width: 530px) {
+				font-size: 1.5em;
+			}
+		}
+	}
+
+	> p {
+		color: white;
+		font-family: "rubik", sans-serif;
+		font-size: 1.1em;
+
+		@media screen and (max-width: 830px) {
+			font-size: 1em;
+		}
+
+		@media screen and (max-width: 530px) {
+			font-size: 0.8em;
+		}
+	}
+}
