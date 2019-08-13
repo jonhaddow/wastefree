@@ -6,9 +6,8 @@
 		"jsx": "react",
 		"allowJs": true,
 		"esModuleInterop": true,
-		"typeRoots": ["node_modules/@types"]
+		"typeRoots": ["node_modules/@types", "src/custom_typing"],
+		"outDir": "./public/"
 	},
-    "include": [
-		"./src/"
-    ]
+	"include": ["./src/"]
 }
