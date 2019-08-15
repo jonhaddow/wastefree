@@ -10,7 +10,17 @@ module.exports = {
 		description: "My journey to waste free living"
 	},
 	plugins: [
+		// typescript plugins
 		"gatsby-plugin-typescript",
+		"gatsby-plugin-scss-typescript",
+		{
+			resolve: "gatsby-plugin-typography",
+			options: {
+				pathToConfigModule: "src/utils/typography"
+			}
+		},
+
+		// load markdown files
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
@@ -18,11 +28,23 @@ module.exports = {
 				path: `${__dirname}/src/markdown/`
 			}
 		},
-		"gatsby-plugin-scss-typescript",
+
+		// needed for gatsby-image
+		"gatsby-plugin-sharp",
+		"gatsby-transformer-sharp",
+
 		{
-			resolve: "gatsby-plugin-typography",
+			resolve: "gatsby-transformer-remark",
 			options: {
-				pathToConfigModule: "src/utils/typography"
+				plugins: [
+					{
+						resolve: `gatsby-remark-images`,
+						options: {
+							maxWidth: 590,
+							withWebp: true
+						}
+					}
+				]
 			}
 		}
 	]

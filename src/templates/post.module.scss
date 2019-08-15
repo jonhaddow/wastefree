@@ -1,0 +1,15 @@
+.post {
+	img {
+		object-fit: contain;
+		width: 100%;
+		height: 500px;
+
+		@media screen and (max-width: 1050px) {
+			height: 300px;
+		}
+
+		@media screen and (max-width: 500px) {
+			height: 200px;
+		}
+	}
+}
