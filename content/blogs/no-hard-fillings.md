@@ -1,10 +1,10 @@
 ---
 title: "No Hard Fillings"
 featuredImage: "../images/dental.jpg"
-publishedDate: "2019-05-01"
+publishedDate: "2019-07-05"
 ---
 
-Toothbrushes
+## Toothbrushes
 
 One of the biggest sacrifices I feel I have personally made so far in the attempt to produce less waste is switching from an electric toothbrush to a ‘manual’ bamboo one.
 
@@ -17,7 +17,10 @@ I also really like the simplicity of a manual toothbrush. Being able to minimise
 And, as an added bonus, it was far cheaper to purchase a bamboo toothbrush than it was to buy replacement heads for my electric toothbrush.
 
 Also, in terms of the actual bamboo toothbrush itself, I have found it very easy to get used to, and very similar to manual plastic brushes. They also come in a range of brush strengths, and a range of prices, but essentially all do the same job!
-Dental floss
+
+---
+
+## Dental floss
 
 Over the last few years I have been using dental flossing harps, as i found them far easier and simpler than dental tape.
 
@@ -34,7 +37,10 @@ The dental floss comes in a plastic free, glass container with a metal lid that 
 The floss is sent in cardboard and paper only packaging, that can be fully recycled. This helps to further reduce waste.
 
 The floss was super easy to use, and worked in the same way as other dental tapes. They come in a range of flavours, and are one of the cheapest options on the market.
-Mouthwash
+
+---
+
+## Mouthwash
 
 I also switched from mouthwash purchased in a plastic bottle to Georganics mouthwash tablets.
 
@@ -45,7 +51,10 @@ I found these to be really easy to use, convenient when travelling, and leave my
 Just like with the dental floss, these tablets come in a range of flavours, so are great for people who dislike mint.
 
 The quantity of mouthwash tablets available differs, and I bought a years supply as it worked out cheaper. They were sent in a glass bottle for storage and once again the packaging was plastic free and fully recyclable.
-Toothpaste
+
+---
+
+## Toothpaste
 
 This is the one area of my dental hygiene routine that i have not yet changed.
 

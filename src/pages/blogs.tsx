@@ -55,7 +55,9 @@ export default function Blogs(props: { data: GraphQLSchema }): JSX.Element {
 
 export const query = graphql`
 	query {
-		allMarkdownRemark {
+		allMarkdownRemark(
+			filter: { fileAbsolutePath: { regex: "/blogs/.*\\\\.md$/" } }
+		) {
 			nodes {
 				frontmatter {
 					featuredImage {
