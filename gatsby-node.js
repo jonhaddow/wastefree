@@ -1,9 +1,17 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
 	const { createNodeField } = actions;
 	if (node.internal.type === `MarkdownRemark`) {
-		const slug = createFilePath({ node, getNode, basePath: `pages` });
+		const pageRegex = new RegExp("/pages/.*\\.md$");
+		const isPage = node.fileAbsolutePath.match(pageRegex);
+
+		const slug = createFilePath({
+			node,
+			getNode,
+			basePath: isPage ? "pages" : "content"
+		});
 		createNodeField({
 			node,
 			name: `slug`,
@@ -14,9 +22,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
-	const result = await graphql(`
+
+	const blogsQuery = await graphql(`
 		{
-			allMarkdownRemark {
+			allMarkdownRemark(
+				filter: { fileAbsolutePath: { regex: "/blogs/.*\\\\.md$/" } }
+			) {
 				edges {
 					node {
 						fields {
@@ -27,7 +38,34 @@ exports.createPages = async ({ graphql, actions }) => {
 			}
 		}
 	`);
-	result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+
+	blogsQuery.data.allMarkdownRemark.edges.forEach(({ node }) => {
+		createPage({
+			path: node.fields.slug,
+			component: path.resolve("./src/templates/blog_post.tsx"),
+			context: {
+				slug: node.fields.slug
+			}
+		});
+	});
+
+	const pagesQuery = await graphql(`
+		{
+			allMarkdownRemark(
+				filter: { fileAbsolutePath: { regex: "/pages/.*\\\\.md$/" } }
+			) {
+				edges {
+					node {
+						fields {
+							slug
+						}
+					}
+				}
+			}
+		}
+	`);
+
+	pagesQuery.data.allMarkdownRemark.edges.forEach(({ node }) => {
 		createPage({
 			path: node.fields.slug,
 			component: path.resolve(`./src/templates/blog_post.tsx`),

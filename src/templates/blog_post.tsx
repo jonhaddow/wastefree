@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Styling from "./post.module.scss";
-import Img, { FluidObject } from "gatsby-image";
+import Img, { FixedObject } from "gatsby-image";
 
 interface GraphQLSchema {
 	markdownRemark: {
@@ -11,7 +11,7 @@ interface GraphQLSchema {
 			title: string;
 			featuredImage: {
 				childImageSharp: {
-					fluid: FluidObject | FluidObject[];
+					fixed: FixedObject | FixedObject[];
 				};
 				publicURL: string;
 			};
@@ -24,12 +24,14 @@ function BlogPost(props: { data: GraphQLSchema }): JSX.Element {
 		html,
 		frontmatter: { title, featuredImage }
 	} = props.data.markdownRemark;
-	const featuredImgFluid = featuredImage.childImageSharp.fluid;
+	const featuredImgFluid = featuredImage.childImageSharp.fixed;
 	return (
 		<Layout>
 			<section>
 				<article className={Styling.post}>
-					<Img fluid={featuredImgFluid} />
+					<div className={Styling.featuredImageWrapper}>
+						<Img fixed={featuredImgFluid} />
+					</div>
 					<h1>{title}</h1>
 					<div
 						dangerouslySetInnerHTML={{
@@ -50,8 +52,8 @@ export const query = graphql`
 				featuredImage {
 					publicURL
 					childImageSharp {
-						fluid {
-							...GatsbyImageSharpFluid
+						fixed(height: 500) {
+							...GatsbyImageSharpFixed
 						}
 					}
 				}
