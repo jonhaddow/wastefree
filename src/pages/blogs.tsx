@@ -14,7 +14,7 @@ interface PostNode {
 				fluid: IFluidObject;
 			};
 		};
-		publishedDate: string;
+		date: string;
 	};
 	fields: {
 		slug: string;
@@ -36,7 +36,7 @@ export default function Blogs(props: { data: GraphQLSchema }): JSX.Element {
 				<PostCard
 					key={post.id}
 					title={post.frontmatter.title}
-					date={post.frontmatter.publishedDate}
+					date={post.frontmatter.date}
 					slug={post.fields.slug}
 					featuredImage={post.frontmatter.featuredImage}
 				/>
@@ -67,7 +67,7 @@ export const query = graphql`
 							}
 						}
 					}
-					publishedDate
+					date
 					title
 				}
 				id
