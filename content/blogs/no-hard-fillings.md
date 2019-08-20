@@ -1,7 +1,7 @@
 ---
 title: "No Hard Fillings"
 featuredImage: "../images/dental.jpg"
-publishedDate: "2019-07-05"
+date: "2019-07-05"
 ---
 
 ## Toothbrushes

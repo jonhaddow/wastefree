@@ -1,17 +1,39 @@
+site_url: https://headless.wastefreemama.com
 backend:
   name: git-gateway
   branch: master # Branch to update
+publish_mode: editorial_workflow
 media_folder: "content/images" # Media files will be stored here
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog" # Used in the UI
-    folder: "_posts/blog" # The path to the folder where the documents are stored
+  - name: "blogs" # Used in routes, e.g., /admin/collections/blog
+    label: "Blogs" # Used in the UI
+    folder: "content/blogs" # The path to the folder where the documents are stored
+    preview_path: "blogs/{{slug}}"
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
-      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Featured Image", name: "thumbnail", widget: "image"}
-      - {label: "Rating (scale of 1-5)", name: "rating", widget: "number"}
+      - {label: "Featured Image", name: "featuredImage", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "recipes"
+    label: "Recipes"
+    folder: "content/recipes"
+    preview_path: "recipes/{{slug}}"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "featuredImage", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    preview_path: "{{slug}}"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Featured Image", name: "featuredImage", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
