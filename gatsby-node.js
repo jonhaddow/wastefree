@@ -1,7 +1,11 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
+const { fmImagesToRelative } = require("gatsby-remark-relative-images");
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
+	// Ensure markdown images are converted to relative for processing
+	fmImagesToRelative(node);
+
 	const { createNodeField } = actions;
 	if (node.internal.type === `MarkdownRemark`) {
 		const pageRegex = new RegExp("/pages/.*\\.md$");
