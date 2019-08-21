@@ -80,4 +80,30 @@ exports.createPages = async ({ graphql, actions }) => {
 			}
 		});
 	});
+
+	const recipesQuery = await graphql(`
+		{
+			allMarkdownRemark(
+				filter: { fileAbsolutePath: { regex: "/recipes/.*\\\\.md$/" } }
+			) {
+				edges {
+					node {
+						fields {
+							slug
+						}
+					}
+				}
+			}
+		}
+	`);
+
+	recipesQuery.data.allMarkdownRemark.edges.forEach(({ node }) => {
+		createPage({
+			path: node.fields.slug,
+			component: path.resolve("./src/templates/blog_post.tsx"),
+			context: {
+				slug: node.fields.slug
+			}
+		});
+	});
 };
