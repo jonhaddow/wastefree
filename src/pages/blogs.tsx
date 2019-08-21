@@ -57,6 +57,7 @@ export const query = graphql`
 	query {
 		allMarkdownRemark(
 			filter: { fileAbsolutePath: { regex: "/blogs/.*\\\\.md$/" } }
+			sort: { fields: frontmatter___date, order: DESC }
 		) {
 			nodes {
 				frontmatter {
