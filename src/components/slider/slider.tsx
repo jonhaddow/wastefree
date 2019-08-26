@@ -1,37 +1,36 @@
-import React, { Component, CSSProperties } from "react";
+import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faChevronLeft,
 	faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
-import ApiRequest, { URLS } from "../../common/api_request";
 import styles from "./slider.module.scss";
-import { Link } from "gatsby";
+import { Link, graphql } from "gatsby";
+import Post from "../../common/post";
+import BackgroundImage from "gatsby-background-image";
 
 interface SliderState {
-	recentPosts: RecentPost[];
 	sliderRunning: boolean;
+	activePostId: string;
 }
 
-interface RecentPost {
-	slug: string;
-	type: string;
-	title: string;
-	image: string;
-	active: boolean;
+interface SliderProps {
+	recentPosts: Post[];
 }
 
-export default class Slider extends Component<{}, SliderState> {
+export default class Slider extends Component<SliderProps, SliderState> {
 	private sliderTimer: NodeJS.Timer;
 
-	public constructor(props: {}) {
+	public constructor(props: SliderProps) {
 		super(props);
 
-		this.state = { recentPosts: [], sliderRunning: true };
+		this.state = {
+			sliderRunning: true,
+			activePostId: props.recentPosts[0].id
+		};
 	}
 
-	public async componentDidMount(): Promise<void> {
-		await this.initializeModel();
+	public componentDidMount(): void {
 		this.setupSliderTimer();
 	}
 
@@ -70,20 +69,19 @@ export default class Slider extends Component<{}, SliderState> {
 	private goTo(index: number): void {
 		this.setState(
 			(state): SliderState => {
-				state.recentPosts.forEach((post, i): void => {
-					post.active = i === index;
-				});
-
-				return state;
+				return {
+					activePostId: this.props.recentPosts[index].id,
+					sliderRunning: state.sliderRunning
+				};
 			}
 		);
 	}
 
 	private decrementSlider(): void {
-		const { recentPosts } = this.state;
+		const { recentPosts } = this.props;
 
 		const currentIndex = recentPosts.findIndex(
-			(post): boolean => post.active
+			(post): boolean => post.id == this.state.activePostId
 		);
 		let nextIndex = currentIndex - 1;
 		if (nextIndex < 0) nextIndex = recentPosts.length - 1;
@@ -92,10 +90,10 @@ export default class Slider extends Component<{}, SliderState> {
 	}
 
 	private incrementSlider(): void {
-		const { recentPosts } = this.state;
+		const { recentPosts } = this.props;
 
 		const currentIndex = recentPosts.findIndex(
-			(post): boolean => post.active
+			(post): boolean => post.id == this.state.activePostId
 		);
 		let nextIndex = currentIndex + 1;
 		if (nextIndex == recentPosts.length) nextIndex = 0;
@@ -103,40 +101,34 @@ export default class Slider extends Component<{}, SliderState> {
 		this.goTo(nextIndex);
 	}
 
-	private async initializeModel(): Promise<void> {
-		const recentPosts = await ApiRequest.fetch<RecentPost[]>(
-			URLS.getRecentPosts()
-		);
-
-		recentPosts[0].active = true;
-
-		this.setState({
-			recentPosts: recentPosts
-		});
-	}
-
 	public render(): JSX.Element {
-		const { recentPosts } = this.state;
+		const { recentPosts } = this.props;
 
 		if (recentPosts == null || recentPosts.length === 0) return null;
 
 		const sliderItems = recentPosts.map(
 			(post): JSX.Element => {
-				const style: CSSProperties = {
-					backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("${post.image}")`
-				};
-				const link = `/blog/${post.slug}`;
+				const backgroundFluidImageStack = [
+					post.frontmatter.featuredImage.childImageSharp.fluid,
+					`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`
+				].reverse();
+				const link = `/blog/${post.fields.slug}`;
 				return (
 					<li
-						key={post.slug}
-						style={style}
-						className={post.active ? styles.active : ""}
+						key={post.fields.slug}
+						className={
+							post.id === this.state.activePostId
+								? styles.active
+								: ""
+						}
 					>
-						<h2>
-							<Link to={link}>{post.title}</Link>
-						</h2>
-						<Link to={link}>Read More</Link>
-						<time>1st April 2019</time>
+						<BackgroundImage fluid={backgroundFluidImageStack}>
+							<h2>
+								<Link to={link}>{post.frontmatter.title}</Link>
+							</h2>
+							<Link to={link}>Read More</Link>
+							<time>{post.frontmatter.date}</time>
+						</BackgroundImage>
 					</li>
 				);
 			}
@@ -145,11 +137,15 @@ export default class Slider extends Component<{}, SliderState> {
 		const dots = recentPosts.map(
 			(post, index): JSX.Element => {
 				return (
-					<li key={post.slug}>
+					<li key={post.fields.slug}>
 						<button
 							type="button"
 							onClick={this.onDotClick.bind(this, index)}
-							className={post.active ? styles.active : ""}
+							className={
+								post.id === this.state.activePostId
+									? styles.active
+									: ""
+							}
 						/>
 					</li>
 				);
@@ -173,3 +169,33 @@ export default class Slider extends Component<{}, SliderState> {
 		);
 	}
 }
+
+export const query = graphql`
+	query {
+		allMarkdownRemark(
+			filter: {
+				fileAbsolutePath: { regex: "/(blogs|recipes)/.*\\\\.md$/" }
+			}
+			sort: { fields: frontmatter___date, order: DESC }
+			limit: 3
+		) {
+			nodes {
+				frontmatter {
+					featuredImage {
+						childImageSharp {
+							fluid {
+								...GatsbyImageSharpFluid
+							}
+						}
+					}
+					date
+					title
+				}
+				id
+				fields {
+					slug
+				}
+			}
+		}
+	}
+`;
