@@ -20,15 +20,27 @@ export default function Layout(props: LayoutProps): JSX.Element {
 						description
 					}
 				}
+				file(relativePath: { eq: "site_images/header-image.jpg" }) {
+					childImageSharp {
+						fluid {
+							...GatsbyImageSharpFluid
+						}
+					}
+				}
 			}
 		`
 	);
 
 	const { title, description } = data.site.siteMetadata;
+	const { fluid: headerImage } = data.file.childImageSharp;
 
 	return (
 		<div className={styles.wrapper}>
-			<Header title={title} description={description} />
+			<Header
+				title={title}
+				description={description}
+				image={headerImage}
+			/>
 			<Navigation />
 			{props.children}
 			<Footer title={title} />

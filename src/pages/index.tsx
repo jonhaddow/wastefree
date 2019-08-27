@@ -2,16 +2,28 @@ import React from "react";
 import Slider from "../components/slider";
 import Styles from "./index.module.scss";
 import { Link, graphql } from "gatsby";
-
-import BlogsImage from "../assets/img/dog-and-baby.jpg";
-import AboutImage from "../assets/img/about-portrait.jpg";
-import RecipesImage from "../assets/img/recipes-strawberries.jpg";
 import Layout from "../components/layout";
 import Post from "../common/post";
+import BackgroundImage, { IFluidObject } from "gatsby-background-image";
 
 interface GraphQLSchema {
-	allMarkdownRemark: {
+	featuredPosts: {
 		nodes: Post[];
+	};
+	blogImg: {
+		childImageSharp: {
+			fluid: IFluidObject;
+		};
+	};
+	aboutImg: {
+		childImageSharp: {
+			fluid: IFluidObject;
+		};
+	};
+	recipeImg: {
+		childImageSharp: {
+			fluid: IFluidObject;
+		};
 	};
 }
 
@@ -19,32 +31,33 @@ export default function Home(props: { data: GraphQLSchema }): JSX.Element {
 	const itemDetails = [
 		{
 			link: "/blogs",
-			imageSrc: BlogsImage,
+			imageSrc: props.data.blogImg.childImageSharp.fluid,
 			title: "Blogs"
 		},
 		{
 			link: "/about",
-			imageSrc: AboutImage,
+			imageSrc: props.data.aboutImg.childImageSharp.fluid,
 			title: "About"
 		},
 		{
 			link: "/recipes",
-			imageSrc: RecipesImage,
+			imageSrc: props.data.recipeImg.childImageSharp.fluid,
 			title: "Recipes"
 		}
 	];
 
 	const links = itemDetails.map(
 		(link): JSX.Element => {
-			const style: React.CSSProperties = {
-				backgroundImage: `url(${link.imageSrc})`
-			};
 			return (
-				<li key={link.title} style={style}>
+				<BackgroundImage
+					key={link.title}
+					Tag="li"
+					fluid={link.imageSrc}
+				>
 					<Link to={link.link}>
 						<h3>{link.title}</h3>
 					</Link>
-				</li>
+				</BackgroundImage>
 			);
 		}
 	);
@@ -52,7 +65,7 @@ export default function Home(props: { data: GraphQLSchema }): JSX.Element {
 	return (
 		<Layout>
 			<section className={Styles.home}>
-				<Slider recentPosts={props.data.allMarkdownRemark.nodes} />
+				<Slider recentPosts={props.data.featuredPosts.nodes} />
 
 				<ul>{links}</ul>
 			</section>
@@ -62,7 +75,7 @@ export default function Home(props: { data: GraphQLSchema }): JSX.Element {
 
 export const query = graphql`
 	query {
-		allMarkdownRemark(
+		featuredPosts: allMarkdownRemark(
 			filter: {
 				fileAbsolutePath: { regex: "/(blogs|recipes)/.*\\\\.md$/" }
 			}
@@ -84,6 +97,29 @@ export const query = graphql`
 				id
 				fields {
 					slug
+				}
+			}
+		}
+		blogImg: file(relativePath: { eq: "site_images/dog-and-baby.jpg" }) {
+			childImageSharp {
+				fluid {
+					...GatsbyImageSharpFluid
+				}
+			}
+		}
+		aboutImg: file(relativePath: { eq: "site_images/about-portrait.jpg" }) {
+			childImageSharp {
+				fluid {
+					...GatsbyImageSharpFluid
+				}
+			}
+		}
+		recipeImg: file(
+			relativePath: { eq: "site_images/recipes-strawberries.jpg" }
+		) {
+			childImageSharp {
+				fluid {
+					...GatsbyImageSharpFluid
 				}
 			}
 		}

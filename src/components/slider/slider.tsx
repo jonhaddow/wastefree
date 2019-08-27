@@ -5,7 +5,7 @@ import {
 	faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./slider.module.scss";
-import { Link, graphql } from "gatsby";
+import { Link } from "gatsby";
 import Post from "../../common/post";
 import BackgroundImage from "gatsby-background-image";
 
@@ -169,33 +169,3 @@ export default class Slider extends Component<SliderProps, SliderState> {
 		);
 	}
 }
-
-export const query = graphql`
-	query {
-		allMarkdownRemark(
-			filter: {
-				fileAbsolutePath: { regex: "/(blogs|recipes)/.*\\\\.md$/" }
-			}
-			sort: { fields: frontmatter___date, order: DESC }
-			limit: 3
-		) {
-			nodes {
-				frontmatter {
-					featuredImage {
-						childImageSharp {
-							fluid {
-								...GatsbyImageSharpFluid
-							}
-						}
-					}
-					date
-					title
-				}
-				id
-				fields {
-					slug
-				}
-			}
-		}
-	}
-`;
