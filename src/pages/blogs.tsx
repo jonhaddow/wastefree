@@ -1,29 +1,13 @@
 import React from "react";
-import Styles from "./blogs.module.scss";
+import Styles from "./posts.module.scss";
 import PostCard from "../components/post_card";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import { IFluidObject } from "gatsby-background-image";
-
-interface PostNode {
-	id: string;
-	frontmatter: {
-		title: string;
-		featuredImage: {
-			childImageSharp: {
-				fluid: IFluidObject;
-			};
-		};
-		date: string;
-	};
-	fields: {
-		slug: string;
-	};
-}
+import Post from "../common/post";
 
 interface GraphQLSchema {
 	allMarkdownRemark: {
-		nodes: PostNode[];
+		nodes: Post[];
 	};
 }
 
@@ -32,15 +16,7 @@ export default function Blogs(props: { data: GraphQLSchema }): JSX.Element {
 
 	const postEls = nodes.map(
 		(post): JSX.Element => {
-			return (
-				<PostCard
-					key={post.id}
-					title={post.frontmatter.title}
-					date={post.frontmatter.date}
-					slug={post.fields.slug}
-					featuredImage={post.frontmatter.featuredImage}
-				/>
-			);
+			return <PostCard key={post.id} {...post} />;
 		}
 	);
 

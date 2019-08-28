@@ -1,26 +1,14 @@
 import React from "react";
 import Styles from "./post_card.module.scss";
 import { Link } from "gatsby";
-import BackgroundImage, { IFluidObject } from "gatsby-background-image";
+import BackgroundImage from "gatsby-background-image";
+import Post from "../../common/post";
 
-interface PostCardProps {
-	title: string;
-	date: string;
-	featuredImage: {
-		childImageSharp: {
-			fluid: IFluidObject;
-		};
-	};
-	slug: string;
-}
+export default function PostCard(props: Post): JSX.Element {
+	const { slug } = props.fields;
+	const { title, featuredImage, date: dateStr } = props.frontmatter;
 
-export default function PostCard(props: PostCardProps): JSX.Element {
-	const innerEls: JSX.Element[] = [];
-	const { title, slug, featuredImage } = props;
-
-	innerEls.push(<p>{title}</p>);
-
-	const date = new Date(props.date);
+	const date = new Date(dateStr);
 
 	const backgroundFluidImageStack = [
 		featuredImage.childImageSharp.fluid,
