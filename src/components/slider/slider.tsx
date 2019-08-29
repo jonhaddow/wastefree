@@ -113,6 +113,7 @@ export default class Slider extends Component<SliderProps, SliderState> {
 					`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`
 				].reverse();
 				const link = `/blog/${post.fields.slug}`;
+				const date = new Date(post.frontmatter.date);
 				return (
 					<li
 						key={post.fields.slug}
@@ -127,7 +128,13 @@ export default class Slider extends Component<SliderProps, SliderState> {
 								<Link to={link}>{post.frontmatter.title}</Link>
 							</h2>
 							<Link to={link}>Read More</Link>
-							<time>{post.frontmatter.date}</time>
+							<time>
+								{date.toLocaleDateString("en-GB", {
+									day: "numeric",
+									month: "short",
+									year: "numeric"
+								})}
+							</time>
 						</BackgroundImage>
 					</li>
 				);

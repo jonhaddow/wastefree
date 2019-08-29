@@ -3,50 +3,65 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Styling from "./post.module.scss";
 import Img from "gatsby-image";
-import { IFluidObject } from "gatsby-background-image";
+import Post from "../common/post";
 
 interface GraphQLSchema {
-	markdownRemark: {
-		html: string;
-		frontmatter: {
-			title: string;
-			featuredImage: {
-				childImageSharp: {
-					fluid: IFluidObject;
-				};
-			};
-		};
-	};
+	markdownRemark: Post;
 }
 
 function BlogPost(props: { data: GraphQLSchema }): JSX.Element {
 	const {
 		html,
-		frontmatter: { title, featuredImage }
+		frontmatter: { title, featuredImage, date: dateStr }
 	} = props.data.markdownRemark;
+
 	const featuredImgFluid = featuredImage.childImageSharp.fluid;
 	const aspectRatio = featuredImgFluid.aspectRatio;
 	const ratioClass = aspectRatio <= 0.8 ? Styling.portrait : "";
+
+	const articleElements: JSX.Element[] = [];
+
+	articleElements.push(
+		<div
+			key="featuredImage"
+			className={`${Styling.featuredImageWrapper} ${ratioClass}`}
+		>
+			<Img
+				style={{ maxHeight: "100%", maxWidth: "100%" }}
+				imgStyle={{ objectFit: "contain" }}
+				fluid={featuredImgFluid}
+			/>
+		</div>,
+		<h1 key="title">{title}</h1>
+	);
+
+	const dateExists = dateStr != null;
+	if (dateExists) {
+		const date = new Date(dateStr);
+		articleElements.push(
+			<time key="datetime">
+				{date.toLocaleDateString("en-GB", {
+					day: "numeric",
+					month: "short",
+					year: "numeric"
+				})}
+			</time>
+		);
+	}
+
+	articleElements.push(
+		<div
+			key="html"
+			dangerouslySetInnerHTML={{
+				__html: html
+			}}
+		/>
+	);
+
 	return (
 		<Layout>
 			<section>
-				<article className={Styling.post}>
-					<div
-						className={`${Styling.featuredImageWrapper} ${ratioClass}`}
-					>
-						<Img
-							style={{ maxHeight: "100%", maxWidth: "100%" }}
-							imgStyle={{ objectFit: "contain" }}
-							fluid={featuredImgFluid}
-						/>
-					</div>
-					<h1>{title}</h1>
-					<div
-						dangerouslySetInnerHTML={{
-							__html: html
-						}}
-					/>
-				</article>
+				<article className={Styling.post}>{articleElements}</article>
 			</section>
 		</Layout>
 	);
@@ -65,6 +80,7 @@ export const query = graphql`
 					}
 				}
 				title
+				date
 			}
 		}
 	}

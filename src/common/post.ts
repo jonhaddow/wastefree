@@ -10,8 +10,9 @@ export default interface Post {
 		date: string;
 		title: string;
 	};
-	id: string;
-	fields: {
+	id?: string;
+	html?: string;
+	fields?: {
 		slug: string;
 	};
 }
