@@ -1,6 +1,10 @@
 .post {
 	.featured-image-wrapper {
 		text-align: center;
-		width: 100%;
+		margin-bottom: 30px;
+		&.portrait {
+			height: 500px;
+			max-height: 500px;
+		}
 	}
 }

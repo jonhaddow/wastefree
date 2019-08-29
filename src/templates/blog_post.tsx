@@ -25,12 +25,20 @@ function BlogPost(props: { data: GraphQLSchema }): JSX.Element {
 		frontmatter: { title, featuredImage }
 	} = props.data.markdownRemark;
 	const featuredImgFluid = featuredImage.childImageSharp.fluid;
+	const aspectRatio = featuredImgFluid.aspectRatio;
+	const ratioClass = aspectRatio <= 0.8 ? Styling.portrait : "";
 	return (
 		<Layout>
 			<section>
 				<article className={Styling.post}>
-					<div className={Styling.featuredImageWrapper}>
-						<Img fluid={featuredImgFluid} />
+					<div
+						className={`${Styling.featuredImageWrapper} ${ratioClass}`}
+					>
+						<Img
+							style={{ maxHeight: "100%", maxWidth: "100%" }}
+							imgStyle={{ objectFit: "contain" }}
+							fluid={featuredImgFluid}
+						/>
 					</div>
 					<h1>{title}</h1>
 					<div
@@ -50,7 +58,6 @@ export const query = graphql`
 			html
 			frontmatter {
 				featuredImage {
-					publicURL
 					childImageSharp {
 						fluid {
 							...GatsbyImageSharpFluid
