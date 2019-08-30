@@ -112,7 +112,7 @@ export default class Slider extends Component<SliderProps, SliderState> {
 					post.frontmatter.featuredImage.childImageSharp.fluid,
 					`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`
 				].reverse();
-				const link = `/blog/${post.fields.slug}`;
+				const link = post.fields.slug;
 				const date = new Date(post.frontmatter.date);
 				return (
 					<li
