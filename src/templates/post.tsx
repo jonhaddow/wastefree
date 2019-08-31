@@ -9,7 +9,7 @@ interface GraphQLSchema {
 	markdownRemark: Post;
 }
 
-function BlogPost(props: { data: GraphQLSchema }): JSX.Element {
+function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 	const {
 		html,
 		frontmatter: { title, featuredImage, date: dateStr }
@@ -86,4 +86,4 @@ export const query = graphql`
 	}
 `;
 
-export default BlogPost;
+export default PostTemplate;

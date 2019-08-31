@@ -1,7 +1,7 @@
 import React from "react";
-import Styles from "./posts.module.scss";
-import PostCard from "../components/post_card";
 import { graphql } from "gatsby";
+import Styles from "./browse.module.scss";
+import PostCard from "../components/post_card";
 import Layout from "../components/layout";
 import Post from "../common/post";
 
@@ -11,7 +11,7 @@ interface GraphQLSchema {
 	};
 }
 
-export default function Blogs(props: { data: GraphQLSchema }): JSX.Element {
+export default function Recipes(props: { data: GraphQLSchema }): JSX.Element {
 	const { nodes } = props.data.allMarkdownRemark;
 
 	const postEls = nodes.map(
@@ -30,9 +30,9 @@ export default function Blogs(props: { data: GraphQLSchema }): JSX.Element {
 }
 
 export const query = graphql`
-	query {
+	query($filterRegex: String) {
 		allMarkdownRemark(
-			filter: { fileAbsolutePath: { regex: "/blogs/.*\\\\.md$/" } }
+			filter: { fileAbsolutePath: { regex: $filterRegex } }
 			sort: { fields: frontmatter___date, order: DESC }
 		) {
 			nodes {
