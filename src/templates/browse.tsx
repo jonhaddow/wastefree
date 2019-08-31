@@ -1,9 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Styles from "./browse.module.scss";
-import PostCard from "../components/post_card";
 import Layout from "../components/layout";
 import Post from "../common/post";
+import PostList from "../components/post_list/post_list";
 
 interface GraphQLSchema {
 	allMarkdownRemark: {
@@ -13,18 +12,9 @@ interface GraphQLSchema {
 
 export default function Recipes(props: { data: GraphQLSchema }): JSX.Element {
 	const { nodes } = props.data.allMarkdownRemark;
-
-	const postEls = nodes.map(
-		(post): JSX.Element => {
-			return <PostCard key={post.id} {...post} />;
-		}
-	);
-
 	return (
 		<Layout>
-			<div className={Styles.posts}>
-				<ul>{postEls}</ul>
-			</div>
+			<PostList posts={nodes}></PostList>
 		</Layout>
 	);
 }

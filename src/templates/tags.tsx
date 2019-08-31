@@ -1,5 +1,9 @@
-import { graphql } from "gatsby";
+import React from "react";
 import Post from "../common/post";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import PostList from "../components/post_list/post_list";
+import Styling from "./tags.module.scss";
 
 interface TagProps {
 	pageContext: {
@@ -18,7 +22,19 @@ interface TagProps {
 }
 
 export default function Tags(props: TagProps): JSX.Element {
-	return null;
+	const { tag } = props.pageContext;
+	const { totalCount } = props.data.allMarkdownRemark;
+	const tagHeader = `${totalCount} post${
+		totalCount === 1 ? "" : "s"
+	} tagged with "${tag}"`;
+	const posts = props.data.allMarkdownRemark.edges.map((x): Post => x.node);
+
+	return (
+		<Layout>
+			<h2 className={Styling.tagsHeader}>{tagHeader}</h2>
+			<PostList posts={posts}></PostList>
+		</Layout>
+	);
 }
 export const pageQuery = graphql`
 	query($tag: String) {
@@ -30,11 +46,20 @@ export const pageQuery = graphql`
 			totalCount
 			edges {
 				node {
+					frontmatter {
+						featuredImage {
+							childImageSharp {
+								fluid {
+									...GatsbyImageSharpFluid
+								}
+							}
+						}
+						date
+						title
+					}
+					id
 					fields {
 						slug
-					}
-					frontmatter {
-						title
 					}
 				}
 			}
