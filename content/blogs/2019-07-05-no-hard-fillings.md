@@ -1,6 +1,6 @@
 ---
 title: No Hard Fillings
-date: '2019-07-05'
+date: 2019-07-03T23:00:00.000Z
 featuredImage: ../images/dental.jpg
 ---
 **<div style="text-align: center">Tips for waste free dental hygiene.</div>**
