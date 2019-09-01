@@ -1,37 +1,39 @@
 .post-card {
-	width: 500px;
-	height: 250px;
-	background-position: center;
-	background-size: cover;
-	border-radius: 4px;
-
-	@media screen and (max-width: 500px) {
-		width: 100%;
-	}
-
-	> a {
-		text-decoration: none;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		color: white;
-		font-family: 'Roboto', sans-serif;
+	> div {
+		width: 500px;
+		height: 250px;
+		background-position: center;
+		background-size: cover;
+		border-radius: 4px;
 
 		@media screen and (max-width: 500px) {
+			width: 100%;
+		}
+
+		> a {
+			text-decoration: none;
+			height: 100%;
+			display: flex;
 			flex-direction: column;
+			justify-content: center;
 			align-items: center;
-		}
+			color: white;
+			font-family: "Roboto", sans-serif;
 
-		.title {
-			font-size: 1.5em;
-		}
+			@media screen and (max-width: 500px) {
+				flex-direction: column;
+				align-items: center;
+			}
 
-		.date {
-			font-weight: 100;
-			padding-top: 30px;
-			color: rgba(255, 255, 255, 0.94);
+			.title {
+				font-size: 1.5em;
+			}
+
+			.date {
+				font-weight: 100;
+				padding-top: 30px;
+				color: rgba(255, 255, 255, 0.94);
+			}
 		}
 	}
 }

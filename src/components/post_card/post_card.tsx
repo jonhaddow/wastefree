@@ -14,15 +14,13 @@ export default function PostCard(props: Post): JSX.Element {
 	].reverse();
 
 	return (
-		<BackgroundImage
-			Tag="li"
-			className={Styles.postCard}
-			fluid={backgroundFluidImageStack}
-		>
-			<Link to={slug}>
-				<span className={Styles.title}>{title}</span>
-				<time className={Styles.date}>{date}</time>
-			</Link>
-		</BackgroundImage>
+		<li className={Styles.postCard}>
+			<BackgroundImage fluid={backgroundFluidImageStack}>
+				<Link to={slug}>
+					<span className={Styles.title}>{title}</span>
+					<time className={Styles.date}>{date}</time>
+				</Link>
+			</BackgroundImage>
+		</li>
 	);
 }
