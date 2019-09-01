@@ -1,5 +1,6 @@
 ---
 title: No Hard Fillings
+slug: no-hard-fillings-test
 date: 2019-07-03T23:00:00.000Z
 featuredImage: ../images/dental.jpg
 ---
