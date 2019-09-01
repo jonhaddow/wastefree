@@ -83,21 +83,7 @@ export const query = graphql`
 			limit: 3
 		) {
 			nodes {
-				frontmatter {
-					featuredImage {
-						childImageSharp {
-							fluid {
-								...GatsbyImageSharpFluid
-							}
-						}
-					}
-					date
-					title
-				}
-				id
-				fields {
-					slug
-				}
+				...PostFragment
 			}
 		}
 		blogImg: file(relativePath: { eq: "site_images/dog-and-baby.jpg" }) {

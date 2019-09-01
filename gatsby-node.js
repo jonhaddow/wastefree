@@ -28,6 +28,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
 
+	// Blogs browse page
 	createPage({
 		path: "/blogs",
 		component: path.resolve("./src/templates/browse.tsx"),
@@ -36,6 +37,7 @@ exports.createPages = async ({ graphql, actions }) => {
 		}
 	});
 
+	// Recipes browse page
 	createPage({
 		path: "/recipes",
 		component: path.resolve("./src/templates/browse.tsx"),
@@ -44,86 +46,41 @@ exports.createPages = async ({ graphql, actions }) => {
 		}
 	});
 
-	const blogsQuery = await graphql(`
-		{
-			allMarkdownRemark(
-				filter: { fileAbsolutePath: { regex: "/blogs/.*\\\\.md$/" } }
-			) {
-				edges {
-					node {
-						fields {
-							slug
+	// Create page for each markdown blog, recipe or post
+	["blogs", "pages", "recipes"].forEach(async type => {
+		var query = await graphql(`
+			{
+				allMarkdownRemark(
+					filter: { fileAbsolutePath: { regex: "/${type}/.*\\\\.md$/" } }
+				) {
+					edges {
+						node {
+							frontmatter {
+								slug
+							}
+							fields {
+								slug
+							}
 						}
 					}
 				}
 			}
-		}
-	`);
-
-	blogsQuery.data.allMarkdownRemark.edges.forEach(({ node }) => {
-		createPage({
-			path: node.fields.slug,
-			component: path.resolve("./src/templates/post.tsx"),
-			context: {
-				slug: node.fields.slug
-			}
-		});
-	});
-
-	const pagesQuery = await graphql(`
-		{
-			allMarkdownRemark(
-				filter: { fileAbsolutePath: { regex: "/pages/.*\\\\.md$/" } }
-			) {
-				edges {
-					node {
-						fields {
-							slug
-						}
-					}
+		`);
+		query.data.allMarkdownRemark.edges.forEach(({ node }) => {
+			const frontmatterSlug = node.frontmatter.slug;
+			const slug =
+				frontmatterSlug == null ? node.fields.slug : frontmatterSlug;
+			createPage({
+				path: slug,
+				component: path.resolve("./src/templates/post.tsx"),
+				context: {
+					slug: node.fields.slug
 				}
-			}
-		}
-	`);
-
-	pagesQuery.data.allMarkdownRemark.edges.forEach(({ node }) => {
-		createPage({
-			path: node.fields.slug,
-			component: path.resolve(`./src/templates/post.tsx`),
-			context: {
-				// Data passed to context is available
-				// in page queries as GraphQL variables.
-				slug: node.fields.slug
-			}
+			});
 		});
 	});
 
-	const recipesQuery = await graphql(`
-		{
-			allMarkdownRemark(
-				filter: { fileAbsolutePath: { regex: "/recipes/.*\\\\.md$/" } }
-			) {
-				edges {
-					node {
-						fields {
-							slug
-						}
-					}
-				}
-			}
-		}
-	`);
-
-	recipesQuery.data.allMarkdownRemark.edges.forEach(({ node }) => {
-		createPage({
-			path: node.fields.slug,
-			component: path.resolve("./src/templates/post.tsx"),
-			context: {
-				slug: node.fields.slug
-			}
-		});
-	});
-
+	// Create page for each tag
 	const tagTemplate = path.resolve("src/templates/tags.tsx");
 	const tagsQuery = await graphql(`
 		{
@@ -151,7 +108,6 @@ exports.createPages = async ({ graphql, actions }) => {
 	`);
 
 	const tags = tagsQuery.data.tagsGroup.group;
-	// Make tag pages
 	tags.forEach(tag => {
 		createPage({
 			path: `/tags/${_.kebabCase(tag.fieldValue)}/`,

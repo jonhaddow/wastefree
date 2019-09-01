@@ -9,6 +9,7 @@ export default interface Post {
 		};
 		date: string;
 		title: string;
+		tags: string[];
 	};
 	id?: string;
 	html?: string;

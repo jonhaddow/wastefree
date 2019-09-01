@@ -2,7 +2,7 @@ import React from "react";
 import Post from "../common/post";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import PostList from "../components/post_list/post_list";
+import PostList from "../components/post_list";
 import Styling from "./tags.module.scss";
 
 interface TagProps {
@@ -46,21 +46,7 @@ export const pageQuery = graphql`
 			totalCount
 			edges {
 				node {
-					frontmatter {
-						featuredImage {
-							childImageSharp {
-								fluid {
-									...GatsbyImageSharpFluid
-								}
-							}
-						}
-						date
-						title
-					}
-					id
-					fields {
-						slug
-					}
+					...PostFragment
 				}
 			}
 		}

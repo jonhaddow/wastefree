@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Post from "../common/post";
-import PostList from "../components/post_list/post_list";
+import PostList from "../components/post_list";
 
 interface GraphQLSchema {
 	allMarkdownRemark: {
@@ -26,21 +26,7 @@ export const query = graphql`
 			sort: { fields: frontmatter___date, order: DESC }
 		) {
 			nodes {
-				frontmatter {
-					featuredImage {
-						childImageSharp {
-							fluid {
-								...GatsbyImageSharpFluid
-							}
-						}
-					}
-					date
-					title
-				}
-				id
-				fields {
-					slug
-				}
+				...PostFragment
 			}
 		}
 	}

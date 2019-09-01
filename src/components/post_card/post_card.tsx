@@ -6,9 +6,7 @@ import Post from "../../common/post";
 
 export default function PostCard(props: Post): JSX.Element {
 	const { slug } = props.fields;
-	const { title, featuredImage, date: dateStr } = props.frontmatter;
-
-	const date = new Date(dateStr);
+	const { title, featuredImage, date } = props.frontmatter;
 
 	const backgroundFluidImageStack = [
 		featuredImage.childImageSharp.fluid,
@@ -23,13 +21,7 @@ export default function PostCard(props: Post): JSX.Element {
 		>
 			<Link to={slug}>
 				<span className={Styles.title}>{title}</span>
-				<time className={Styles.date}>
-					{date.toLocaleDateString("en-GB", {
-						day: "numeric",
-						month: "short",
-						year: "numeric"
-					})}
-				</time>
+				<time className={Styles.date}>{date}</time>
 			</Link>
 		</BackgroundImage>
 	);

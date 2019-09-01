@@ -4,6 +4,7 @@ import Layout from "../components/layout";
 import Styling from "./post.module.scss";
 import Img from "gatsby-image";
 import Post from "../common/post";
+import TagsList from "../components/tags_list";
 
 interface GraphQLSchema {
 	markdownRemark: Post;
@@ -12,7 +13,7 @@ interface GraphQLSchema {
 function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 	const {
 		html,
-		frontmatter: { title, featuredImage, date: dateStr }
+		frontmatter: { title, featuredImage, date, tags }
 	} = props.data.markdownRemark;
 
 	const featuredImgFluid = featuredImage.childImageSharp.fluid;
@@ -35,19 +36,7 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 		<h1 key="title">{title}</h1>
 	);
 
-	const dateExists = dateStr != null;
-	if (dateExists) {
-		const date = new Date(dateStr);
-		articleElements.push(
-			<time key="datetime">
-				{date.toLocaleDateString("en-GB", {
-					day: "numeric",
-					month: "short",
-					year: "numeric"
-				})}
-			</time>
-		);
-	}
+	articleElements.push(<time key="datetime">{date}</time>);
 
 	articleElements.push(
 		<div
@@ -57,6 +46,10 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 			}}
 		/>
 	);
+
+	if (tags != null) {
+		articleElements.push(<TagsList tags={tags}></TagsList>);
+	}
 
 	return (
 		<Layout>
@@ -70,18 +63,7 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 export const query = graphql`
 	query($slug: String!) {
 		markdownRemark(fields: { slug: { eq: $slug } }) {
-			html
-			frontmatter {
-				featuredImage {
-					childImageSharp {
-						fluid {
-							...GatsbyImageSharpFluid
-						}
-					}
-				}
-				title
-				date
-			}
+			...PostFragment
 		}
 	}
 `;
