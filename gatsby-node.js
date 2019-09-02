@@ -55,9 +55,6 @@ exports.createPages = async ({ graphql, actions }) => {
 				) {
 					edges {
 						node {
-							frontmatter {
-								slug
-							}
 							fields {
 								slug
 							}
@@ -67,14 +64,12 @@ exports.createPages = async ({ graphql, actions }) => {
 			}
 		`);
 		query.data.allMarkdownRemark.edges.forEach(({ node }) => {
-			const frontmatterSlug = node.frontmatter.slug;
-			const slug =
-				frontmatterSlug == null ? node.fields.slug : frontmatterSlug;
+			const { slug } = node.fields;
 			createPage({
 				path: slug,
 				component: path.resolve("./src/templates/post.tsx"),
 				context: {
-					slug: node.fields.slug
+					slug: slug
 				}
 			});
 		});
