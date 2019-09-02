@@ -1,0 +1,19 @@
+.tags-list {
+	list-style-type: none;
+	margin: 30px 20px;
+
+	> li {
+		display: inline-block;
+		border: 1px gray solid;
+		margin: 0 15px 15px 0;
+		border-radius: 15px;
+
+		> a {
+			display: inline-block;
+			padding: 0px 10px;
+			line-height: 40px;
+			text-decoration: none;
+			color: gray;
+		}
+	}
+}

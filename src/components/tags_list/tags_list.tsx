@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import _ from "lodash";
+import Styling from "./tags_list.module.scss";
 
 export default function TagsList(props: { tags: string[] }): JSX.Element {
 	const tags = props.tags.map(
@@ -13,5 +14,5 @@ export default function TagsList(props: { tags: string[] }): JSX.Element {
 			);
 		}
 	);
-	return <ul>{tags}</ul>;
+	return <ul className={Styling.tagsList}>{tags}</ul>;
 }
