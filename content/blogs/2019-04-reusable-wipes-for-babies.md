@@ -2,6 +2,17 @@
 title: Reusable Wipes For Babies
 date: '2019-04-01'
 featuredImage: ../images/reusable_wipes.jpg
+tags:
+  - reusable wet wipes
+  - reusable wipes
+  - waste free
+  - Waste free mama
+  - waste free parenting
+  - wastefree
+  - wastefreemama
+  - zero waste
+  - zero waste parenting
+  - zerowaste
 ---
 Wet wipes are extremely useful and popular, and come in a whole variety of forms, for hundreds of different uses. However, they are one of the most damaging and problematic products, and have a wide range of impacts on the environment.
 
