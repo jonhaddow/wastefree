@@ -1,8 +1,26 @@
 ---
 title: No Hard Fillings
-slug: no-hard-fillings-test
 date: 2019-07-03T23:00:00.000Z
 featuredImage: ../images/dental.jpg
+tags:
+  - dental hygiene
+  - eco-friendly
+  - ecofriendly
+  - no plastic
+  - plastic free
+  - reduce plastic use
+  - sustainable
+  - sustainable living
+  - sustainableliving
+  - waste free
+  - waste free dental floss
+  - waste free dental hygiene
+  - Waste free mama
+  - waste free mouthwash
+  - waste free toothbrush
+  - wastefree
+  - zero waste
+  - zerowaste
 ---
 **<div style="text-align: center">Tips for waste free dental hygiene.</div>**
 
