@@ -2,6 +2,10 @@
 title: Reusable Nappies Explained
 date: '2019-03-03'
 featuredImage: ../images/reusable_nappies_explained.jpg
+tags:
+  - waste free
+  - wastefree
+  - wastefreemama
 ---
 Hey all! This post will be looking at the different sizing and types of reusable nappies. This is a relatively brief explanation, but I hope it helps you have a better understanding of what each type consists of and some of their benefits. I hope you enjoy!
 
