@@ -18,6 +18,7 @@ export default function Layout(props: LayoutProps): JSX.Element {
 					siteMetadata {
 						title
 						description
+						instagramLink
 					}
 				}
 				file(relativePath: { eq: "site_images/header-image.jpg" }) {
@@ -31,7 +32,7 @@ export default function Layout(props: LayoutProps): JSX.Element {
 		`
 	);
 
-	const { title, description } = data.site.siteMetadata;
+	const { title, description, instagramLink } = data.site.siteMetadata;
 	const { fluid: headerImage } = data.file.childImageSharp;
 
 	return (
@@ -43,7 +44,7 @@ export default function Layout(props: LayoutProps): JSX.Element {
 			/>
 			<Navigation />
 			{props.children}
-			<Footer title={title} />
+			<Footer title={title} instagramLink={instagramLink} />
 		</div>
 	);
 }

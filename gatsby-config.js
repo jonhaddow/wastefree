@@ -7,7 +7,8 @@
 module.exports = {
 	siteMetadata: {
 		title: "Waste Free Mama",
-		description: "My journey to waste free living"
+		description: "My journey to waste free living",
+		instagramLink: "https://www.instagram.com/waste_free_mama/"
 	},
 	plugins: [
 		// typescript plugins
