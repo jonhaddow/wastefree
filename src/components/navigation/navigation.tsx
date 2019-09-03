@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import styles from "./navigation.module.scss";
 
 export default function Navigation(): JSX.Element {
+	const currentUrl = window.location.pathname;
 	const listItems = [
 		{
 			name: "Home",
@@ -24,7 +25,12 @@ export default function Navigation(): JSX.Element {
 		(x): JSX.Element => {
 			return (
 				<li key={x.name}>
-					<Link to={x.link}>{x.name}</Link>
+					<Link
+						to={x.link}
+						className={x.link == currentUrl ? styles.active : ""}
+					>
+						{x.name}
+					</Link>
 				</li>
 			);
 		}
