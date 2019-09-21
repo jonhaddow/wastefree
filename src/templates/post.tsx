@@ -5,16 +5,18 @@ import Styling from "./post.module.scss";
 import Img from "gatsby-image";
 import Post from "../common/post";
 import TagsList from "../components/tags_list";
+import RelatedPosts from "../components/related_posts";
 
 interface GraphQLSchema {
 	markdownRemark: Post;
 }
 
 function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
+	const post = props.data.markdownRemark;
 	const {
 		html,
 		frontmatter: { title, featuredImage, date, tags }
-	} = props.data.markdownRemark;
+	} = post;
 
 	const featuredImgFluid = featuredImage.childImageSharp.fluid;
 	const aspectRatio = featuredImgFluid.aspectRatio;
@@ -55,6 +57,9 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 		<Layout>
 			<section>
 				<article className={Styling.post}>{articleElements}</article>
+			</section>
+			<section>
+				<RelatedPosts currentPost={post} />
 			</section>
 		</Layout>
 	);
