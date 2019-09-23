@@ -19,16 +19,11 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 	} = post;
 
 	const featuredImgFluid = featuredImage.childImageSharp.fluid;
-	const aspectRatio = featuredImgFluid.aspectRatio;
-	const ratioClass = aspectRatio <= 0.8 ? Styling.portrait : "";
 
 	const articleElements: JSX.Element[] = [];
 
 	articleElements.push(
-		<div
-			key="featuredImage"
-			className={`${Styling.featuredImageWrapper} ${ratioClass}`}
-		>
+		<div key="featuredImage" className={Styling.featuredImageWrapper}>
 			<Img
 				style={{ maxHeight: "100%", maxWidth: "100%" }}
 				imgStyle={{ objectFit: "contain" }}
@@ -58,9 +53,7 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 			<section>
 				<article className={Styling.post}>{articleElements}</article>
 			</section>
-			<section>
-				<RelatedPosts currentPost={post} />
-			</section>
+			{tags != null ? <RelatedPosts currentPost={post} /> : null}
 		</Layout>
 	);
 }

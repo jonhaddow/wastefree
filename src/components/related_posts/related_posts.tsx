@@ -1,7 +1,9 @@
 import React from "react";
 import Post from "../../common/post";
 import { useStaticQuery, graphql, Link } from "gatsby";
+import Img from "gatsby-image";
 import RelatedPostsBuilder from "./related_posts_builder";
+import Styling from "./related_posts.module.scss";
 
 interface RelatedPostsProps {
 	currentPost: Post;
@@ -32,7 +34,7 @@ export default function RelatedPosts(props: RelatedPostsProps): JSX.Element {
 		.generate();
 
 	return (
-		<>
+		<section className={Styling.relatedPosts}>
 			<h3>You may also like</h3>
 			<ul>
 				{relatedPosts.map(
@@ -40,13 +42,27 @@ export default function RelatedPosts(props: RelatedPostsProps): JSX.Element {
 						return (
 							<li key={post.id}>
 								<Link to={post.fields.slug}>
-									{post.frontmatter.title}
+									<Img
+										className={Styling.imgWrapper}
+										fluid={
+											post.frontmatter.featuredImage
+												.childImageSharp.fluid
+										}
+										alt=""
+									></Img>
 								</Link>
+
+								<h4>
+									<Link to={post.fields.slug}>
+										{post.frontmatter.title}
+									</Link>
+								</h4>
+								<time>{post.frontmatter.date}</time>
 							</li>
 						);
 					}
 				)}
 			</ul>
-		</>
+		</section>
 	);
 }
