@@ -15,43 +15,36 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 	const post = props.data.markdownRemark;
 	const {
 		html,
-		frontmatter: { title, featuredImage, date, tags }
+		frontmatter: {
+			title,
+			featuredImage: {
+				childImageSharp: { fluid: featuredImgFluid }
+			},
+			date,
+			tags
+		}
 	} = post;
-
-	const featuredImgFluid = featuredImage.childImageSharp.fluid;
-
-	const articleElements: JSX.Element[] = [];
-
-	articleElements.push(
-		<div key="featuredImage" className={Styling.featuredImageWrapper}>
-			<Img
-				style={{ maxHeight: "100%", maxWidth: "100%" }}
-				imgStyle={{ objectFit: "contain" }}
-				fluid={featuredImgFluid}
-			/>
-		</div>,
-		<h1 key="title">{title}</h1>
-	);
-
-	articleElements.push(<time key="datetime">{date}</time>);
-
-	articleElements.push(
-		<div
-			key="html"
-			dangerouslySetInnerHTML={{
-				__html: html
-			}}
-		/>
-	);
-
-	if (tags != null) {
-		articleElements.push(<TagsList tags={tags}></TagsList>);
-	}
 
 	return (
 		<Layout>
 			<section>
-				<article className={Styling.post}>{articleElements}</article>
+				<article className={Styling.post}>
+					<div className={Styling.featuredImageWrapper}>
+						<Img
+							style={{ maxHeight: "100%", maxWidth: "100%" }}
+							imgStyle={{ objectFit: "contain" }}
+							fluid={featuredImgFluid}
+						/>
+					</div>
+					<h1>{title}</h1>
+					<time>{date}</time>
+					<div
+						dangerouslySetInnerHTML={{
+							__html: html
+						}}
+					/>
+					{tags != null ? <TagsList tags={tags}></TagsList> : null}
+				</article>
 			</section>
 			{tags != null ? <RelatedPosts currentPost={post} /> : null}
 		</Layout>
