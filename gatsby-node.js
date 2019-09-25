@@ -12,6 +12,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 		const pageRegex = new RegExp("/pages/.*\\.md$");
 		const isPage = node.fileAbsolutePath.match(pageRegex);
 
+		// Add slug field to node
 		const slug = createFilePath({
 			node,
 			getNode,
@@ -111,5 +112,42 @@ exports.createPages = async ({ graphql, actions }) => {
 				tag: tag.fieldValue
 			}
 		});
+	});
+
+	// Generate search data
+	var query = await graphql(`
+		{
+			allMarkdownRemark(
+				filter: {
+					fileAbsolutePath: { regex: "/(blogs|recipes)/.*\\\\.md$/" }
+				}
+			) {
+				edges {
+					node {
+						frontmatter {
+							title
+							tags
+						}
+						fields {
+							slug
+						}
+					}
+				}
+			}
+		}
+	`);
+	var searchData = query.data.allMarkdownRemark.edges.map(edge => {
+		return {
+			title: edge.node.frontmatter.title,
+			tags: edge.node.frontmatter.tags,
+			slug: edge.node.fields.slug
+		};
+	});
+	createPage({
+		path: "/search",
+		component: path.resolve("src/templates/search.tsx"),
+		context: {
+			searchData
+		}
 	});
 };
