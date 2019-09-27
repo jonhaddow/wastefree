@@ -114,40 +114,9 @@ exports.createPages = async ({ graphql, actions }) => {
 		});
 	});
 
-	// Generate search data
-	var query = await graphql(`
-		{
-			allMarkdownRemark(
-				filter: {
-					fileAbsolutePath: { regex: "/(blogs|recipes)/.*\\\\.md$/" }
-				}
-			) {
-				edges {
-					node {
-						frontmatter {
-							title
-							tags
-						}
-						fields {
-							slug
-						}
-					}
-				}
-			}
-		}
-	`);
-	var searchData = query.data.allMarkdownRemark.edges.map(edge => {
-		return {
-			title: edge.node.frontmatter.title,
-			tags: edge.node.frontmatter.tags,
-			slug: edge.node.fields.slug
-		};
-	});
+	// Generate search page
 	createPage({
 		path: "/search",
-		component: path.resolve("src/templates/search.tsx"),
-		context: {
-			searchData
-		}
+		component: path.resolve("src/templates/search.tsx")
 	});
 };
