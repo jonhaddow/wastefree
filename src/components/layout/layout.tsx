@@ -8,6 +8,8 @@ import "../../styles/global.scss";
 
 interface LayoutProps {
 	children?: JSX.Element[] | JSX.Element;
+	currentQuery?: string;
+	setCurrentQuery?: (x: string) => void;
 }
 
 export default function Layout(props: LayoutProps): JSX.Element {
@@ -42,7 +44,10 @@ export default function Layout(props: LayoutProps): JSX.Element {
 				description={description}
 				image={headerImage}
 			/>
-			<Navigation />
+			<Navigation
+				currentQuery={props.currentQuery}
+				setCurrentQuery={props.setCurrentQuery}
+			/>
 			{props.children}
 			<Footer title={title} instagramLink={instagramLink} />
 		</div>

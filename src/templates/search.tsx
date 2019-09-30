@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as JsSearch from "js-search";
 import Layout from "../components/layout";
 import PostList from "../components/post_list";
@@ -56,24 +56,15 @@ export default function SearchTemplate(props: {
 	};
 
 	// Setup search results state
-	const [searchResults, setSearchResults] = useState((): Post[] => {
-		if (query !== null) {
-			return search(query);
-		} else {
-			return [];
-		}
-	});
-
-	const onInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
-		const query = e.target.value;
-		setQuery(query);
+	const [searchResults, setSearchResults] = useState([]);
+	useEffect((): void => {
 		setSearchResults(search(query));
-	};
+	}, [query]);
 
 	return (
-		<Layout>
+		<Layout currentQuery={query} setCurrentQuery={setQuery}>
 			<section>
-				<input type="text" value={query} onChange={onInput}></input>
+				<h2>{`Searching for "${query}"`}</h2>
 				<PostList posts={searchResults}></PostList>
 			</section>
 		</Layout>

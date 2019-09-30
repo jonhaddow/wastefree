@@ -46,18 +46,26 @@
 		}
 	}
 
-	> .searchBar {
-		transition: opacity 0.5s ease-in;
-		opacity: 0;
-		background: #f4f4f4;
-		border: none;
-		border-radius: 15px;
-		padding: 5px 8px;
-		font-size: 1em;
-		margin: 15px;
+	> form {
+		margin-bottom: 0;
+		width: 60%;
+		max-width: 350px;
+		padding-right: 15px;
 
-		&.active {
-			opacity: 1;
+		> .searchBar {
+			transition: opacity 0.5s ease-in;
+			opacity: 0;
+			background: #f4f4f4;
+			border: none;
+			border-radius: 15px;
+			padding: 5px 8px;
+			font-size: 1em;
+			margin: 15px;
+			width: 100%;
+
+			&.active {
+				opacity: 1;
+			}
 		}
 	}
 }
