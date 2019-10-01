@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import styles from "./navigation.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-export default function Navigation(props: {
-	currentQuery?: string;
-	setCurrentQuery?: (x: string) => void;
-}): JSX.Element {
-	const currentUrl = window.location.pathname;
+export default function Navigation(): JSX.Element {
 	const listItems = [
 		{
 			name: "Home",
@@ -30,10 +26,7 @@ export default function Navigation(props: {
 		(x): JSX.Element => {
 			return (
 				<li key={x.name}>
-					<Link
-						to={x.link}
-						className={x.link == currentUrl ? styles.active : ""}
-					>
+					<Link to={x.link} activeClassName={styles.active}>
 						{x.name}
 					</Link>
 				</li>
@@ -42,14 +35,12 @@ export default function Navigation(props: {
 	);
 
 	const searchBox = React.createRef<HTMLInputElement>();
-	const [searchOpen, setSearchOpen] = useState(!!props.currentQuery);
+	const [searchOpen, setSearchOpen] = useState(false);
 	const onSearchOpen = (): void => {
 		setSearchOpen(!searchOpen);
 	};
 
-	const [query, setQuery] = useState(
-		props.currentQuery ? props.currentQuery : ""
-	);
+	const [query, setQuery] = useState("");
 
 	useEffect((): void => {
 		if (searchBox.current) {
@@ -68,11 +59,7 @@ export default function Navigation(props: {
 
 		if (!newQuery) return;
 
-		if (props.setCurrentQuery) {
-			props.setCurrentQuery(newQuery);
-		} else {
-			window.location.href = `/search?q=${newQuery}`;
-		}
+		navigate(`/search`, { state: { query: newQuery } });
 	};
 
 	return (
