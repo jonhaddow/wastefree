@@ -12,6 +12,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 		const pageRegex = new RegExp("/pages/.*\\.md$");
 		const isPage = node.fileAbsolutePath.match(pageRegex);
 
+		// Add slug field to node
 		const slug = createFilePath({
 			node,
 			getNode,
@@ -111,5 +112,11 @@ exports.createPages = async ({ graphql, actions }) => {
 				tag: tag.fieldValue
 			}
 		});
+	});
+
+	// Generate search page
+	createPage({
+		path: "/search",
+		component: path.resolve("src/templates/search.tsx")
 	});
 };
