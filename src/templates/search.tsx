@@ -29,7 +29,11 @@ export default function SearchTemplate(props: {
 	};
 }): JSX.Element {
 	const { nodes: posts } = props.data.allMarkdownRemark;
-	const { query } = props.location.state;
+
+	let query = "";
+	if (props.location.state !== null) {
+		query = props.location.state.query;
+	}
 
 	// Setup search engine state to process the initial state
 	const engine = new JsSearch.Search("slug");
