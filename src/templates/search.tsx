@@ -10,9 +10,11 @@ class SearchDocument {
 	public constructor(post: Post) {
 		this.title = post.frontmatter.title;
 		this.slug = post.fields.slug;
+		this.tags = post.frontmatter.tags;
 	}
 
 	public title: string;
+	public tags: string[];
 	public slug: string;
 }
 
@@ -31,13 +33,14 @@ export default function SearchTemplate(props: {
 	const { nodes: posts } = props.data.allMarkdownRemark;
 
 	let query = "";
-	if (props.location.state !== null) {
+	if (props.location.state) {
 		query = props.location.state.query;
 	}
 
 	// Setup search engine state to process the initial state
 	const engine = new JsSearch.Search("slug");
 	engine.addIndex("title");
+	engine.addIndex("tags");
 	engine.addDocuments(
 		props.data.allMarkdownRemark.nodes.map(
 			(x): SearchDocument => new SearchDocument(x)
