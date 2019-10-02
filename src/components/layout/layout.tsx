@@ -1,10 +1,12 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 import Header from "../header";
 import Navigation from "../navigation";
 import Footer from "../footer";
 import styles from "./layout.module.scss";
 import "../../styles/global.scss";
+import { dom, config } from "@fortawesome/fontawesome-svg-core";
 
 interface LayoutProps {
 	children?: JSX.Element[] | JSX.Element;
@@ -35,16 +37,24 @@ export default function Layout(props: LayoutProps): JSX.Element {
 	const { title, description, instagramLink } = data.site.siteMetadata;
 	const { fluid: headerImage } = data.file.childImageSharp;
 
+	config.autoAddCss = false;
+
 	return (
-		<div className={styles.wrapper}>
-			<Header
-				title={title}
-				description={description}
-				image={headerImage}
-			/>
-			<Navigation />
-			{props.children}
-			<Footer title={title} instagramLink={instagramLink} />
-		</div>
+		<>
+			<Helmet>
+				<title>Waste Free Mama</title>
+				<style>{dom.css()}</style>
+			</Helmet>
+			<div className={styles.wrapper}>
+				<Header
+					title={title}
+					description={description}
+					image={headerImage}
+				/>
+				<Navigation />
+				{props.children}
+				<Footer title={title} instagramLink={instagramLink} />
+			</div>
+		</>
 	);
 }
