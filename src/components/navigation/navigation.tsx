@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, navigate } from "gatsby";
 import styles from "./navigation.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
+import Icon from "../icons";
+import Cross from "../icons/cross";
+import Search from "../icons/search";
 
 export default function Navigation(): JSX.Element {
 	const listItems = [
@@ -80,9 +81,15 @@ export default function Navigation(): JSX.Element {
 				<ul>{listItems}</ul>
 			)}
 			<button onClick={onSearchOpen}>
-				<FontAwesomeIcon
-					icon={searchOpen ? faTimes : faSearch}
-				></FontAwesomeIcon>
+				{searchOpen ? (
+					<Icon width="16" height="16">
+						<Cross />
+					</Icon>
+				) : (
+					<Icon width="20" height="20">
+						<Search />
+					</Icon>
+				)}
 			</button>
 		</nav>
 	);

@@ -1,7 +1,7 @@
 import React from "react";
 import Styles from "./footer.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import Icon from "../icons";
+import Instagram from "../icons/instagram";
 
 interface FooterProps {
 	title: string;
@@ -17,7 +17,9 @@ const Footer = function(props: FooterProps): JSX.Element {
 	return (
 		<footer className={Styles.footer}>
 			<a href={instagramLink} target="_blank" rel="noopener noreferrer">
-				<FontAwesomeIcon icon={faInstagram} size="2x" />
+				<Icon width="24" height="24">
+					<Instagram />
+				</Icon>
 			</a>
 			<p>{copyrightMsg}</p>
 		</footer>

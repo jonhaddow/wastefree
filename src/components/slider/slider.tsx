@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faChevronLeft,
-	faChevronRight
-} from "@fortawesome/free-solid-svg-icons";
 import styles from "./slider.module.scss";
 import { Link } from "gatsby";
 import Post from "../../common/post";
 import BackgroundImage from "gatsby-background-image";
+import Icon from "../icons";
+import ChevronRight from "../icons/chevron-right";
+import ChevronLeft from "../icons/chevron-left";
 
 interface SliderState {
 	sliderRunning: boolean;
@@ -153,10 +151,16 @@ export default class Slider extends Component<SliderProps, SliderState> {
 			}
 		);
 
+		const chevronStyling: React.CSSProperties = {
+			fill: "white"
+		};
+
 		return (
 			<div className={styles.slider}>
 				<button type="button" onClick={this.goBack}>
-					<FontAwesomeIcon icon={faChevronLeft} size="3x" />
+					<Icon styling={chevronStyling} width="32" height="32">
+						<ChevronLeft />
+					</Icon>
 				</button>
 
 				<ul className={styles.posts}>{sliderItems}</ul>
@@ -164,7 +168,9 @@ export default class Slider extends Component<SliderProps, SliderState> {
 				<ul className={styles.dots}>{dots}</ul>
 
 				<button type="button" onClick={this.goNext}>
-					<FontAwesomeIcon icon={faChevronRight} size="3x" />
+					<Icon styling={chevronStyling} width="32" height="32">
+						<ChevronRight />
+					</Icon>
 				</button>
 			</div>
 		);

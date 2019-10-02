@@ -6,6 +6,12 @@
 	justify-content: space-between;
 	background-color: darken(white, 5%);
 
+	> a {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
 	p {
 		margin: 0;
 		font-size: 0.8em;
