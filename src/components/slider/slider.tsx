@@ -157,7 +157,11 @@ export default class Slider extends Component<SliderProps, SliderState> {
 
 		return (
 			<div className={styles.slider}>
-				<button type="button" onClick={this.goBack}>
+				<button
+					type="button"
+					onClick={this.goBack}
+					aria-label="Previous image"
+				>
 					<Icon styling={chevronStyling} width="32" height="32">
 						<ChevronLeft />
 					</Icon>
@@ -167,7 +171,11 @@ export default class Slider extends Component<SliderProps, SliderState> {
 
 				<ul className={styles.dots}>{dots}</ul>
 
-				<button type="button" onClick={this.goNext}>
+				<button
+					type="button"
+					onClick={this.goNext}
+					aria-label="Next image"
+				>
 					<Icon styling={chevronStyling} width="32" height="32">
 						<ChevronRight />
 					</Icon>
