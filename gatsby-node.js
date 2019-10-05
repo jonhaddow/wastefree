@@ -30,21 +30,45 @@ exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
 
 	// Blogs browse page
-	createPage({
-		path: "/blogs",
-		component: path.resolve("./src/templates/browse.tsx"),
-		context: {
-			filterRegex: "/blogs/.*\\\\.md$/"
-		}
-	});
-
-	// Recipes browse page
-	createPage({
-		path: "/recipes",
-		component: path.resolve("./src/templates/browse.tsx"),
-		context: {
-			filterRegex: "/recipes/.*\\\\.md$/"
-		}
+	["blogs", "recipes"].forEach(async type => {
+		const result = await graphql(
+			`
+				{
+					allMarkdownRemark(
+						filter: { fileAbsolutePath: { regex: "/${type}/.*.md/" } }
+						sort: { fields: frontmatter___date, order: DESC }
+						limit: 1000
+					) {
+						edges {
+							node {
+								fields {
+									slug
+								}
+							}
+						}
+					}
+				}
+			`
+		);
+		const posts = result.data.allMarkdownRemark.edges;
+		const postsPerPage = 6;
+		const totalPages = Math.ceil(posts.length / postsPerPage);
+		Array.from({
+			length: totalPages
+		}).forEach((_, i) => {
+			createPage({
+				path: i === 0 ? `/${type}` : `/${type}/${i + 1}`,
+				component: path.resolve("./src/templates/browse.tsx"),
+				context: {
+					filterRegex: `/${type}/.*\\\\.md$/`,
+					limit: postsPerPage,
+					skip: i * postsPerPage,
+					totalPages,
+					currentPage: i + 1,
+					typeOfPage: type
+				}
+			});
+		});
 	});
 
 	// Create page for each markdown blog, recipe or post

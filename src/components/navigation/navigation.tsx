@@ -13,15 +13,15 @@ export default function Navigation(): JSX.Element {
 		},
 		{
 			name: "Blogs",
-			link: "/blogs"
+			link: "/blogs/"
 		},
 		{
 			name: "About",
-			link: "/about"
+			link: "/about/"
 		},
 		{
 			name: "Recipes",
-			link: "/recipes"
+			link: "/recipes/"
 		}
 	].map(
 		(x): JSX.Element => {
