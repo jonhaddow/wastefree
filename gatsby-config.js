@@ -52,6 +52,12 @@ module.exports = {
 			}
 		},
 
-		"gatsby-plugin-netlify-cms"
+		"gatsby-plugin-netlify-cms",
+		{
+			resolve: "gatsby-plugin-html-attributes",
+			options: {
+				lang: "en"
+			}
+		}
 	]
 };
