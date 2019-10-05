@@ -62,6 +62,9 @@ export default function Navigation(): JSX.Element {
 		if (!newQuery) return;
 
 		navigate(`/search?q=${newQuery}`);
+
+		setSearchOpen(false);
+		setQuery("");
 	};
 
 	return (
