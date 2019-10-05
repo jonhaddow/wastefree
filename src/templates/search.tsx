@@ -25,17 +25,13 @@ export default function SearchTemplate(props: {
 		};
 	};
 	location: {
-		state: {
-			query: string;
-		};
+		search: string;
 	};
 }): JSX.Element {
 	const { nodes: posts } = props.data.allMarkdownRemark;
 
-	let query = "";
-	if (props.location.state) {
-		query = props.location.state.query;
-	}
+	const searchParams = new URLSearchParams(props.location.search);
+	const query = searchParams.get("q");
 
 	// Setup search engine state to process the initial state
 	const engine = new JsSearch.Search("slug");

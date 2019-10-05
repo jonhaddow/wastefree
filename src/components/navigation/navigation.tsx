@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, navigate } from "gatsby";
+import { Link } from "gatsby";
+import { navigate } from "@reach/router";
 import styles from "./navigation.module.scss";
 import Icon from "../icons";
 import Cross from "../icons/cross";
@@ -60,7 +61,7 @@ export default function Navigation(): JSX.Element {
 
 		if (!newQuery) return;
 
-		navigate(`/search`, { state: { query: newQuery } });
+		navigate(`/search?q=${newQuery}`);
 	};
 
 	return (
