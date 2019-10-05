@@ -30,7 +30,10 @@ export default function Tags(props: TagProps): JSX.Element {
 	const posts = props.data.allMarkdownRemark.edges.map((x): Post => x.node);
 
 	return (
-		<Layout>
+		<Layout
+			pageTitle={`Tags matching "${tag}`}
+			pageDescription="List of blogs or recipes with the matching tag."
+		>
 			<h2 className={Styling.tagsHeader}>{tagHeader}</h2>
 			<PostList posts={posts}></PostList>
 		</Layout>

@@ -21,8 +21,12 @@ export default function Recipes(props: {
 }): JSX.Element {
 	const { nodes } = props.data.allMarkdownRemark;
 	const { currentPage, totalPages, typeOfPage } = props.pageContext;
+
+	const pageTitle = typeOfPage === "blogs" ? "Blogs" : "Recipes";
+	const pageDescription = `List of ${pageTitle}. Page ${currentPage} of ${totalPages}`;
+
 	return (
-		<Layout>
+		<Layout pageTitle={pageTitle} pageDescription={pageDescription}>
 			<PostList posts={nodes}></PostList>
 			<Pagination
 				typeOfPage={typeOfPage}

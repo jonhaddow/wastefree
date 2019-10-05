@@ -50,7 +50,10 @@ export default function SearchTemplate(props: {
 	);
 
 	return (
-		<Layout>
+		<Layout
+			pageTitle="Search"
+			pageDescription="Search for blogs or recipes across the site."
+		>
 			<section>
 				<h2
 					className={Styling.searchRequestedMessage}

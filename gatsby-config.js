@@ -7,8 +7,9 @@
 module.exports = {
 	siteMetadata: {
 		title: "Waste Free Mama",
-		description: "My journey to waste free living",
-		instagramLink: "https://www.instagram.com/waste_free_mama/"
+		tagLine: "My journey to waste free living",
+		instagramLink: "https://www.instagram.com/waste_free_mama/",
+		url: "https://headless.wastefreemama.com"
 	},
 	plugins: [
 		// typescript plugins
@@ -53,6 +54,9 @@ module.exports = {
 		},
 
 		"gatsby-plugin-netlify-cms",
+
+		// SEO
+		"gatsby-plugin-react-helmet",
 		{
 			resolve: "gatsby-plugin-html-attributes",
 			options: {

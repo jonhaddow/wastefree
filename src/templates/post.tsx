@@ -17,6 +17,7 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 		html,
 		frontmatter: {
 			title,
+			excerpt,
 			featuredImage: {
 				childImageSharp: { fluid: featuredImgFluid }
 			},
@@ -26,7 +27,7 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 	} = post;
 
 	return (
-		<Layout>
+		<Layout pageTitle={title} pageDescription={excerpt}>
 			<section>
 				<article className={Styling.post}>
 					<div className={Styling.featuredImageWrapper}>

@@ -9,6 +9,8 @@ import "../../styles/global.scss";
 
 interface LayoutProps {
 	children?: JSX.Element[] | JSX.Element;
+	pageTitle?: string;
+	pageDescription?: string;
 }
 
 export default function Layout(props: LayoutProps): JSX.Element {
@@ -18,8 +20,9 @@ export default function Layout(props: LayoutProps): JSX.Element {
 				site {
 					siteMetadata {
 						title
-						description
+						tagLine
 						instagramLink
+						url
 					}
 				}
 				file(relativePath: { eq: "site_images/header-image.jpg" }) {
@@ -33,18 +36,28 @@ export default function Layout(props: LayoutProps): JSX.Element {
 		`
 	);
 
-	const { title, description, instagramLink } = data.site.siteMetadata;
+	const { title, tagLine, instagramLink, url } = data.site.siteMetadata;
 	const { fluid: headerImage } = data.file.childImageSharp;
+	const { pageDescription, pageTitle } = props;
 
 	return (
 		<>
 			<Helmet>
-				<title>Waste Free Mama</title>
+				{pageDescription ? (
+					<meta name="Description" content={pageDescription}></meta>
+				) : (
+					""
+				)}
+				<link rel="canonical" href={url}></link>
+				<title>
+					{pageTitle ? `${pageTitle} - ` : ""}
+					{title}
+				</title>
 			</Helmet>
 			<div className={styles.wrapper}>
 				<Header
 					title={title}
-					description={description}
+					description={tagLine}
 					image={headerImage}
 				/>
 				<Navigation />
