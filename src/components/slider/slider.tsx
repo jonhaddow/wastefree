@@ -120,9 +120,13 @@ export default class Slider extends Component<SliderProps, SliderState> {
 								? styles.active
 								: ""
 						}
+						role="group"
+						aria-roledescription="slide"
+						aria-labelledby={`sliderPostTitle${post.id}`}
+						id={`sliderItem${post.id}`}
 					>
 						<BackgroundImage fluid={backgroundFluidImageStack}>
-							<h2>
+							<h2 id={`sliderPostTitle${post.id}`}>
 								<Link to={link}>{post.frontmatter.title}</Link>
 							</h2>
 							<Link to={link}>Read More</Link>
@@ -135,17 +139,26 @@ export default class Slider extends Component<SliderProps, SliderState> {
 
 		const dots = recentPosts.map(
 			(post, index): JSX.Element => {
+				const buttonAttributes: React.DetailedHTMLProps<
+					React.ButtonHTMLAttributes<HTMLButtonElement>,
+					HTMLButtonElement
+				> = {
+					type: "button",
+					onClick: this.onDotClick.bind(this, index)
+				};
+
+				if (post.id === this.state.activePostId) {
+					buttonAttributes.className = styles.active;
+					buttonAttributes["aria-disabled"] = true;
+				} else {
+					buttonAttributes[
+						"aria-labelledby"
+					] = `sliderItem${post.id}`;
+				}
+
 				return (
 					<li key={post.fields.slug}>
-						<button
-							type="button"
-							onClick={this.onDotClick.bind(this, index)}
-							className={
-								post.id === this.state.activePostId
-									? styles.active
-									: ""
-							}
-						/>
+						<button {...buttonAttributes} />
 					</li>
 				);
 			}
@@ -156,7 +169,12 @@ export default class Slider extends Component<SliderProps, SliderState> {
 		};
 
 		return (
-			<div className={styles.slider}>
+			<div
+				className={styles.slider}
+				role="region"
+				aria-roledescription="carousel"
+				aria-label="A collection of recent blog posts and recipes"
+			>
 				<button
 					type="button"
 					onClick={this.goBack}
@@ -167,9 +185,21 @@ export default class Slider extends Component<SliderProps, SliderState> {
 					</Icon>
 				</button>
 
-				<ul className={styles.posts}>{sliderItems}</ul>
+				<ul
+					className={styles.posts}
+					aria-live="off"
+					aria-atomic="false"
+				>
+					{sliderItems}
+				</ul>
 
-				<ul className={styles.dots}>{dots}</ul>
+				<ul
+					className={styles.dots}
+					role="group"
+					aria-label="Choose slide to display"
+				>
+					{dots}
+				</ul>
 
 				<button
 					type="button"
