@@ -20,9 +20,9 @@ export default function Layout(props: LayoutProps): JSX.Element {
 				site {
 					siteMetadata {
 						title
+						description
 						tagLine
 						instagramLink
-						url
 					}
 				}
 				file(relativePath: { eq: "site_images/header-image.jpg" }) {
@@ -36,19 +36,22 @@ export default function Layout(props: LayoutProps): JSX.Element {
 		`
 	);
 
-	const { title, tagLine, instagramLink, url } = data.site.siteMetadata;
+	const {
+		title,
+		description,
+		tagLine,
+		instagramLink
+	} = data.site.siteMetadata;
 	const { fluid: headerImage } = data.file.childImageSharp;
 	const { pageDescription, pageTitle } = props;
 
 	return (
 		<>
 			<Helmet>
-				{pageDescription ? (
-					<meta name="Description" content={pageDescription}></meta>
-				) : (
-					""
-				)}
-				<link rel="canonical" href={url}></link>
+				<meta
+					name="Description"
+					content={pageDescription ? pageDescription : description}
+				></meta>
 				<title>
 					{pageTitle ? `${pageTitle} - ` : ""}
 					{title}
