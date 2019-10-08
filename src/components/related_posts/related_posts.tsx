@@ -50,13 +50,8 @@ export default function RelatedPosts(props: RelatedPostsProps): JSX.Element {
 										}
 										alt=""
 									></Img>
+									<h4>{post.frontmatter.title}</h4>
 								</Link>
-
-								<h4>
-									<Link to={post.fields.slug}>
-										{post.frontmatter.title}
-									</Link>
-								</h4>
 								<time>{post.frontmatter.date}</time>
 							</li>
 						);
