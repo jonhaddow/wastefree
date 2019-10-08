@@ -120,12 +120,14 @@ export default class Slider extends Component<SliderProps, SliderState> {
 								? styles.active
 								: ""
 						}
-						role="group"
-						aria-roledescription="slide"
-						aria-labelledby={`sliderPostTitle${post.id}`}
-						id={`sliderItem${post.id}`}
 					>
-						<BackgroundImage fluid={backgroundFluidImageStack}>
+						<BackgroundImage
+							fluid={backgroundFluidImageStack}
+							role="group"
+							aria-roledescription="slide"
+							aria-labelledby={`sliderPostTitle${post.id}`}
+							id={`sliderItem${post.id}`}
+						>
 							<h2 id={`sliderPostTitle${post.id}`}>
 								<Link to={link}>{post.frontmatter.title}</Link>
 							</h2>
@@ -144,16 +146,13 @@ export default class Slider extends Component<SliderProps, SliderState> {
 					HTMLButtonElement
 				> = {
 					type: "button",
-					onClick: this.onDotClick.bind(this, index)
+					onClick: this.onDotClick.bind(this, index),
+					"aria-label": `sliderItem${post.frontmatter.title}`
 				};
 
 				if (post.id === this.state.activePostId) {
 					buttonAttributes.className = styles.active;
 					buttonAttributes["aria-disabled"] = true;
-				} else {
-					buttonAttributes[
-						"aria-labelledby"
-					] = `sliderItem${post.id}`;
 				}
 
 				return (
@@ -171,7 +170,7 @@ export default class Slider extends Component<SliderProps, SliderState> {
 		return (
 			<div
 				className={styles.slider}
-				role="region"
+				role="group"
 				aria-roledescription="carousel"
 				aria-label="A collection of recent blog posts and recipes"
 			>
@@ -193,13 +192,13 @@ export default class Slider extends Component<SliderProps, SliderState> {
 					{sliderItems}
 				</ul>
 
-				<ul
+				<div
 					className={styles.dots}
 					role="group"
 					aria-label="Choose slide to display"
 				>
-					{dots}
-				</ul>
+					<ul>{dots}</ul>
+				</div>
 
 				<button
 					type="button"
