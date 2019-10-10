@@ -76,6 +76,7 @@ module.exports = {
 			resolve: `gatsby-plugin-manifest`,
 			options: {
 				name: `Waste Free Mama`,
+				short_name: `Waste Free Mama`,
 				start_url: `/`,
 				background_color: `#6b37bf`,
 				theme_color: `#6b37bf`,
