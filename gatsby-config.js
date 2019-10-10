@@ -67,7 +67,7 @@ module.exports = {
 		{
 			resolve: "gatsby-plugin-canonical-urls",
 			options: {
-				siteUrl: "https://headless.wastefreemama.com"
+				siteUrl: "https://wastefreemama.com"
 			}
 		},
 

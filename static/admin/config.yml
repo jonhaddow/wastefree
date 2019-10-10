@@ -1,4 +1,4 @@
-site_url: https://headless.wastefreemama.com
+site_url: https://wastefreemama.com
 backend:
   name: git-gateway
   branch: master # Branch to update
