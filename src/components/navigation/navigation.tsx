@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import { navigate } from "@reach/router";
-import styles from "./navigation.module.scss";
+import { active, mainNav, searchBar } from "./navigation.module.scss";
 import Icon from "../icons";
 import Cross from "../icons/cross";
 import Search from "../icons/search";
@@ -10,25 +10,25 @@ export default function Navigation(): JSX.Element {
 	const listItems = [
 		{
 			name: "Home",
-			link: "/"
+			link: "/",
 		},
 		{
 			name: "Blogs",
-			link: "/blogs/"
+			link: "/blogs/",
 		},
 		{
 			name: "About",
-			link: "/about/"
+			link: "/about/",
 		},
 		{
 			name: "Recipes",
-			link: "/recipes/"
-		}
+			link: "/recipes/",
+		},
 	].map(
 		(x): JSX.Element => {
 			return (
 				<li key={x.name}>
-					<Link to={x.link} activeClassName={styles.active}>
+					<Link to={x.link} activeClassName={active}>
 						{x.name}
 					</Link>
 				</li>
@@ -54,28 +54,28 @@ export default function Navigation(): JSX.Element {
 		setQuery(e.currentTarget.value);
 	};
 
-	const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+	const onSubmit = async (
+		e: React.FormEvent<HTMLFormElement>
+	): Promise<void> => {
 		e.preventDefault();
 
-		const newQuery = searchBox.current.value;
+		const newQuery = searchBox.current?.value;
 
 		if (!newQuery) return;
 
-		navigate(`/search?q=${newQuery}`);
+		await navigate(`/search?q=${newQuery}`);
 
 		setSearchOpen(false);
 		setQuery("");
 	};
 
 	return (
-		<nav className={styles.mainNav}>
+		<nav className={mainNav}>
 			{searchOpen ? (
 				<form onSubmit={onSubmit}>
 					<input
 						ref={searchBox}
-						className={`${styles.searchBar} ${
-							searchOpen ? styles.active : ""
-						}`}
+						className={`${searchBar} ${searchOpen ? active : ""}`}
 						placeholder="Search for content"
 						value={query}
 						onChange={onInput}

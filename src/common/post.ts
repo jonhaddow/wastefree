@@ -1,11 +1,11 @@
-import { IFluidObject } from "gatsby-background-image";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 
 export default interface Post {
 	frontmatter: {
 		excerpt?: string;
 		featuredImage: {
 			childImageSharp: {
-				fluid: IFluidObject;
+				gatsbyImageData: IGatsbyImageData;
 			};
 		};
 		date: string;
@@ -13,8 +13,8 @@ export default interface Post {
 		tags: string[];
 	};
 	id?: string;
-	html?: string;
-	fields?: {
+	html: string;
+	fields: {
 		slug: string;
 	};
 }

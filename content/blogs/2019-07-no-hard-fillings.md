@@ -3,25 +3,26 @@ title: No Hard Fillings
 date: 2019-07-03T23:00:00.000Z
 featuredImage: ../images/dental.jpg
 tags:
-  - dental hygiene
-  - eco-friendly
-  - ecofriendly
-  - no plastic
-  - plastic free
-  - reduce plastic use
-  - sustainable
-  - sustainable living
-  - sustainableliving
-  - waste free
-  - waste free dental floss
-  - waste free dental hygiene
-  - Waste free mama
-  - waste free mouthwash
-  - waste free toothbrush
-  - wastefree
-  - zero waste
-  - zerowaste
+    - dental hygiene
+    - eco-friendly
+    - ecofriendly
+    - no plastic
+    - plastic free
+    - reduce plastic use
+    - sustainable
+    - sustainable living
+    - sustainableliving
+    - waste free
+    - waste free dental floss
+    - waste free dental hygiene
+    - Waste free mama
+    - waste free mouthwash
+    - waste free toothbrush
+    - wastefree
+    - zero waste
+    - zerowaste
 ---
+
 **<div style="text-align: center">Tips for waste free dental hygiene.</div>**
 
 ---
@@ -40,7 +41,7 @@ And, as an added bonus, it was far cheaper to purchase a bamboo toothbrush than 
 
 Also, in terms of the actual bamboo toothbrush itself, I have found it very easy to get used to, and very similar to manual plastic brushes. They also come in a range of brush strengths, and a range of prices, but essentially all do the same job!
 
-- - -
+---
 
 ## Dental floss
 
@@ -60,7 +61,7 @@ The floss is sent in cardboard and paper only packaging, that can be fully recyc
 
 The floss was super easy to use, and worked in the same way as other dental tapes. They come in a range of flavours, and are one of the cheapest options on the market.
 
-- - -
+---
 
 ## Mouthwash
 
@@ -74,7 +75,7 @@ Just like with the dental floss, these tablets come in a range of flavours, so a
 
 The quantity of mouthwash tablets available differs, and I bought a years supply as it worked out cheaper. They were sent in a glass bottle for storage and once again the packaging was plastic free and fully recyclable.
 
-- - -
+---
 
 ## Toothpaste
 

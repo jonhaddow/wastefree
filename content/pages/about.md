@@ -1,6 +1,6 @@
 ---
 title: About
-featuredImage: "../images/aboutImage.jpg"
+featuredImage: ../images/aboutImage.jpg
 ---
 
 Hey there, and welcome to waste free mama!

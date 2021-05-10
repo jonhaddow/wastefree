@@ -11,25 +11,24 @@ interface GraphQLSchema {
 	};
 }
 
-export default function Recipes(props: {
+export default function Blogs(props: {
 	data: GraphQLSchema;
 	pageContext: {
 		totalPages: number;
 		currentPage: number;
-		typeOfPage: string;
 	};
 }): JSX.Element {
 	const { nodes } = props.data.allMarkdownRemark;
-	const { currentPage, totalPages, typeOfPage } = props.pageContext;
+	const { currentPage, totalPages } = props.pageContext;
 
-	const pageTitle = typeOfPage === "blogs" ? "Blogs" : "Recipes";
+	const pageTitle = "Blogs";
 	const pageDescription = `List of ${pageTitle}. Page ${currentPage} of ${totalPages}`;
 
 	return (
 		<Layout pageTitle={pageTitle} pageDescription={pageDescription}>
 			<PostList posts={nodes}></PostList>
 			<Pagination
-				typeOfPage={typeOfPage}
+				typeOfPage={"blogs"}
 				currentPage={currentPage}
 				totalPages={totalPages}
 			/>
@@ -38,9 +37,9 @@ export default function Recipes(props: {
 }
 
 export const query = graphql`
-	query($filterRegex: String, $limit: Int!, $skip: Int!) {
+	query($limit: Int!, $skip: Int!) {
 		allMarkdownRemark(
-			filter: { fileAbsolutePath: { regex: $filterRegex } }
+			filter: { fileAbsolutePath: { regex: "/blogs/" } }
 			sort: { fields: frontmatter___date, order: DESC }
 			limit: $limit
 			skip: $skip

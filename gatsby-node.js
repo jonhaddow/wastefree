@@ -1,12 +1,8 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
-const { fmImagesToRelative } = require("gatsby-remark-relative-images");
 const _ = require("lodash");
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
-	// Ensure markdown images are converted to relative for processing
-	fmImagesToRelative(node);
-
 	const { createNodeField } = actions;
 	if (node.internal.type === `MarkdownRemark`) {
 		const pageRegex = new RegExp("/pages/.*\\.md$");
@@ -16,12 +12,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 		const slug = createFilePath({
 			node,
 			getNode,
-			basePath: isPage ? "pages" : "content"
+			basePath: isPage ? "pages" : "content",
 		});
 		createNodeField({
 			node,
 			name: `slug`,
-			value: slug
+			value: slug,
 		});
 	}
 };
@@ -29,8 +25,17 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
 
-	// Blogs browse page
-	["blogs", "recipes"].forEach(async type => {
+	// Create listing pages
+	[
+		{
+			type: "blogs",
+			template: "./src/templates/blogs.tsx",
+		},
+		{
+			type: "recipes",
+			template: "./src/templates/recipes.tsx",
+		},
+	].forEach(async ({ type, template }) => {
 		const result = await graphql(
 			`
 				{
@@ -54,25 +59,23 @@ exports.createPages = async ({ graphql, actions }) => {
 		const postsPerPage = 6;
 		const totalPages = Math.ceil(posts.length / postsPerPage);
 		Array.from({
-			length: totalPages
+			length: totalPages,
 		}).forEach((_, i) => {
 			createPage({
 				path: i === 0 ? `/${type}` : `/${type}/${i + 1}`,
-				component: path.resolve("./src/templates/browse.tsx"),
+				component: path.resolve(template),
 				context: {
-					filterRegex: `/${type}/.*\\\\.md$/`,
 					limit: postsPerPage,
 					skip: i * postsPerPage,
 					totalPages,
 					currentPage: i + 1,
-					typeOfPage: type
-				}
+				},
 			});
 		});
 	});
 
 	// Create page for each markdown blog, recipe or post
-	["blogs", "pages", "recipes"].forEach(async type => {
+	["blogs", "pages", "recipes"].forEach(async (type) => {
 		var query = await graphql(`
 			{
 				allMarkdownRemark(
@@ -94,8 +97,8 @@ exports.createPages = async ({ graphql, actions }) => {
 				path: slug,
 				component: path.resolve("./src/templates/post.tsx"),
 				context: {
-					slug: slug
-				}
+					slug: slug,
+				},
 			});
 		});
 	});
@@ -128,19 +131,19 @@ exports.createPages = async ({ graphql, actions }) => {
 	`);
 
 	const tags = tagsQuery.data.tagsGroup.group;
-	tags.forEach(tag => {
+	tags.forEach((tag) => {
 		createPage({
 			path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
 			component: tagTemplate,
 			context: {
-				tag: tag.fieldValue
-			}
+				tag: tag.fieldValue,
+			},
 		});
 	});
 
 	// Generate search page
 	createPage({
 		path: "/search",
-		component: path.resolve("src/templates/search.tsx")
+		component: path.resolve("src/templates/search.tsx"),
 	});
 };

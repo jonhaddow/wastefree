@@ -1,10 +1,11 @@
 import React from "react";
-import Slider from "../components/slider";
-import Styles from "./index.module.scss";
+import { home } from "./index.module.scss";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
 import Post from "../common/post";
-import BackgroundImage, { IFluidObject } from "gatsby-background-image";
+import { IGatsbyImageData } from "gatsby-plugin-image";
+import { BgImage } from "gbimage-bridge";
+import Slider from "../components/slider/slider";
 
 interface GraphQLSchema {
 	featuredPosts: {
@@ -12,17 +13,17 @@ interface GraphQLSchema {
 	};
 	blogImg: {
 		childImageSharp: {
-			fluid: IFluidObject;
+			gatsbyImageData: IGatsbyImageData;
 		};
 	};
 	aboutImg: {
 		childImageSharp: {
-			fluid: IFluidObject;
+			gatsbyImageData: IGatsbyImageData;
 		};
 	};
 	recipeImg: {
 		childImageSharp: {
-			fluid: IFluidObject;
+			gatsbyImageData: IGatsbyImageData;
 		};
 	};
 }
@@ -31,40 +32,38 @@ export default function Home(props: { data: GraphQLSchema }): JSX.Element {
 	const itemDetails = [
 		{
 			link: "/blogs",
-			imageSrc: props.data.blogImg.childImageSharp.fluid,
-			title: "Blogs"
+			imageSrc: props.data.blogImg.childImageSharp,
+			title: "Blogs",
 		},
 		{
 			link: "/about",
-			imageSrc: props.data.aboutImg.childImageSharp.fluid,
-			title: "About"
+			imageSrc: props.data.aboutImg.childImageSharp,
+			title: "About",
 		},
 		{
 			link: "/recipes",
-			imageSrc: props.data.recipeImg.childImageSharp.fluid,
-			title: "Recipes"
-		}
+			imageSrc: props.data.recipeImg.childImageSharp,
+			title: "Recipes",
+		},
 	];
 
 	const links = itemDetails.map(
 		(link): JSX.Element => {
 			return (
-				<BackgroundImage
-					key={link.title}
-					Tag="li"
-					fluid={link.imageSrc}
-				>
-					<Link to={link.link}>
-						<h3>{link.title}</h3>
-					</Link>
-				</BackgroundImage>
+				<li key={link.title}>
+					<BgImage image={link.imageSrc.gatsbyImageData}>
+						<Link to={link.link}>
+							<h3>{link.title}</h3>
+						</Link>
+					</BgImage>
+				</li>
 			);
 		}
 	);
 
 	return (
 		<Layout>
-			<section className={Styles.home}>
+			<section className={home}>
 				<Slider recentPosts={props.data.featuredPosts.nodes} />
 
 				<ul>{links}</ul>
@@ -76,9 +75,7 @@ export default function Home(props: { data: GraphQLSchema }): JSX.Element {
 export const query = graphql`
 	query {
 		featuredPosts: allMarkdownRemark(
-			filter: {
-				fileAbsolutePath: { regex: "/(blogs|recipes)/.*\\\\.md$/" }
-			}
+			filter: { fileAbsolutePath: { regex: "/(blogs|recipes)/" } }
 			sort: { fields: frontmatter___date, order: DESC }
 			limit: 3
 		) {
@@ -88,25 +85,19 @@ export const query = graphql`
 		}
 		blogImg: file(relativePath: { eq: "site_images/dog-and-baby.jpg" }) {
 			childImageSharp {
-				fluid {
-					...GatsbyImageSharpFluid
-				}
+				gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
 			}
 		}
 		aboutImg: file(relativePath: { eq: "site_images/about-portrait.jpg" }) {
 			childImageSharp {
-				fluid {
-					...GatsbyImageSharpFluid
-				}
+				gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
 			}
 		}
 		recipeImg: file(
 			relativePath: { eq: "site_images/recipes-strawberries.jpg" }
 		) {
 			childImageSharp {
-				fluid {
-					...GatsbyImageSharpFluid
-				}
+				gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
 			}
 		}
 	}

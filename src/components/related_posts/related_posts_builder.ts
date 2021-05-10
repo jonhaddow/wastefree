@@ -2,8 +2,8 @@ import Post from "../../common/post";
 
 export default class RelatedPostsBuilder {
 	private posts: Post[];
-	private tags: string[];
-	private limit: number;
+	private tags!: string[];
+	private limit!: number;
 
 	public constructor(posts: Post[], currentPost: Post) {
 		this.posts = posts.filter((x): boolean => x.id !== currentPost.id);
@@ -27,7 +27,7 @@ export default class RelatedPostsBuilder {
 			const tagScore = this.calculateTagScore(post);
 			return {
 				post: post,
-				score: tagScore
+				score: tagScore,
 			};
 		});
 

@@ -10,65 +10,78 @@ module.exports = {
 		description:
 			"Here are my attempts to share how to become zero waste and eco friendly, one step at a time. From plain jane to eco warrior, give it a go!",
 		tagLine: "My journey to waste free living",
-		instagramLink: "https://www.instagram.com/waste_free_mama/"
+		instagramLink: "https://www.instagram.com/waste_free_mama/",
 	},
+	flags: {
+		FAST_DEV: true,
+	},
+
 	plugins: [
 		// typescript plugins
 		"gatsby-plugin-typescript",
+
 		"gatsby-plugin-scss-typescript",
 		{
 			resolve: "gatsby-plugin-typography",
 			options: {
-				pathToConfigModule: "src/utils/typography"
-			}
+				pathToConfigModule: "src/utils/typography",
+			},
 		},
 
-		// load markdown files
+		`gatsby-plugin-image`,
+		`gatsby-plugin-sharp`,
+		`gatsby-transformer-sharp`,
+
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
 				name: "pages",
-				path: `${__dirname}/content/`
-			}
+				path: `${__dirname}/content`,
+			},
 		},
-
-		// needed for gatsby-image
-		"gatsby-plugin-sharp",
-		"gatsby-transformer-sharp",
 
 		{
 			resolve: "gatsby-transformer-remark",
 			options: {
 				plugins: [
 					{
-						resolve: `gatsby-remark-relative-images`
-					},
-					{
 						resolve: `gatsby-remark-images`,
 						options: {
 							maxWidth: 590,
-							withWebp: true
-						}
-					}
-				]
-			}
+						},
+					},
+					`gatsby-remark-copy-relative-linked-files`,
+				],
+			},
 		},
 
-		"gatsby-plugin-netlify-cms",
+		"gatsby-plugin-typescript-checker",
+		{
+			resolve: "gatsby-plugin-eslint",
+			options: {
+				test: /\.ts$|\.tsx$/,
+				exclude: /(node_modules|.cache|public)/,
+				stages: ["develop"],
+				options: {
+					emitWarning: true,
+					failOnError: false,
+				},
+			},
+		},
 
 		// SEO
 		"gatsby-plugin-react-helmet",
 		{
 			resolve: "gatsby-plugin-html-attributes",
 			options: {
-				lang: "en"
-			}
+				lang: "en",
+			},
 		},
 		{
 			resolve: "gatsby-plugin-canonical-urls",
 			options: {
-				siteUrl: "https://wastefreemama.com"
-			}
+				siteUrl: "https://wastefreemama.com",
+			},
 		},
 
 		// PWA
@@ -83,9 +96,12 @@ module.exports = {
 				// Enables "Add to Homescreen" prompt and disables browser UI (including back button)
 				// see https://developers.google.com/web/fundamentals/web-app-manifest/#display
 				display: `standalone`,
-				icon: `src/assets/favicon.png` // This path is relative to the root of the site.
-			}
+				icon: `src/assets/favicon.png`, // This path is relative to the root of the site.
+			},
 		},
-		"gatsby-plugin-offline"
-	]
+		"gatsby-plugin-offline",
+
+		"gatsby-plugin-netlify-cms",
+		"netlify-cms-app",
+	],
 };

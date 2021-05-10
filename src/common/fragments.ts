@@ -5,9 +5,7 @@ export const postFragment = graphql`
 		frontmatter {
 			featuredImage {
 				childImageSharp {
-					fluid {
-						...GatsbyImageSharpFluid
-					}
+					gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
 				}
 			}
 			title

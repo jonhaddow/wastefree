@@ -4,8 +4,7 @@ import { Helmet } from "react-helmet";
 import Header from "../header";
 import Navigation from "../navigation";
 import Footer from "../footer";
-import styles from "./layout.module.scss";
-import "../../styles/global.scss";
+import { wrapper } from "./layout.module.scss";
 
 interface LayoutProps {
 	children?: JSX.Element[] | JSX.Element;
@@ -25,13 +24,6 @@ export default function Layout(props: LayoutProps): JSX.Element {
 						instagramLink
 					}
 				}
-				file(relativePath: { eq: "site_images/header-image.jpg" }) {
-					childImageSharp {
-						fluid {
-							...GatsbyImageSharpFluid
-						}
-					}
-				}
 			}
 		`
 	);
@@ -40,9 +32,8 @@ export default function Layout(props: LayoutProps): JSX.Element {
 		title,
 		description,
 		tagLine,
-		instagramLink
+		instagramLink,
 	} = data.site.siteMetadata;
-	const { fluid: headerImage } = data.file.childImageSharp;
 	const { pageDescription, pageTitle } = props;
 
 	return (
@@ -57,12 +48,8 @@ export default function Layout(props: LayoutProps): JSX.Element {
 					{title}
 				</title>
 			</Helmet>
-			<div className={styles.wrapper}>
-				<Header
-					title={title}
-					description={tagLine}
-					image={headerImage}
-				/>
+			<div className={wrapper}>
+				<Header title={title} description={tagLine} />
 				<Navigation />
 				{props.children}
 				<Footer title={title} instagramLink={instagramLink} />

@@ -1,5 +1,8 @@
 import React from "react";
-import Styling from "./pagination.module.scss";
+import {
+	pagination,
+	totalPages as totalPagesClass,
+} from "./pagination.module.scss";
 import { Link } from "gatsby";
 
 /**
@@ -26,12 +29,12 @@ export default function Pagination(props: {
 	const nextLocation = `${linkPrefix}${currentPage + 1}`;
 
 	return (
-		<div className={Styling.pagination}>
+		<div className={pagination}>
 			{showPrev ? <Link to={prevLocation}>Previous</Link> : ""}
 			{showNext ? <Link to={nextLocation}>Next</Link> : ""}
 			<p>
 				{currentPage}
-				<span className={Styling.totalPages}> / {totalPages}</span>
+				<span className={totalPagesClass}> / {totalPages}</span>
 			</p>
 		</div>
 	);

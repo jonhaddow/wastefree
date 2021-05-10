@@ -1,22 +1,44 @@
 import React from "react";
-import { Link } from "gatsby";
-import BackgroundImage, { IFluidObject } from "gatsby-background-image";
-import styles from "./header.module.scss";
+import { graphql, Link, useStaticQuery } from "gatsby";
+import { header } from "./header.module.scss";
+import { BgImage } from "gbimage-bridge";
+import { getImage } from "gatsby-plugin-image";
 
 interface HeaderProps {
 	title: string;
 	description: string;
-	image: IFluidObject;
 }
 
 export default function Header(props: HeaderProps): JSX.Element {
-	const { title, description, image } = props;
+	const { title, description } = props;
+
+	const { placeholderImage } = useStaticQuery(
+		graphql`
+			query {
+				placeholderImage: file(
+					relativePath: { eq: "site_images/header-image.jpg" }
+				) {
+					childImageSharp {
+						gatsbyImageData(
+							layout: FULL_WIDTH
+							placeholder: BLURRED
+						)
+					}
+				}
+			}
+		`
+	);
+
+	const pluginImage = getImage(placeholderImage);
+
 	return (
-		<BackgroundImage Tag="header" fluid={image} className={styles.header}>
-			<h1>
-				<Link to="/">{title}</Link>
-			</h1>
-			<p>{description}</p>
-		</BackgroundImage>
+		<header className={header}>
+			<BgImage image={pluginImage}>
+				<h1>
+					<Link to="/">{title}</Link>
+				</h1>
+				<p>{description}</p>
+			</BgImage>
+		</header>
 	);
 }

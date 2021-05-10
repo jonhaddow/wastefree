@@ -4,12 +4,12 @@ import Layout from "../components/layout";
 import PostList from "../components/post_list";
 import Post from "../common/post";
 import { graphql } from "gatsby";
-import Styling from "./search.module.scss";
+import { searchRequestedMessage } from "./search.module.scss";
 
 class SearchDocument {
 	public constructor(post: Post) {
 		this.title = post.frontmatter.title;
-		this.slug = post.fields.slug;
+		this.slug = post.fields?.slug;
 		this.tags = post.frontmatter.tags;
 	}
 
@@ -43,10 +43,10 @@ export default function SearchTemplate(props: {
 		)
 	);
 
-	const searchResults = engine.search(query) as SearchDocument[];
+	const searchResults = engine.search(query ?? "") as SearchDocument[];
 	const resultSlugs = searchResults.map((x): string => x.slug);
 	const filteredPosts = posts.filter((x): boolean =>
-		resultSlugs.includes(x.fields.slug)
+		resultSlugs.includes(x.fields?.slug)
 	);
 
 	return (
@@ -55,9 +55,9 @@ export default function SearchTemplate(props: {
 			pageDescription="Search for blogs or recipes across the site."
 		>
 			<section>
-				<h2
-					className={Styling.searchRequestedMessage}
-				>{`Searching for "${query}"`}</h2>
+				<h2 className={searchRequestedMessage}>{`Searching for "${
+					query ?? ""
+				}"`}</h2>
 				{filteredPosts.length > 0 ? (
 					<PostList posts={filteredPosts}></PostList>
 				) : (

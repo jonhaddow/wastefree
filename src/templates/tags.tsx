@@ -3,7 +3,7 @@ import Post from "../common/post";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import PostList from "../components/post_list";
-import Styling from "./tags.module.scss";
+import { tagsHeader } from "./tags.module.scss";
 
 interface TagProps {
 	pageContext: {
@@ -34,7 +34,7 @@ export default function Tags(props: TagProps): JSX.Element {
 			pageTitle={`Tags matching "${tag}`}
 			pageDescription="List of blogs or recipes with the matching tag."
 		>
-			<h2 className={Styling.tagsHeader}>{tagHeader}</h2>
+			<h2 className={tagsHeader}>{tagHeader}</h2>
 			<PostList posts={posts}></PostList>
 		</Layout>
 	);

@@ -12,7 +12,7 @@ const typography = new Typography({
 	bodyFontFamily: ["Open Sans", "sans serif"],
 	bodyWeight: 400,
 	boldWeight: 700,
-	bodyColor: "20"
+	bodyColor: "20",
 });
 
 export default typography;

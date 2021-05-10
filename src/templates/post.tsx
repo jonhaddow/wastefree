@@ -1,8 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import Styling from "./post.module.scss";
-import Img from "gatsby-image";
+import { featuredImageWrapper, post as postClass } from "./post.module.scss";
+import { GatsbyImage } from "gatsby-plugin-image";
 import Post from "../common/post";
 import TagsList from "../components/tags_list";
 import RelatedPosts from "../components/related_posts";
@@ -19,35 +19,36 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 			title,
 			excerpt,
 			featuredImage: {
-				childImageSharp: { fluid: featuredImgFluid }
+				childImageSharp: { gatsbyImageData },
 			},
 			date,
-			tags
-		}
+			tags,
+		},
 	} = post;
 
 	return (
 		<Layout pageTitle={title} pageDescription={excerpt}>
 			<section>
-				<article className={Styling.post}>
-					<div className={Styling.featuredImageWrapper}>
-						<Img
+				<article className={postClass}>
+					<div className={featuredImageWrapper}>
+						<GatsbyImage
 							style={{ maxHeight: "100%", maxWidth: "100%" }}
 							imgStyle={{ objectFit: "contain" }}
-							fluid={featuredImgFluid}
+							image={gatsbyImageData}
+							alt=""
 						/>
 					</div>
 					<h1>{title}</h1>
 					<time>{date}</time>
 					<div
 						dangerouslySetInnerHTML={{
-							__html: html
+							__html: html,
 						}}
 					/>
 					{tags != null ? <TagsList tags={tags}></TagsList> : null}
 				</article>
 			</section>
-			{tags != null ? <RelatedPosts currentPost={post} /> : null}
+			{tags && <RelatedPosts currentPost={post} />}
 		</Layout>
 	);
 }

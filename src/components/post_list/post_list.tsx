@@ -1,7 +1,7 @@
 import React from "react";
 import PostCard from "../post_card";
 import Post from "../../common/post";
-import Styling from "./post_list.module.scss";
+import { postList } from "./post_list.module.scss";
 
 export default function PostList(props: { posts: Post[] }): JSX.Element {
 	const postCards = props.posts.map(
@@ -9,5 +9,5 @@ export default function PostList(props: { posts: Post[] }): JSX.Element {
 			return <PostCard key={post.id} {...post}></PostCard>;
 		}
 	);
-	return <ul className={Styling.postList}>{postCards}</ul>;
+	return <ul className={postList}>{postCards}</ul>;
 }

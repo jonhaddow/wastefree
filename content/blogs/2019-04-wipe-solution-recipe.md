@@ -1,19 +1,19 @@
 ---
 title: Wipe Solution Recipe
-date: '2019-04-23'
+date: "2019-04-23"
 featuredImage: ../images/wipe_solution.jpg
 tags:
-  - cloth wipe solution
-  - cloth wipes
-  - ecofriendly
-  - reusable wipes
-  - sustainable living
-  - waste free
-  - Waste free mama
-  - wastefree
-  - wastefreemama
-  - zero waste
-  - zerowaste
+    - cloth wipe solution
+    - cloth wipes
+    - ecofriendly
+    - reusable wipes
+    - sustainable living
+    - waste free
+    - Waste free mama
+    - wastefree
+    - wastefreemama
+    - zero waste
+    - zerowaste
 ---
 
 When using reusable wet wipes, some people choose to store wipes in a solutions, so they are already wet and ready to use when needed. This is one of the more convenient techniques, and they are great when leaving a child or baby with other carers, as they work in a similar way as normal wet wipes. Another benefit to these wipes is that they smell amazing, and are good at killing bacteria.

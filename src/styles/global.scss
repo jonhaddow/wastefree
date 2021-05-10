@@ -9,62 +9,60 @@ body {
 	font-family: "Roboto", sans-serif;
 }
 
-:global {
-	section {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
+section {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 
-		article {
-			max-width: 900px;
-			width: 60%;
-			display: inline-block;
-			line-height: 1.7em;
-			color: #474747;
-			margin-top: 20px;
+	article {
+		max-width: 900px;
+		width: 60%;
+		display: inline-block;
+		line-height: 1.7em;
+		color: #474747;
+		margin-top: 20px;
 
-			@media screen and (max-width: 1050px) {
-				width: 80%;
-			}
+		@media screen and (max-width: 1050px) {
+			width: 80%;
+		}
 
-			@media screen and (max-width: 500px) {
-				width: 90%;
-			}
+		@media screen and (max-width: 500px) {
+			width: 90%;
+		}
 
-			h1 {
-				text-align: center;
-			}
+		h1 {
+			text-align: center;
+		}
 
-			img {
-				text-align: center;
-			}
+		img {
+			text-align: center;
+		}
 
-			.aligncenter {
-				text-align: center;
+		.aligncenter {
+			text-align: center;
 
-				> img {
-					max-width: 100%;
-					height: auto;
-				}
-			}
-
-			hr {
-				text-align: center;
-				background: none;
-				border: none;
-				margin: 30px 0;
-				line-height: 1;
+			> img {
+				max-width: 100%;
 				height: auto;
+			}
+		}
 
-				&::after {
-					content: "\00b7 \00b7 \00b7";
-					letter-spacing: 2em;
-					font-size: 25px;
-					color: #191e23;
+		hr {
+			text-align: center;
+			background: none;
+			border: none;
+			margin: 30px 0;
+			line-height: 1;
+			height: auto;
 
-					@media screen and (max-width: 700px) {
-						letter-spacing: 1em;
-					}
+			&::after {
+				content: "\00b7 \00b7 \00b7";
+				letter-spacing: 2em;
+				font-size: 25px;
+				color: #191e23;
+
+				@media screen and (max-width: 700px) {
+					letter-spacing: 1em;
 				}
 			}
 		}

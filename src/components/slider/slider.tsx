@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import styles from "./slider.module.scss";
+import { active, posts, dots as dotsClass, slider } from "./slider.module.scss";
 import { Link } from "gatsby";
 import Post from "../../common/post";
-import BackgroundImage from "gatsby-background-image";
 import Icon from "../icons";
 import ChevronRight from "../icons/chevron-right";
 import ChevronLeft from "../icons/chevron-left";
+import { BgImage } from "gbimage-bridge";
 
 interface SliderState {
-	sliderRunning: boolean;
-	activePostId: string;
+	sliderRunning?: boolean;
+	activePostId?: string;
 }
 
 interface SliderProps {
@@ -17,14 +17,14 @@ interface SliderProps {
 }
 
 export default class Slider extends Component<SliderProps, SliderState> {
-	private sliderTimer: NodeJS.Timer;
+	private sliderTimer: NodeJS.Timer | undefined;
 
 	public constructor(props: SliderProps) {
 		super(props);
 
 		this.state = {
 			sliderRunning: true,
-			activePostId: props.recentPosts[0].id
+			activePostId: props.recentPosts[0]?.id,
 		};
 	}
 
@@ -33,7 +33,7 @@ export default class Slider extends Component<SliderProps, SliderState> {
 	}
 
 	public componentWillUnmount(): void {
-		clearInterval(this.sliderTimer);
+		if (this.sliderTimer) clearInterval(this.sliderTimer);
 	}
 
 	private onDotClick(index: number): void {
@@ -46,7 +46,7 @@ export default class Slider extends Component<SliderProps, SliderState> {
 			const { sliderRunning } = this.state;
 
 			if (!sliderRunning) {
-				clearInterval(this.sliderTimer);
+				if (this.sliderTimer) clearInterval(this.sliderTimer);
 				return;
 			}
 
@@ -68,8 +68,8 @@ export default class Slider extends Component<SliderProps, SliderState> {
 		this.setState(
 			(state): SliderState => {
 				return {
-					activePostId: this.props.recentPosts[index].id,
-					sliderRunning: state.sliderRunning
+					activePostId: this.props.recentPosts[index]?.id,
+					sliderRunning: state.sliderRunning,
 				};
 			}
 		);
@@ -99,7 +99,7 @@ export default class Slider extends Component<SliderProps, SliderState> {
 		this.goTo(nextIndex);
 	}
 
-	public render(): JSX.Element {
+	public render(): JSX.Element | null {
 		const { recentPosts } = this.props;
 
 		if (recentPosts == null || recentPosts.length === 0) return null;
@@ -107,33 +107,31 @@ export default class Slider extends Component<SliderProps, SliderState> {
 		const sliderItems = recentPosts.map(
 			(post): JSX.Element => {
 				const backgroundFluidImageStack = [
-					post.frontmatter.featuredImage.childImageSharp.fluid,
-					`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`
-				].reverse();
+					post.frontmatter.featuredImage.childImageSharp
+						.gatsbyImageData,
+					`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`,
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any -- BgImage types are wrong.
+				].reverse() as any;
 				const link = post.fields.slug;
 				const { date } = post.frontmatter;
 				return (
 					<li
 						key={post.fields.slug}
 						className={
-							post.id === this.state.activePostId
-								? styles.active
-								: ""
+							post.id === this.state.activePostId ? active : ""
 						}
 					>
-						<BackgroundImage
-							fluid={backgroundFluidImageStack}
-							role="group"
+						<BgImage
+							image={backgroundFluidImageStack}
 							aria-roledescription="slide"
-							aria-labelledby={`sliderPostTitle${post.id}`}
-							id={`sliderItem${post.id}`}
+							aria-labelledby={`sliderPostTitle${post.id ?? ""}`}
 						>
-							<h2 id={`sliderPostTitle${post.id}`}>
+							<h2 id={`sliderPostTitle${post.id ?? ""}`}>
 								<Link to={link}>{post.frontmatter.title}</Link>
 							</h2>
 							<Link to={link}>Read More</Link>
 							<time>{date}</time>
-						</BackgroundImage>
+						</BgImage>
 					</li>
 				);
 			}
@@ -147,11 +145,11 @@ export default class Slider extends Component<SliderProps, SliderState> {
 				> = {
 					type: "button",
 					onClick: this.onDotClick.bind(this, index),
-					"aria-label": `sliderItem${post.frontmatter.title}`
+					"aria-label": `sliderItem${post.frontmatter.title}`,
 				};
 
 				if (post.id === this.state.activePostId) {
-					buttonAttributes.className = styles.active;
+					buttonAttributes.className = active;
 					buttonAttributes["aria-disabled"] = true;
 				}
 
@@ -164,12 +162,12 @@ export default class Slider extends Component<SliderProps, SliderState> {
 		);
 
 		const chevronStyling: React.CSSProperties = {
-			fill: "white"
+			fill: "white",
 		};
 
 		return (
 			<div
-				className={styles.slider}
+				className={slider}
 				role="group"
 				aria-roledescription="carousel"
 				aria-label="A collection of recent blog posts and recipes"
@@ -184,16 +182,12 @@ export default class Slider extends Component<SliderProps, SliderState> {
 					</Icon>
 				</button>
 
-				<ul
-					className={styles.posts}
-					aria-live="off"
-					aria-atomic="false"
-				>
+				<ul className={posts} aria-live="off" aria-atomic="false">
 					{sliderItems}
 				</ul>
 
 				<div
-					className={styles.dots}
+					className={dotsClass}
 					role="group"
 					aria-label="Choose slide to display"
 				>
