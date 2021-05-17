@@ -15,7 +15,7 @@ collections:
       preview_path: "blogs/{{slug}}"
       create: true # Allow users to create new documents in this collection
       slug: "{{year}}-{{month}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-      media_folder: '../images' # Ensures that images are stored with relative paths
+      public_folder: '../images' # Ensures that images are stored with relative paths
       fields: # The fields for each document, usually in front matter
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Publish Date", name: "date", widget: "datetime" }
@@ -28,7 +28,7 @@ collections:
       preview_path: "recipes/{{slug}}"
       create: true
       slug: "{{year}}-{{month}}-{{slug}}"
-      media_folder: '../images' # Ensures that images are stored with relative paths
+      public_folder: '../images' # Ensures that images are stored with relative paths
       fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Publish Date", name: "date", widget: "datetime" }
@@ -41,7 +41,7 @@ collections:
       preview_path: "{{slug}}"
       create: false
       slug: "{{slug}}"
-      media_folder: '../images' # Ensures that images are stored with relative paths
+      public_folder: '../images' # Ensures that images are stored with relative paths
       fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Featured Image", name: "featuredImage", widget: "image" }
