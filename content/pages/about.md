@@ -1,6 +1,6 @@
 ---
 title: About
-featuredImage: ../images/aboutImage.jpg
+featuredImage: /content/images/signal-2021-05-03-111247.jpg
 ---
 
 Hey there, and welcome to waste free mama!
