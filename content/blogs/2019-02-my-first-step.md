@@ -1,7 +1,7 @@
 ---
 title: My First Step
 date: 2019-02-23T21:42:06.586Z
-featuredImage: ../images/img_0346-1140x760.jpg
+featuredImage: /content/images/img_0346-1140x760.jpg
 tags:
   - waste free
   - wastefree
