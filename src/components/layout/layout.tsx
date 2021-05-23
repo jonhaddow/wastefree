@@ -3,8 +3,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import Header from "../header";
 import Navigation from "../navigation";
-import Footer from "../footer";
 import { wrapper } from "./layout.module.scss";
+import { Footer } from "..";
 
 interface LayoutProps {
 	children?: JSX.Element[] | JSX.Element;
