@@ -55,6 +55,8 @@ module.exports = {
 			},
 		},
 
+		"gatsby-plugin-postcss",
+
 		"gatsby-plugin-typescript-checker",
 		{
 			resolve: "gatsby-plugin-eslint",
@@ -100,7 +102,6 @@ module.exports = {
 			},
 		},
 		"gatsby-plugin-offline",
-
 		"gatsby-plugin-netlify-cms",
 		"netlify-cms-app",
 	],
