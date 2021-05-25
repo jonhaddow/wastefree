@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import { navigate } from "@reach/router";
 import { active, mainNav, searchBar } from "./navigation.module.scss";
-import Icon from "../icons";
-import Cross from "../icons/cross";
-import Search from "../icons/search";
+import { Search, Cross } from "../icons";
 
 export default function Navigation(): JSX.Element {
 	const listItems = [
@@ -86,13 +84,9 @@ export default function Navigation(): JSX.Element {
 			)}
 			<button onClick={onSearchOpen}>
 				{searchOpen ? (
-					<Icon width="16" height="16">
-						<Cross />
-					</Icon>
+					<Cross width="16" height="16" />
 				) : (
-					<Icon width="20" height="20">
-						<Search />
-					</Icon>
+					<Search width="20" height="20" />
 				)}
 			</button>
 		</nav>

@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
-import Icon from "../icons";
-import Instagram from "../icons/instagram";
+import { Instagram } from "../icons";
 
 interface FooterProps {
 	title: string;
@@ -21,9 +20,7 @@ export const Footer = (props: FooterProps): ReactElement => {
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				<Icon width="24" height="24">
-					<Instagram />
-				</Icon>
+				<Instagram width="24" height="24" />
 			</a>
 			<p className="text-xs">{copyrightMsg}</p>
 		</footer>

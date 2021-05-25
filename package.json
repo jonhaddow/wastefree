@@ -11,7 +11,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "cms": "npx netlify-cms-proxy-server"
+    "cms": "npx netlify-cms-proxy-server",
+    "generateIcons": "npx @svgr/cli -d ./src/components/icons/generated --typescript ./src/components/icons/svgs/"
   },
   "dependencies": {
     "@types/js-search": "^1.4.0",
@@ -52,6 +53,7 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
+    "@svgr/cli": "^5.5.0",
     "@types/react": "^17.0.4",
     "@types/react-dom": "^17.0.3",
     "@types/typography": "^0.16.2",

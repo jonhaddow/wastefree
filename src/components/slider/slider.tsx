@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { active, posts, dots as dotsClass, slider } from "./slider.module.scss";
 import { Link } from "gatsby";
 import Post from "../../common/post";
-import Icon from "../icons";
-import ChevronRight from "../icons/chevron-right";
-import ChevronLeft from "../icons/chevron-left";
+import { ChevronLeft, ChevronRight } from "../icons";
 import { BgImage } from "gbimage-bridge";
 
 interface SliderState {
@@ -177,9 +175,11 @@ export default class Slider extends Component<SliderProps, SliderState> {
 					onClick={this.goBack}
 					aria-label="Previous image"
 				>
-					<Icon styling={chevronStyling} width="32" height="32">
-						<ChevronLeft />
-					</Icon>
+					<ChevronLeft
+						style={chevronStyling}
+						width="32"
+						height="32"
+					/>
 				</button>
 
 				<ul className={posts} aria-live="off" aria-atomic="false">
@@ -199,9 +199,11 @@ export default class Slider extends Component<SliderProps, SliderState> {
 					onClick={this.goNext}
 					aria-label="Next image"
 				>
-					<Icon styling={chevronStyling} width="32" height="32">
-						<ChevronRight />
-					</Icon>
+					<ChevronRight
+						style={chevronStyling}
+						width="32"
+						height="32"
+					/>
 				</button>
 			</div>
 		);
