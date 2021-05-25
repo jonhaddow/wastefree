@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
-import { header } from "./header.module.scss";
+import { header } from "./Header.module.css";
 import { BgImage } from "gbimage-bridge";
 import { getImage } from "gatsby-plugin-image";
 
@@ -9,7 +9,7 @@ interface HeaderProps {
 	description: string;
 }
 
-export default function Header(props: HeaderProps): JSX.Element {
+export const Header = (props: HeaderProps): ReactElement => {
 	const { title, description } = props;
 
 	const { placeholderImage } = useStaticQuery(
@@ -34,11 +34,18 @@ export default function Header(props: HeaderProps): JSX.Element {
 	return (
 		<header className={header}>
 			<BgImage image={pluginImage}>
-				<h1>
-					<Link to="/">{title}</Link>
+				<h1 className="text-center">
+					<Link
+						className="text-white text-2xl sm:text-4xl md:text-5xl"
+						to="/"
+					>
+						{title}
+					</Link>
 				</h1>
-				<p>{description}</p>
+				<p className="text-white text-sm sm:text-base md:text-lg">
+					{description}
+				</p>
 			</BgImage>
 		</header>
 	);
-}
+};
