@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "../common/post";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
+import { Layout } from "../components";
 import PostList from "../components/post_list";
 import { tagsHeader } from "./tags.module.scss";
 

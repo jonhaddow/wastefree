@@ -1,6 +1,6 @@
 import React from "react";
 import * as JsSearch from "js-search";
-import Layout from "../components/layout";
+import { Layout } from "../components";
 import PostList from "../components/post_list";
 import Post from "../common/post";
 import { graphql } from "gatsby";

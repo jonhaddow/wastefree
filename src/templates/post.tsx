@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
+import { Layout } from "../components";
 import { featuredImageWrapper, post as postClass } from "./post.module.scss";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Post from "../common/post";

@@ -32,7 +32,7 @@ export const Header = (props: HeaderProps): ReactElement => {
 	const pluginImage = getImage(placeholderImage);
 
 	return (
-		<header className={header}>
+		<header className={`${header} h-96`}>
 			<BgImage image={pluginImage}>
 				<h1 className="text-center">
 					<Link

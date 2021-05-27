@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../components/layout";
+import { Layout } from "../components";
 import { Link } from "gatsby";
 
 export default function _404Page(): JSX.Element {

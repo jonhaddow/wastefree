@@ -1,8 +1,7 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import Navigation from "../navigation";
-import { wrapper } from "./layout.module.scss";
 import { Footer, Header } from "..";
 
 interface LayoutProps {
@@ -11,7 +10,7 @@ interface LayoutProps {
 	pageDescription?: string;
 }
 
-export default function Layout(props: LayoutProps): JSX.Element {
+export const Layout = (props: LayoutProps): ReactElement => {
 	const data = useStaticQuery(
 		graphql`
 			query {
@@ -47,7 +46,7 @@ export default function Layout(props: LayoutProps): JSX.Element {
 					{title}
 				</title>
 			</Helmet>
-			<div className={wrapper}>
+			<div className="h-screen">
 				<Header title={title} description={tagLine} />
 				<Navigation />
 				{props.children}
@@ -55,4 +54,4 @@ export default function Layout(props: LayoutProps): JSX.Element {
 			</div>
 		</>
 	);
-}
+};
