@@ -1,31 +1,29 @@
-import React from "react";
-import {
-	postCard,
-	title as titleClass,
-	date as dateClass,
-} from "./post_card.module.scss";
+import React, { ReactElement } from "react";
 import { Link } from "gatsby";
 import Post from "../../common/post";
 import { BgImage } from "gbimage-bridge";
 
-export default function PostCard(props: Post): JSX.Element {
+export const PostCard = (props: Post): ReactElement => {
 	const { slug } = props.fields;
 	const { title, featuredImage, date } = props.frontmatter;
 
 	const backgroundFluidImageStack = [
 		featuredImage.childImageSharp.gatsbyImageData,
-		`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))`,
+		`linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))`,
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any -- forcing it to any because <BgImage> has the wrong types.
 	].reverse() as any;
 
 	return (
-		<li className={postCard}>
+		<li className="m-auto p-4 h-96 w-full bg-image-wrapper">
 			<BgImage image={backgroundFluidImageStack}>
-				<Link to={slug}>
-					<span className={titleClass}>{title}</span>
-					<time className={dateClass}>{date}</time>
+				<Link
+					className="flex flex-col justify-center items-center text-white h-full"
+					to={slug}
+				>
+					<span className="text-2xl">{title}</span>
+					<time className="font-thin pt-4">{date}</time>
 				</Link>
 			</BgImage>
 		</li>
 	);
-}
+};

@@ -1,5 +1,5 @@
 import React from "react";
-import PostCard from "../post_card";
+import { PostCard } from "..";
 import Post from "../../common/post";
 import { postList } from "./post_list.module.scss";
 
