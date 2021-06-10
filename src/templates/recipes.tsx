@@ -1,9 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Layout } from "../components";
+import { Layout, Pagination } from "../components";
 import Post from "../common/post";
 import PostList from "../components/post_list";
-import Pagination from "../components/pagination";
 
 interface GraphQLSchema {
 	allMarkdownRemark: {
@@ -28,7 +27,7 @@ export default function Recipes(props: {
 		<Layout pageTitle={pageTitle} pageDescription={pageDescription}>
 			<PostList posts={nodes}></PostList>
 			<Pagination
-				typeOfPage={"recipes"}
+				typeOfPage="recipes"
 				currentPage={currentPage}
 				totalPages={totalPages}
 			/>
