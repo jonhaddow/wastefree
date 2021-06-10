@@ -1,8 +1,7 @@
 import React, { ReactElement } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
-import Navigation from "../navigation";
-import { Footer, Header } from "..";
+import { Footer, Header, Navigation } from "..";
 
 interface LayoutProps {
 	children?: JSX.Element[] | JSX.Element;
