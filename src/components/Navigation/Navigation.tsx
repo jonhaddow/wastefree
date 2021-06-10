@@ -63,9 +63,9 @@ export const Navigation = (): ReactElement => {
 			) : (
 				<ul className="flex justify-center flex-wrap my-4">
 					{LINKS.map((l) => (
-						<li className="px-1 m-0" key={l.name}>
+						<li className="px-1 m-0 " key={l.name}>
 							<Link
-								className="h-full text-gray-700 uppercase font-normal tracking-wide px-4"
+								className="py-2 h-full text-gray-700 uppercase font-normal  hover:bg-gray-100 rounded-md tracking-wide px-4"
 								to={l.link}
 								activeClassName="text-primary"
 							>
