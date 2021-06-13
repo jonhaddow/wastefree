@@ -1,11 +1,10 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Layout } from "../components";
+import { Layout, RelatedPosts } from "../components";
 import { featuredImageWrapper, post as postClass } from "./post.module.scss";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Post from "../common/post";
 import TagsList from "../components/tags_list";
-import RelatedPosts from "../components/related_posts";
 
 interface GraphQLSchema {
 	markdownRemark: Post;
