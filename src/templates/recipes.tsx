@@ -1,8 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Layout, Pagination } from "../components";
+import { Layout, Pagination, PostList } from "../components";
 import Post from "../common/post";
-import PostList from "../components/post_list";
 
 interface GraphQLSchema {
 	allMarkdownRemark: {

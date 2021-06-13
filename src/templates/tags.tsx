@@ -1,8 +1,7 @@
 import React from "react";
 import Post from "../common/post";
 import { graphql } from "gatsby";
-import { Layout } from "../components";
-import PostList from "../components/post_list";
+import { Layout, PostList } from "../components";
 import { tagsHeader } from "./tags.module.scss";
 
 interface TagProps {

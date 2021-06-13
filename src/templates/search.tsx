@@ -1,7 +1,6 @@
 import React from "react";
 import * as JsSearch from "js-search";
-import { Layout } from "../components";
-import PostList from "../components/post_list";
+import { Layout, PostList } from "../components";
 import Post from "../common/post";
 import { graphql } from "gatsby";
 import { searchRequestedMessage } from "./search.module.scss";
