@@ -10,15 +10,15 @@ const LINKS = [
 	},
 	{
 		name: "Blogs",
-		link: "/blogs/",
+		link: "/blogs",
 	},
 	{
 		name: "About",
-		link: "/about/",
+		link: "/about",
 	},
 	{
 		name: "Recipes",
-		link: "/recipes/",
+		link: "/recipes",
 	},
 ];
 

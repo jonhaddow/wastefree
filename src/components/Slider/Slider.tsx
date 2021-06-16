@@ -42,7 +42,7 @@ export const Slider = ({ recentPosts }: SliderProps): ReactElement | null => {
 
 	return (
 		<div
-			className="overflow-hidden h-96 w-3/4 border-gray-500 border relative"
+			className="overflow-hidden h-96 w-full md:w-3/4 border-gray-500 border relative"
 			role="group"
 			aria-roledescription="carousel"
 			aria-label="A collection of recent blog posts and recipes"

@@ -14,7 +14,7 @@ export const PostCard = (props: Post): ReactElement => {
 	].reverse() as any;
 
 	return (
-		<li className="m-auto p-4 h-96 w-full bg-image-wrapper">
+		<li className="m-auto py-4 md:p-4 h-96 w-full bg-image-wrapper">
 			<BgImage image={backgroundFluidImageStack}>
 				<Link
 					className="flex flex-col justify-center items-center text-white h-full"

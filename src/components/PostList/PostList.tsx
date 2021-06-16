@@ -2,11 +2,12 @@ import React, { ReactElement } from "react";
 import { PostCard } from "..";
 import Post from "../../common/post";
 
-export const PostList = (props: { posts: Post[] }): ReactElement => {
-	const postCards = props.posts.map(
-		(post): JSX.Element => {
-			return <PostCard key={post.id} {...post}></PostCard>;
-		}
+export const PostList = ({ posts }: { posts: Post[] }): ReactElement => {
+	return (
+		<ul className="grid lg:grid-cols-2 xl:grid-cols-3 md:mx-12">
+			{posts.map((post) => {
+				return <PostCard key={post.id} {...post}></PostCard>;
+			})}
+		</ul>
 	);
-	return <ul className="mx-auto w-full max-w-5xl">{postCards}</ul>;
 };
