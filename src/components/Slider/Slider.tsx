@@ -93,7 +93,7 @@ export const Slider = ({ recentPosts }: SliderProps): ReactElement | null => {
 											<Link to={slug}>{title}</Link>
 										</h2>
 										<Link
-											className="text-sm font-medium tracking-wider border border-white leading-10 px-8 uppercase mb-6 transition-opacity opacity-80 hover:opacity-100"
+											className="text-sm text-black font-medium tracking-wider bg-white leading-10 px-8 uppercase mb-6 transition-opacity opacity-80 hover:opacity-100"
 											to={slug}
 										>
 											Read More
@@ -119,7 +119,7 @@ export const Slider = ({ recentPosts }: SliderProps): ReactElement | null => {
 								onClick: onDotClick.bind(this, i),
 								"aria-label": `sliderItem${post.frontmatter.title}`,
 								className:
-									"h-3 w-3 border-2 border-white rounded-full",
+									"h-3 w-3 border-2 border-white rounded-full focus:outline-white",
 							};
 
 							if (post.id === recentPosts[index]?.id) {
