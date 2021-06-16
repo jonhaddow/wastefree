@@ -7,3 +7,4 @@ export * from "./PostCard/PostCard";
 export * from "./PostList/PostList";
 export * from "./RelatedPosts/RelatedPosts";
 export * from "./Slider/Slider";
+export * from "./TagsList/TagsList";
