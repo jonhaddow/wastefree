@@ -8,6 +8,7 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: "#9c5f00",
+				"semi-transparent": "#00000030",
 			},
 			fontFamily: {
 				cursive: ["Kaushan Script", "cursive"],

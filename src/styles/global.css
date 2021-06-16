@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+	Gatsby background image doesn't support className 😢
+	So I'm adding wrapping classes to target it directly.
+*/
 .bg-image-wrapper > div {
 	@apply flex h-full justify-center items-center
 }

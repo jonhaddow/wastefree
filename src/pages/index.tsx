@@ -1,11 +1,10 @@
 import React from "react";
 import { home } from "./index.module.scss";
 import { Link, graphql } from "gatsby";
-import { Layout } from "../components";
+import { Layout, Slider } from "../components";
 import Post from "../common/post";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import { BgImage } from "gbimage-bridge";
-import Slider from "../components/slider/slider";
 
 interface GraphQLSchema {
 	featuredPosts: {
