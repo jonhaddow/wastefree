@@ -25,8 +25,8 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 
 	return (
 		<Layout pageTitle={title} pageDescription={excerpt}>
-			<section>
-				<article className="max-w-2xl">
+			<section className="flex items-center flex-col">
+				<article className="max-w-2xl w-11/12 sm:w-3/4 lg:w-2/3 inline-block mt-5">
 					<div className="w-full flex justify-center max-h-96 mb-7">
 						<GatsbyImage
 							style={{
@@ -39,7 +39,7 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 							alt=""
 						/>
 					</div>
-					<h1 className="text-5xl m-4">{title}</h1>
+					<h1 className="text-5xl m-4 text-center">{title}</h1>
 					<time className="text-center block mb-4">{date}</time>
 					<div
 						dangerouslySetInnerHTML={{
