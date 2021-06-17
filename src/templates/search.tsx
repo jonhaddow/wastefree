@@ -3,7 +3,6 @@ import * as JsSearch from "js-search";
 import { Layout, PostList } from "../components";
 import Post from "../common/post";
 import { graphql } from "gatsby";
-import { searchRequestedMessage } from "./search.module.scss";
 
 class SearchDocument {
 	public constructor(post: Post) {
@@ -54,7 +53,7 @@ export default function SearchTemplate(props: {
 			pageDescription="Search for blogs or recipes across the site."
 		>
 			<section>
-				<h2 className={searchRequestedMessage}>{`Searching for "${
+				<h2 className="text-gray-700">{`Searching for "${
 					query ?? ""
 				}"`}</h2>
 				{filteredPosts.length > 0 ? (

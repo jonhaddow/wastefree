@@ -15,6 +15,7 @@
     "generateIcons": "npx @svgr/cli -d ./src/components/icons/generated --typescript ./src/components/icons/svgs/"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.4.1",
     "@types/js-search": "^1.4.0",
     "@types/lodash": "^4.14.138",
     "@types/react-helmet": "^6.1.1",
