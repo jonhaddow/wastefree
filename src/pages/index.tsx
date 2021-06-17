@@ -1,5 +1,4 @@
-import React from "react";
-import { home } from "./index.module.scss";
+import React, { ReactElement } from "react";
 import { Link, graphql } from "gatsby";
 import { Layout, Slider } from "../components";
 import Post from "../common/post";
@@ -27,7 +26,7 @@ interface GraphQLSchema {
 	};
 }
 
-export default function Home(props: { data: GraphQLSchema }): JSX.Element {
+export default function Home(props: { data: GraphQLSchema }): ReactElement {
 	const itemDetails = [
 		{
 			link: "/blogs",
@@ -46,26 +45,29 @@ export default function Home(props: { data: GraphQLSchema }): JSX.Element {
 		},
 	];
 
-	const links = itemDetails.map(
-		(link): JSX.Element => {
-			return (
-				<li key={link.title}>
-					<BgImage image={link.imageSrc.gatsbyImageData}>
-						<Link to={link.link}>
-							<h3>{link.title}</h3>
-						</Link>
-					</BgImage>
-				</li>
-			);
-		}
-	);
-
 	return (
 		<Layout>
-			<section className={home}>
+			<section className="flex flex-col items-center md:px-12">
 				<Slider recentPosts={props.data.featuredPosts.nodes} />
-
-				<ul>{links}</ul>
+				<ul className="flex flex-wrap w-full lg:max-w-5xl mt-10">
+					{itemDetails.map(({ link, title, imageSrc }) => (
+						<li
+							key={title}
+							className="w-full md:w-auto md:mr-5 md:flex-grow h-52 bg-image-wrapper"
+						>
+							<BgImage image={imageSrc.gatsbyImageData}>
+								<Link
+									to={link}
+									className="h-full w-full flex justify-center items-center opacity-80 hover:opacity-100 shadow-md hover:shadow-lg focus:shadow-lg focus:outline-black"
+								>
+									<h3 className="py-3 px-5 bg-white text-black inline-block font-semibold text-sm uppercase tracking-wider">
+										{title}
+									</h3>
+								</Link>
+							</BgImage>
+						</li>
+					))}
+				</ul>
 			</section>
 		</Layout>
 	);
