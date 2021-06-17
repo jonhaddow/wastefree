@@ -53,12 +53,12 @@ export default function Home(props: { data: GraphQLSchema }): ReactElement {
 					{itemDetails.map(({ link, title, imageSrc }) => (
 						<li
 							key={title}
-							className="w-full md:w-auto md:mr-5 md:flex-grow h-52 bg-image-wrapper"
+							className="w-full md:w-auto md:mr-5 md:flex-grow h-52 bg-image-wrapper  transform-gpu transition-transform hover:scale-105"
 						>
 							<BgImage image={imageSrc.gatsbyImageData}>
 								<Link
 									to={link}
-									className="h-full w-full flex justify-center items-center opacity-80 hover:opacity-100 shadow-md hover:shadow-lg focus:shadow-lg focus:outline-black"
+									className="h-full w-full flex justify-center items-center opacity-80 hover:opacity-100 shadow-lg focus:outline-black"
 								>
 									<h3 className="py-3 px-5 bg-white text-black inline-block font-semibold text-sm uppercase tracking-wider">
 										{title}
