@@ -49,7 +49,7 @@ export const RelatedPosts = (props: RelatedPostsProps): ReactElement => {
 								}
 								alt=""
 							></GatsbyImage>
-							<h4 className="text-2xl py-4 text-gray-900">
+							<h4 className="font-serif font-bold text-3xl py-4 text-gray-900">
 								{post.frontmatter.title}
 							</h4>
 						</Link>

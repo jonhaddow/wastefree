@@ -11,8 +11,39 @@ module.exports = {
 				"semi-transparent": "#00000030",
 			},
 			fontFamily: {
-				cursive: ["Kaushan Script", "cursive"],
-				sans: ["rubik", ...defaultTheme.fontFamily.sans],
+				sans: ["Oswald", ...defaultTheme.fontFamily.sans],
+				serif: ["Amatic SC", ...defaultTheme.fontFamily.serif],
+			},
+			typography: {
+				DEFAULT: {
+					css: {
+						h2: {
+							fontFamily: "Amatic SC",
+							fontSize: "2em",
+							fontWeight: "bold",
+						},
+						h3: {
+							fontFamily: "Amatic SC",
+							fontSize: "1.8em",
+							fontWeight: "bold",
+						},
+						h4: {
+							fontFamily: "Amatic SC",
+							fontSize: "1.6em",
+							fontWeight: "bold",
+						},
+						h5: {
+							fontFamily: "Amatic SC",
+							fontSize: "1.5em",
+							fontWeight: "bold",
+						},
+						h6: {
+							fontFamily: "Amatic SC",
+							fontSize: "1.4em",
+							fontWeight: "bold",
+						},
+					},
+				},
 			},
 		},
 	},

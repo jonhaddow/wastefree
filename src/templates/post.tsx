@@ -39,13 +39,15 @@ function PostTemplate(props: { data: GraphQLSchema }): JSX.Element {
 							alt=""
 						/>
 					</div>
-					<h1 className="text-5xl m-4 text-center">{title}</h1>
+					<h1 className="font-serif font-bold text-5xl m-4 text-center">
+						{title}
+					</h1>
 					<time className="text-center block mb-4">{date}</time>
 					<div
 						dangerouslySetInnerHTML={{
 							__html: html,
 						}}
-						className="prose"
+						className="prose m-auto"
 					/>
 					{tags != null ? <TagsList tags={tags}></TagsList> : null}
 				</article>

@@ -20,14 +20,6 @@ module.exports = {
 		// typescript plugins
 		"gatsby-plugin-typescript",
 
-		"gatsby-plugin-scss-typescript",
-		{
-			resolve: "gatsby-plugin-typography",
-			options: {
-				pathToConfigModule: "src/utils/typography",
-			},
-		},
-
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,

@@ -71,7 +71,7 @@ export const Slider = ({ recentPosts }: SliderProps): ReactElement | null => {
 					}) => {
 						const backgroundFluidImageStack = [
 							featuredImage.childImageSharp.gatsbyImageData,
-							`linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`,
+							`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))`,
 							// eslint-disable-next-line @typescript-eslint/no-explicit-any -- BgImage types are wrong.
 						].reverse() as any;
 						return (
@@ -87,7 +87,7 @@ export const Slider = ({ recentPosts }: SliderProps): ReactElement | null => {
 								>
 									<div className="flex flex-col justify-center items-center font-sans text-white">
 										<h2
-											className="text-center mb-8 text-3xl"
+											className="font-serif font-bold text-center mb-8 text-5xl"
 											id={id}
 										>
 											<Link to={slug}>{title}</Link>

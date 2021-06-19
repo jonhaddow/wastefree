@@ -36,7 +36,7 @@ export const Header = (props: HeaderProps): ReactElement => {
 			<BgImage image={pluginImage}>
 				<h1 className="text-center">
 					<Link
-						className="text-white font-cursive text-4xl sm:text-6xl md:text-8xl"
+						className="text-white font-serif text-4xl sm:text-6xl md:text-8xl"
 						to="/"
 					>
 						{title}

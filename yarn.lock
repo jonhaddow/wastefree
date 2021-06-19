@@ -4435,11 +4435,6 @@ core-js@^2.4.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
-core-js@^3.10.2:
-  version "3.11.3"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.11.3.tgz#2835b1f4d10f6d0400bf820cfe6fe64ad067dd3f"
-  integrity sha512-DFEW9BllWw781Op5KdYGtXfj3s9Cmykzt16bY6elaVuqXHCUwF/5pv0H3IJ7/I3BGjK7OeU+GrjD1ChCkBJPuA==
-
 core-js@^3.9.0:
   version "3.11.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.11.1.tgz#f920392bf8ed63a0ec8e4e729857bfa3d121c525"
@@ -5374,13 +5369,6 @@ download@^7.1.0:
     make-dir "^1.2.0"
     p-event "^2.1.0"
     pify "^3.0.0"
-
-dts-css-modules-loader@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/dts-css-modules-loader/-/dts-css-modules-loader-1.2.1.tgz#94229df2473765d61fe7a4585ee6e5805f23e986"
-  integrity sha512-sVx6NEdJeQ3tcY3WgBGQYSlIvvCuhJPmhvZkdV+1FtZG8G9US3zBpNzdAl7oETFq/sim0kKbWWEmnk7141g7dg==
-  dependencies:
-    loader-utils "^2.0.0"
 
 duplexer3@^0.1.4:
   version "0.1.4"
@@ -6812,15 +6800,6 @@ gatsby-plugin-react-helmet@^4.4.0:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-gatsby-plugin-scss-typescript@^5.1.1-alpha-331.0:
-  version "5.1.1-alpha-331.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-scss-typescript/-/gatsby-plugin-scss-typescript-5.1.1-alpha-331.0.tgz#04ffda6a263ee873a5a4b4b8b511fe29f063766b"
-  integrity sha512-2T2kK4Gp1QgNpiReIYaN8ehMvGxSJMgEgvoZ7+q5m0ysAqp7UhmvJ6bgAERiXl6BBcgCzYU74YfU+7ioiLs+tQ==
-  dependencies:
-    core-js "^3.10.2"
-    dts-css-modules-loader "^1.2.1"
-    sass-loader "^11.0.1"
-
 gatsby-plugin-sharp@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-3.4.0.tgz#43626de31bd9c3221a8669517762bac389fe05ca"
@@ -6866,13 +6845,6 @@ gatsby-plugin-typescript@^3.4.0:
     "@babel/preset-typescript" "^7.12.1"
     "@babel/runtime" "^7.12.5"
     babel-plugin-remove-graphql-queries "^3.4.0"
-
-gatsby-plugin-typography@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-typography/-/gatsby-plugin-typography-3.4.0.tgz#4578cdde0935760fe3e50284cd6534fc9b350555"
-  integrity sha512-4megDoCuGouPPmXwtmdv2vogFSHOFvQBwuc+0u3bXT2GImy/WtQVI229vKh2zdJzvEhp3wkIUH0WV4IWnwoZaA==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
 
 gatsby-plugin-utils@^1.4.0:
   version "1.4.0"
@@ -13756,14 +13728,6 @@ sanitize-html@^1.27.5:
     lodash "^4.17.15"
     parse-srcset "^1.0.2"
     postcss "^7.0.27"
-
-sass-loader@^11.0.1:
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-11.0.1.tgz#8672f896593466573b904f47693e0695368e38c9"
-  integrity sha512-Vp1LcP4slTsTNLEiDkTcm8zGN/XYYrZz2BZybQbliWA8eXveqA/AxsEjllQTpJbg2MzCsx/qNO48sHdZtOaxTw==
-  dependencies:
-    klona "^2.0.4"
-    neo-async "^2.6.2"
 
 sass@^1.32.12:
   version "1.32.12"
