@@ -47,7 +47,7 @@ export default function Home(props: { data: GraphQLSchema }): ReactElement {
 
 	return (
 		<Layout>
-			<section className="flex flex-col items-center md:px-12">
+			<section className="flex flex-col items-center mt-6 md:px-12">
 				<Slider recentPosts={props.data.featuredPosts.nodes} />
 				<ul className="flex flex-wrap w-full lg:max-w-5xl mt-10">
 					{itemDetails.map(({ link, title, imageSrc }) => (

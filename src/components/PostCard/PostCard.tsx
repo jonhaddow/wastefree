@@ -17,7 +17,7 @@ export const PostCard = (props: Post): ReactElement => {
 		<li className="m-auto py-4 md:p-4 h-96 w-full bg-image-wrapper transform-gpu transition-transform hover:scale-105">
 			<BgImage image={backgroundFluidImageStack}>
 				<Link
-					className="flex flex-col justify-center p-4 w-full items-center text-white h-full"
+					className="flex flex-col justify-center p-4 w-full items-center text-white h-full focus:outline-black"
 					to={slug}
 				>
 					<span className="text-2xl">{title}</span>

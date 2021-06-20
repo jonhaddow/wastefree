@@ -2,6 +2,7 @@ import React, { useState, useEffect, ReactElement } from "react";
 import { Link } from "gatsby";
 import { navigate } from "@reach/router";
 import { Search, Cross } from "../icons";
+import { StaticImage } from "gatsby-plugin-image";
 
 const LINKS = [
 	{
@@ -49,7 +50,7 @@ export const Navigation = (): ReactElement => {
 	};
 
 	return (
-		<nav className="flex justify-center items-center my-2 h-16">
+		<nav className="flex justify-center items-center h-16 sticky w-full top-0 bg-white z-50 shadow-lg">
 			{searchOpen ? (
 				<form className="my-4" onSubmit={onSubmit}>
 					<input
@@ -61,19 +62,29 @@ export const Navigation = (): ReactElement => {
 					></input>
 				</form>
 			) : (
-				<ul className="flex justify-center flex-wrap my-4">
-					{LINKS.map((l) => (
-						<li className="px-1 m-0 " key={l.name}>
-							<Link
-								className="py-2 h-full text-gray-700 uppercase font-normal  hover:bg-gray-100 rounded-md tracking-wide px-4"
-								to={l.link}
-								activeClassName="text-primary"
-							>
-								{l.name}
-							</Link>
-						</li>
-					))}
-				</ul>
+				<>
+					<StaticImage
+						alt=""
+						src="./logo-wfm.png"
+						placeholder="blurred"
+						width={50}
+						height={50}
+						className="shadow-2xl rounded-full mr-5"
+					/>
+					<ul className="flex justify-center flex-wrap my-4">
+						{LINKS.map((l) => (
+							<li className="px-1 m-0 " key={l.name}>
+								<Link
+									className="py-2 h-full text-gray-700 uppercase font-normal  hover:bg-gray-100 rounded-md tracking-wide px-4"
+									to={l.link}
+									activeClassName="text-primary"
+								>
+									{l.name}
+								</Link>
+							</li>
+						))}
+					</ul>
+				</>
 			)}
 			<button
 				className="ml-3 p-1"

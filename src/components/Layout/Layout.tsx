@@ -45,10 +45,10 @@ export const Layout = (props: LayoutProps): ReactElement => {
 					{title}
 				</title>
 			</Helmet>
-			<div className="h-screen">
+			<div className="min-h-screen">
 				<Header title={title} description={tagLine} />
 				<Navigation />
-				{props.children}
+				<main className="relative">{props.children}</main>
 				<Footer title={title} instagramLink={instagramLink} />
 			</div>
 		</>

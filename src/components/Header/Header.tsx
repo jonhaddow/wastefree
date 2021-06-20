@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
-import { header } from "./Header.module.css";
+import { header as headerClass } from "./Header.module.css";
 import { BgImage } from "gbimage-bridge";
 import { getImage } from "gatsby-plugin-image";
 
@@ -12,10 +12,10 @@ interface HeaderProps {
 export const Header = (props: HeaderProps): ReactElement => {
 	const { title, description } = props;
 
-	const { placeholderImage } = useStaticQuery(
+	const { header } = useStaticQuery(
 		graphql`
 			query {
-				placeholderImage: file(
+				header: file(
 					relativePath: { eq: "site_images/header-image.jpg" }
 				) {
 					childImageSharp {
@@ -29,12 +29,12 @@ export const Header = (props: HeaderProps): ReactElement => {
 		`
 	);
 
-	const pluginImage = getImage(placeholderImage);
+	const headerImage = getImage(header);
 
 	return (
-		<header className={`${header} h-96`}>
-			<BgImage image={pluginImage}>
-				<h1 className="text-center">
+		<header className={`${headerClass} h-96`}>
+			<BgImage image={headerImage}>
+				<h1 className="text-center m-2">
 					<Link
 						className="text-white font-serif text-4xl sm:text-6xl md:text-8xl"
 						to="/"
