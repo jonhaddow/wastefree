@@ -1,9 +1,7 @@
 import React from "react";
 import Post from "../common/post";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import PostList from "../components/post_list";
-import { tagsHeader } from "./tags.module.scss";
+import { Layout, PostList } from "../components";
 
 interface TagProps {
 	pageContext: {
@@ -34,7 +32,9 @@ export default function Tags(props: TagProps): JSX.Element {
 			pageTitle={`Tags matching "${tag}`}
 			pageDescription="List of blogs or recipes with the matching tag."
 		>
-			<h2 className={tagsHeader}>{tagHeader}</h2>
+			<h2 className="text-center text-2xl mt-4 mb-6 text-gray-600 leading-10">
+				{tagHeader}
+			</h2>
 			<PostList posts={posts}></PostList>
 		</Layout>
 	);

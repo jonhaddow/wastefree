@@ -20,14 +20,6 @@ module.exports = {
 		// typescript plugins
 		"gatsby-plugin-typescript",
 
-		"gatsby-plugin-scss-typescript",
-		{
-			resolve: "gatsby-plugin-typography",
-			options: {
-				pathToConfigModule: "src/utils/typography",
-			},
-		},
-
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,
@@ -54,6 +46,8 @@ module.exports = {
 				],
 			},
 		},
+
+		"gatsby-plugin-postcss",
 
 		"gatsby-plugin-typescript-checker",
 		{
@@ -100,7 +94,6 @@ module.exports = {
 			},
 		},
 		"gatsby-plugin-offline",
-
 		"gatsby-plugin-netlify-cms",
 		"netlify-cms-app",
 	],
