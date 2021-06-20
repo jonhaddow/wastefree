@@ -39,7 +39,7 @@ export const RelatedPosts = (props: RelatedPostsProps): ReactElement => {
 			</h3>
 			<ul className="mx-4 max-w-4xl w-10/12 justify-evenly sm:w-2/3 sm:flex">
 				{relatedPosts.map((post) => (
-					<li key={post.id} className="sm:w-full mx-4 flex-grow">
+					<li key={post.id} className="sm:w-full mx-4 flex-grow mb-5">
 						<Link to={post.fields.slug}>
 							<GatsbyImage
 								className="h-40"
@@ -49,7 +49,7 @@ export const RelatedPosts = (props: RelatedPostsProps): ReactElement => {
 								}
 								alt=""
 							></GatsbyImage>
-							<h4 className="font-serif font-bold text-3xl py-4 text-gray-900">
+							<h4 className="font-serif font-bold text-3xl py-2 text-gray-900">
 								{post.frontmatter.title}
 							</h4>
 						</Link>

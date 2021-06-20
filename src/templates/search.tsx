@@ -52,7 +52,7 @@ export default function SearchTemplate(props: {
 			pageTitle="Search"
 			pageDescription="Search for blogs or recipes across the site."
 		>
-			<section className="flex items-center flex-col">
+			<section className="flex items-center flex-col mt-4">
 				<h2 className="text-gray-700">{`Searching for "${
 					query ?? ""
 				}"`}</h2>

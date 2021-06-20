@@ -50,32 +50,44 @@ export const Navigation = (): ReactElement => {
 	};
 
 	return (
-		<nav className="flex justify-center items-center h-16 sticky w-full top-0 bg-white z-50 shadow-lg">
+		<nav className="flex justify-center items-center h-20 sticky w-full top-0 bg-white z-50 shadow-lg">
 			{searchOpen ? (
-				<form className="my-4" onSubmit={onSubmit}>
+				<form className="my-4 px-4 flex w-96" onSubmit={onSubmit}>
 					<input
 						ref={searchBox}
-						className="py-2 px-3 rounded-xl bg-gray-100 outline-none border-2 focus:border-primary w-96"
+						className="py-2 px-3 rounded-xl bg-gray-100 outline-none border-2 focus:border-primary flex-1"
 						placeholder="Search for content"
 						value={query}
 						onChange={(e) => setQuery(e.currentTarget.value)}
 					></input>
+					<button
+						className="ml-3 p-1"
+						onClick={() => setSearchOpen(!searchOpen)}
+						type="button"
+					>
+						<Cross
+							width="16"
+							height="16"
+							className="text-gray-700 fill-current font-normal"
+						/>
+					</button>
 				</form>
 			) : (
-				<>
-					<StaticImage
-						alt=""
-						src="./logo-wfm.png"
-						placeholder="blurred"
-						width={50}
-						height={50}
-						className="shadow-2xl rounded-full mr-5"
-					/>
-					<ul className="flex justify-center flex-wrap my-4">
+				<div className="flex px-4">
+					<div className="flex items-center justify-center mr-5">
+						<StaticImage
+							alt=""
+							src="./logo-wfm.png"
+							placeholder="blurred"
+							width={50}
+							height={50}
+						/>
+					</div>
+					<ul className="flex-1 flex justify-center flex-wrap my-4">
 						{LINKS.map((l) => (
 							<li className="px-1 m-0 " key={l.name}>
 								<Link
-									className="py-2 h-full text-gray-700 uppercase font-normal  hover:bg-gray-100 rounded-md tracking-wide px-4"
+									className="py-2 h-full text-gray-700 uppercase font-normal hover:bg-gray-100 rounded-md tracking-wide px-4 leading-10"
 									to={l.link}
 									activeClassName="text-primary"
 								>
@@ -84,26 +96,18 @@ export const Navigation = (): ReactElement => {
 							</li>
 						))}
 					</ul>
-				</>
+					<button
+						className="ml-3 p-1"
+						onClick={() => setSearchOpen(!searchOpen)}
+					>
+						<Search
+							width="16"
+							height="16"
+							className="text-gray-700 fill-current font-normal"
+						/>
+					</button>
+				</div>
 			)}
-			<button
-				className="ml-3 p-1"
-				onClick={() => setSearchOpen(!searchOpen)}
-			>
-				{searchOpen ? (
-					<Cross
-						width="16"
-						height="16"
-						className="text-gray-700 fill-current font-normal"
-					/>
-				) : (
-					<Search
-						width="16"
-						height="16"
-						className="text-gray-700 fill-current font-normal"
-					/>
-				)}
-			</button>
 		</nav>
 	);
 };

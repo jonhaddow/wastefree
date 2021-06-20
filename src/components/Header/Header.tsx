@@ -36,13 +36,13 @@ export const Header = (props: HeaderProps): ReactElement => {
 			<BgImage image={headerImage}>
 				<h1 className="text-center m-2">
 					<Link
-						className="text-white font-serif text-4xl sm:text-6xl md:text-8xl"
+						className="text-white font-serif text-6xl sm:text-8xl"
 						to="/"
 					>
 						{title}
 					</Link>
 				</h1>
-				<p className="text-white font-sans text-sm sm:text-base md:text-lg">
+				<p className="text-white font-sans text-base md:text-lg">
 					{description}
 				</p>
 			</BgImage>

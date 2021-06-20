@@ -32,7 +32,7 @@ export default function Tags(props: TagProps): JSX.Element {
 			pageTitle={`Tags matching "${tag}`}
 			pageDescription="List of blogs or recipes with the matching tag."
 		>
-			<h2 className="text-center text-2xl mb-6 text-gray-600 leading-10">
+			<h2 className="text-center text-2xl mt-4 mb-6 text-gray-600 leading-10">
 				{tagHeader}
 			</h2>
 			<PostList posts={posts}></PostList>
