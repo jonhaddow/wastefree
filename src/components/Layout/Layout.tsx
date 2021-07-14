@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import { Footer, Header, Navigation } from "..";
@@ -32,6 +32,23 @@ export const Layout = (props: LayoutProps): ReactElement => {
 		instagramLink,
 	} = data.site.siteMetadata;
 	const { pageDescription, pageTitle } = props;
+
+	// Add analytics to the end of the document
+	useEffect(() => {
+		const script = document.createElement("script");
+
+		script.setAttribute(
+			"src",
+			"https://static.cloudflareinsights.com/beacon.min.js"
+		);
+
+		script.setAttribute(
+			"data-cf-beacon",
+			'{"token": "bf66bc112e1b4b3bb4bd45139ce4d6d2"}'
+		);
+
+		document.body.appendChild(script);
+	}, []);
 
 	return (
 		<>
