@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import { Footer, Header, Navigation } from "..";
+import { useMetadata } from "../../hooks";
 
 interface LayoutProps {
 	children?: JSX.Element[] | JSX.Element;
@@ -10,27 +10,7 @@ interface LayoutProps {
 }
 
 export const Layout = (props: LayoutProps): ReactElement => {
-	const data = useStaticQuery(
-		graphql`
-			query {
-				site {
-					siteMetadata {
-						title
-						description
-						tagLine
-						instagramLink
-					}
-				}
-			}
-		`
-	);
-
-	const {
-		title,
-		description,
-		tagLine,
-		instagramLink,
-	} = data.site.siteMetadata;
+	const { title, description, tagLine, instagramLink } = useMetadata();
 	const { pageDescription, pageTitle } = props;
 
 	// Add analytics to the end of the document

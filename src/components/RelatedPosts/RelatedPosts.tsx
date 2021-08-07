@@ -1,31 +1,16 @@
 import React, { ReactElement } from "react";
 import Post from "../../common/post";
-import { useStaticQuery, graphql, Link } from "gatsby";
+import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import RelatedPostsBuilder from "./related_posts_builder";
+import { usePosts } from "../../hooks";
 
 interface RelatedPostsProps {
 	currentPost: Post;
 }
 
 export const RelatedPosts = (props: RelatedPostsProps): ReactElement => {
-	const allPosts = useStaticQuery(
-		graphql`
-			query {
-				allMarkdownRemark(limit: 1000) {
-					edges {
-						node {
-							...PostFragment
-						}
-					}
-				}
-			}
-		`
-	);
-
-	const posts = allPosts.allMarkdownRemark.edges.map(
-		(x: { node: Post }): Post => x.node
-	);
+	const posts = usePosts();
 
 	const relatedPosts = new RelatedPostsBuilder(posts, props.currentPost)
 		.setTags(props.currentPost.frontmatter.tags)

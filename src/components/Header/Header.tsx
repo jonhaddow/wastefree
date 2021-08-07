@@ -1,8 +1,8 @@
 import React, { ReactElement } from "react";
-import { graphql, Link, useStaticQuery } from "gatsby";
+import { Link } from "gatsby";
 import { header as headerClass } from "./Header.module.css";
 import { BgImage } from "gbimage-bridge";
-import { getImage } from "gatsby-plugin-image";
+import { useHeaderImage } from "../../hooks";
 
 interface HeaderProps {
 	title: string;
@@ -12,24 +12,7 @@ interface HeaderProps {
 export const Header = (props: HeaderProps): ReactElement => {
 	const { title, description } = props;
 
-	const { header } = useStaticQuery(
-		graphql`
-			query {
-				header: file(
-					relativePath: { eq: "site_images/header-image.jpg" }
-				) {
-					childImageSharp {
-						gatsbyImageData(
-							layout: FULL_WIDTH
-							placeholder: BLURRED
-						)
-					}
-				}
-			}
-		`
-	);
-
-	const headerImage = getImage(header);
+	const headerImage = useHeaderImage();
 
 	return (
 		<header className={`${headerClass} h-96`}>
