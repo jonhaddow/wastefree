@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { Link } from "gatsby";
+import Link from "next/link";
 
 interface DirectionalLinkProps {
 	to: string;
@@ -8,11 +8,11 @@ const DirectionalLink = (
 	props: React.PropsWithChildren<DirectionalLinkProps>
 ): ReactElement => {
 	return (
-		<Link
-			className=" mx-3 py-3 px-4 text-xl border-gray-400 border rounded-md text-gray-700 hover:bg-gray-200 transition-colors"
-			to={props.to}
-		>
-			{props.children}
+		<Link href={props.to}>
+			{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+			<a className=" mx-3 py-3 px-4 text-xl border-gray-400 border rounded-md text-gray-700 hover:bg-gray-200 transition-colors">
+				{props.children}
+			</a>
 		</Link>
 	);
 };

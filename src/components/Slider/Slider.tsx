@@ -1,8 +1,8 @@
 import React, { ReactElement, useState, useEffect, useCallback } from "react";
-import { Link } from "gatsby";
+import Link from "next/link";
 import Post from "../../common/post";
 import { ChevronLeft, ChevronRight } from "../icons";
-import { BgImage } from "gbimage-bridge";
+import Image from "next/image";
 
 interface SliderProps {
 	recentPosts: Post[];
@@ -54,7 +54,7 @@ export const Slider = ({ recentPosts }: SliderProps): ReactElement | null => {
 					decrementSlider();
 				}}
 				aria-label="Previous image"
-				className="p-2 w-12 absolute inset-0 left-0 z-10 bg-gradient-to-r hover:from-semi-transparent"
+				className="p-2 w-12 absolute inset-0 left-0 z-20 bg-gradient-to-r hover:from-semi-transparent"
 			>
 				<ChevronLeft
 					className="fill-current text-white"
@@ -65,42 +65,44 @@ export const Slider = ({ recentPosts }: SliderProps): ReactElement | null => {
 			<ul className="h-full w-full" aria-live="off" aria-atomic="false">
 				{recentPosts.map(
 					({
-						frontmatter: { featuredImage, date, title },
+						frontmatter: { featuredImage, title },
 						fields: { slug },
-						id,
 					}) => {
-						const backgroundFluidImageStack = [
-							featuredImage.childImageSharp.gatsbyImageData,
-							`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))`,
-							// eslint-disable-next-line @typescript-eslint/no-explicit-any -- BgImage types are wrong.
-						].reverse() as any;
 						return (
 							<li
 								key={slug}
-								className={`w-full h-full bg-image-wrapper
-									${id === recentPosts[index]?.id ? "" : "hidden"}`}
+								className={`w-full h-full bg-image-wrapper relative
+									${slug === recentPosts[index]?.fields.slug ? "" : "hidden"}`}
 							>
-								<BgImage
-									image={backgroundFluidImageStack}
+								<Image
+									src={featuredImage}
+									layout="fill"
+									className="object-cover object-center"
 									aria-roledescription="slide"
-									aria-labelledby={id}
+									aria-labelledby={slug}
+								/>
+								<div
+									style={{
+										background: "rgba(0, 0, 0, 0.3)",
+									}}
+									className="flex flex-col relative justify-center items-center font-sans text-white z-10"
 								>
-									<div className="flex flex-col justify-center items-center font-sans text-white">
-										<h2
-											className="font-serif font-bold text-center mb-8 text-5xl"
-											id={id}
-										>
-											<Link to={slug}>{title}</Link>
-										</h2>
-										<Link
-											className="text-sm text-black font-medium tracking-wider bg-white leading-10 px-8 uppercase mb-6 transition-opacity opacity-80 hover:opacity-100"
-											to={slug}
-										>
-											Read More
+									<h2
+										className="font-serif font-bold text-center mb-8 text-5xl z-10"
+										id={slug}
+									>
+										<Link href={`/blogs/${slug}`}>
+											{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+											<a>{title}</a>
 										</Link>
-										<time className="text-sm">{date}</time>
-									</div>
-								</BgImage>
+									</h2>
+									<Link href={`/blogs/${slug}`}>
+										{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+										<a className="text-sm text-black font-medium tracking-wider bg-white leading-10 px-8 uppercase mb-6 transition-opacity opacity-80 hover:opacity-100">
+											Read More
+										</a>
+									</Link>
+								</div>
 							</li>
 						);
 					}
@@ -109,31 +111,31 @@ export const Slider = ({ recentPosts }: SliderProps): ReactElement | null => {
 
 			<div role="group" aria-label="Choose slide to display">
 				<ul className="flex justify-center items-center absolute bottom-2 w-full mb-5 z-10">
-					{recentPosts.map(
-						(post, i): JSX.Element => {
-							const buttonAttributes: React.DetailedHTMLProps<
-								React.ButtonHTMLAttributes<HTMLButtonElement>,
-								HTMLButtonElement
-							> = {
-								type: "button",
-								onClick: onDotClick.bind(this, i),
-								"aria-label": `sliderItem${post.frontmatter.title}`,
-								className:
-									"h-3 w-3 border-2 border-white rounded-full focus:outline-white",
-							};
+					{recentPosts.map((post, i): JSX.Element => {
+						const buttonAttributes: React.DetailedHTMLProps<
+							React.ButtonHTMLAttributes<HTMLButtonElement>,
+							HTMLButtonElement
+						> = {
+							type: "button",
+							onClick: onDotClick.bind(this, i),
+							"aria-label": `sliderItem${post.frontmatter.title}`,
+							className:
+								"h-3 w-3 border-2 border-white rounded-full focus:outline-white",
+						};
 
-							if (post.id === recentPosts[index]?.id) {
-								buttonAttributes.className += " bg-white";
-								buttonAttributes["aria-disabled"] = true;
-							}
-
-							return (
-								<li key={post.fields.slug} className="mr-3">
-									<button {...buttonAttributes} />
-								</li>
-							);
+						if (
+							post.fields.slug === recentPosts[index]?.fields.slug
+						) {
+							buttonAttributes.className += " bg-white";
+							buttonAttributes["aria-disabled"] = true;
 						}
-					)}
+
+						return (
+							<li key={post.fields.slug} className="mr-3">
+								<button {...buttonAttributes} />
+							</li>
+						);
+					})}
 				</ul>
 			</div>
 
@@ -144,7 +146,7 @@ export const Slider = ({ recentPosts }: SliderProps): ReactElement | null => {
 					incrementSlider();
 				}}
 				aria-label="Next image"
-				className="p-2 w-12 absolute top-0 bottom-0 right-0 z-10 bg-gradient-to-l hover:from-semi-transparent"
+				className="p-2 w-12 absolute top-0 bottom-0 right-0 z-20 bg-gradient-to-l hover:from-semi-transparent"
 			>
 				<ChevronRight
 					className="fill-current text-white"

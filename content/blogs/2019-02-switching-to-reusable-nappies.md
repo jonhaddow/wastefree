@@ -1,7 +1,7 @@
 ---
 title: Switching To Reusable Nappies
 date: 2019-02-28T21:39:02.155Z
-featuredImage: ../images/img_2626-1140x760.jpg
+featuredImage: /images/img_2626-1140x760.jpg
 tags:
     - baby
     - cloth nappies

@@ -1,7 +1,7 @@
 ---
 title: Wipe Solution Recipe
-date: "2019-04-23"
-featuredImage: ../images/wipe_solution.jpg
+date: 2019-04-23
+featuredImage: /images/wipe_solution.jpg
 tags:
     - cloth wipe solution
     - cloth wipes

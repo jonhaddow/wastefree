@@ -1,7 +1,7 @@
 ---
 title: Reusable Wipes For Babies
-date: "2019-04-01"
-featuredImage: ../images/reusable_wipes.jpg
+date: 2019-04-01
+featuredImage: /images/reusable_wipes.jpg
 tags:
     - reusable wet wipes
     - reusable wipes

@@ -1,8 +1,8 @@
 import React, { ReactElement } from "react";
-import { graphql, Link, useStaticQuery } from "gatsby";
+import Link from "next/link";
 import { header as headerClass } from "./Header.module.css";
-import { BgImage } from "gbimage-bridge";
-import { getImage } from "gatsby-plugin-image";
+import Image from "next/image";
+import headerImg from "./header-image.jpg";
 
 interface HeaderProps {
 	title: string;
@@ -12,40 +12,27 @@ interface HeaderProps {
 export const Header = (props: HeaderProps): ReactElement => {
 	const { title, description } = props;
 
-	const { header } = useStaticQuery(
-		graphql`
-			query {
-				header: file(
-					relativePath: { eq: "site_images/header-image.jpg" }
-				) {
-					childImageSharp {
-						gatsbyImageData(
-							layout: FULL_WIDTH
-							placeholder: BLURRED
-						)
-					}
-				}
-			}
-		`
-	);
-
-	const headerImage = getImage(header);
-
 	return (
 		<header className={`${headerClass} h-96`}>
-			<BgImage image={headerImage}>
-				<h1 className="text-center m-2">
-					<Link
-						className="text-white font-serif text-6xl sm:text-8xl"
-						to="/"
-					>
-						{title}
+			<div className="relative">
+				<Image
+					src={headerImg}
+					layout="fill"
+					className="object-cover object-center pointer-events-none"
+					placeholder="blur"
+				/>
+				<h1 className="text-center m-2 z-10">
+					<Link href="/">
+						{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+						<a className="text-white font-serif text-6xl sm:text-8xl">
+							{title}
+						</a>
 					</Link>
 				</h1>
-				<p className="text-white font-sans text-base md:text-lg">
+				<p className="text-white z-10 font-sans text-base md:text-lg">
 					{description}
 				</p>
-			</BgImage>
+			</div>
 		</header>
 	);
 };

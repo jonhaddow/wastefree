@@ -6,7 +6,7 @@ export const PostList = ({ posts }: { posts: Post[] }): ReactElement => {
 	return (
 		<ul className="mt-6 grid lg:grid-cols-2 xl:grid-cols-3 md:mx-12">
 			{posts.map((post) => {
-				return <PostCard key={post.id} {...post}></PostCard>;
+				return <PostCard key={post.fields.slug} {...post}></PostCard>;
 			})}
 		</ul>
 	);

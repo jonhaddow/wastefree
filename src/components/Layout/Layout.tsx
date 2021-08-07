@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import { Helmet } from "react-helmet";
 import { Footer, Header, Navigation } from "..";
+import Head from "next/head";
+import config from "../../config";
 
 interface LayoutProps {
 	children?: JSX.Element[] | JSX.Element;
@@ -10,27 +10,6 @@ interface LayoutProps {
 }
 
 export const Layout = (props: LayoutProps): ReactElement => {
-	const data = useStaticQuery(
-		graphql`
-			query {
-				site {
-					siteMetadata {
-						title
-						description
-						tagLine
-						instagramLink
-					}
-				}
-			}
-		`
-	);
-
-	const {
-		title,
-		description,
-		tagLine,
-		instagramLink,
-	} = data.site.siteMetadata;
 	const { pageDescription, pageTitle } = props;
 
 	// Add analytics to the end of the document
@@ -50,18 +29,21 @@ export const Layout = (props: LayoutProps): ReactElement => {
 		document.body.appendChild(script);
 	}, []);
 
+	const { title, description, tagLine, instagramLink } = config;
+
 	return (
 		<>
-			<Helmet>
-				<meta
-					name="Description"
-					content={pageDescription ? pageDescription : description}
-				></meta>
-				<title>
-					{pageTitle ? `${pageTitle} - ` : ""}
-					{title}
-				</title>
-			</Helmet>
+			<Head>
+				<title>{`${pageTitle ? `${pageTitle} - ` : ""}${title}`}</title>
+				<meta name="description" content={pageDescription} />
+				<meta property="og:type" content="website" />
+				<meta property="og:title" content={title} />
+				<meta property="og:description" content={description} />
+				<meta property="og:site_name" content={title} />
+				<meta property="twitter:card" content="summary" />
+				<meta property="twitter:title" content={title} />
+				<meta property="twitter:description" content={description} />
+			</Head>
 			<div className="min-h-screen">
 				<Header title={title} description={tagLine} />
 				<Navigation />

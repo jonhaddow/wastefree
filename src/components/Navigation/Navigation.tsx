@@ -1,8 +1,9 @@
 import React, { useState, useEffect, ReactElement } from "react";
-import { Link } from "gatsby";
-import { navigate } from "@reach/router";
+import Link from "next/link";
 import { Search, Cross } from "../icons";
-import { StaticImage } from "gatsby-plugin-image";
+import Image from "next/image";
+import logo from "./logo-wfm.png";
+import router, { useRouter } from "next/dist/client/router";
 
 const LINKS = [
 	{
@@ -27,6 +28,7 @@ export const Navigation = (): ReactElement => {
 	const searchBox = React.createRef<HTMLInputElement>();
 	const [searchOpen, setSearchOpen] = useState(false);
 	const [query, setQuery] = useState("");
+	const { pathname } = useRouter();
 
 	useEffect((): void => {
 		if (searchBox.current) {
@@ -43,7 +45,7 @@ export const Navigation = (): ReactElement => {
 
 		if (!newQuery) return;
 
-		await navigate(`/search?q=${newQuery}`);
+		await router.push(`/search?q=${newQuery}`);
 
 		setSearchOpen(false);
 		setQuery("");
@@ -75,23 +77,22 @@ export const Navigation = (): ReactElement => {
 			) : (
 				<div className="flex px-4">
 					<div className="flex items-center justify-center mr-5">
-						<StaticImage
-							alt=""
-							src="./logo-wfm.png"
-							placeholder="blurred"
-							width={50}
-							height={50}
-						/>
+						<Image alt="" src={logo} width={50} height={50} />
 					</div>
 					<ul className="flex-1 flex justify-center flex-wrap my-4">
 						{LINKS.map((l) => (
 							<li className="px-1 m-0 " key={l.name}>
-								<Link
-									className="py-2 h-full text-gray-700 uppercase font-normal hover:bg-gray-100 rounded-md tracking-wide px-4 leading-10"
-									to={l.link}
-									activeClassName="text-primary"
-								>
-									{l.name}
+								<Link href={l.link}>
+									{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+									<a
+										className={`py-2 h-full text-gray-700 uppercase font-normal hover:bg-gray-100 rounded-md tracking-wide px-4 leading-10 ${
+											pathname === l.link
+												? "text-primary"
+												: ""
+										}`}
+									>
+										{l.name}
+									</a>
 								</Link>
 							</li>
 						))}

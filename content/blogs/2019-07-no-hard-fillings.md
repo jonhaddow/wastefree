@@ -1,7 +1,7 @@
 ---
 title: No Hard Fillings
 date: 2019-07-03T23:00:00.000Z
-featuredImage: ../images/dental.jpg
+featuredImage: /images/dental.jpg
 tags:
     - dental hygiene
     - eco-friendly

@@ -1,7 +1,7 @@
 ---
 title: Reusable Nappies Explained
 date: 2019-03-03
-featuredImage: ../images/reusable_nappies_explained.jpg
+featuredImage: /images/reusable_nappies_explained.jpg
 tags:
   - waste free
   - wastefree

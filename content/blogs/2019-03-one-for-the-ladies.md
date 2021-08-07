@@ -1,7 +1,7 @@
 ---
 title: One For The Ladies
 date: 2019-03-12T21:35:47.057Z
-featuredImage: ../images/img_2763-1140x760.jpg
+featuredImage: /images/img_2763-1140x760.jpg
 tags:
   - ecofriendly
   - Menstrual
