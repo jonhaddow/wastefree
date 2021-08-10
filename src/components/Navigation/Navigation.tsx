@@ -21,6 +21,10 @@ const LINKS = [
 		name: "Recipes",
 		link: "/recipes",
 	},
+	{
+		name: "Products",
+		link: "/products",
+	},
 ];
 
 export const Navigation = (): ReactElement => {

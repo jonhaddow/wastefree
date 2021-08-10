@@ -1,3 +1,7 @@
+require("dotenv").config({
+	path: `.env.${process.env.NODE_ENV}`,
+});
+
 /**
  * Configure your Gatsby site with this file.
  *

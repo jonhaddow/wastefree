@@ -57,7 +57,14 @@ export default function SearchTemplate(props: {
 					query ?? ""
 				}"`}</h2>
 				{filteredPosts.length > 0 ? (
-					<PostList posts={filteredPosts}></PostList>
+					<PostList
+						items={filteredPosts.map((x) => ({
+							title: x.frontmatter.title,
+							url: x.fields.slug,
+							date: x.frontmatter.date,
+							image: x.frontmatter.featuredImage,
+						}))}
+					></PostList>
 				) : (
 					<p>No results found</p>
 				)}

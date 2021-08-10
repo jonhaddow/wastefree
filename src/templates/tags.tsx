@@ -35,12 +35,19 @@ export default function Tags(props: TagProps): JSX.Element {
 			<h2 className="text-center text-2xl mt-4 mb-6 text-gray-600 leading-10">
 				{tagHeader}
 			</h2>
-			<PostList posts={posts}></PostList>
+			<PostList
+				items={posts.map((x) => ({
+					title: x.frontmatter.title,
+					url: x.fields.slug,
+					date: x.frontmatter.date,
+					image: x.frontmatter.featuredImage,
+				}))}
+			></PostList>
 		</Layout>
 	);
 }
 export const pageQuery = graphql`
-	query($tag: String) {
+	query ($tag: String) {
 		allMarkdownRemark(
 			limit: 2000
 			sort: { fields: [frontmatter___date], order: DESC }

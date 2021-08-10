@@ -15,6 +15,7 @@
     "generateIcons": "npx @svgr/cli -d ./src/components/icons/generated --typescript ./src/components/icons/svgs/"
   },
   "dependencies": {
+    "@netlify/functions": "^0.7.2",
     "@tailwindcss/typography": "^0.4.1",
     "@types/js-search": "^1.4.0",
     "@types/lodash": "^4.14.138",
@@ -42,6 +43,7 @@
     "gbimage-bridge": "^0.1.4",
     "js-search": "^2.0.0",
     "netlify-cms-app": "^2.15.2",
+    "node-fetch": "^2.6.1",
     "postcss": "^8.2.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -58,6 +60,7 @@
     "@types/typography": "^0.16.2",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
+    "dotenv": "^10.0.0",
     "eslint": "^7.25.0",
     "eslint-config-jonhaddow": "^2.2.0",
     "eslint-config-prettier": "^8.3.0",
