@@ -23,13 +23,19 @@ export default function Products(): React.ReactElement {
 
 	return (
 		<Layout pageTitle={pageTitle}>
-			<PostList
-				items={products.map(({ listing_id, title, url }) => ({
-					title,
-					url,
-					getImage: () => fetchProductImage(listing_id),
-				}))}
-			></PostList>
+			{products.length === 0 ? (
+				<div className="flex mt-6">
+					<p className="m-auto">No products</p>
+				</div>
+			) : (
+				<PostList
+					items={products.map(({ listing_id, title, url }) => ({
+						title,
+						url,
+						getImage: () => fetchProductImage(listing_id),
+					}))}
+				/>
+			)}
 		</Layout>
 	);
 }
