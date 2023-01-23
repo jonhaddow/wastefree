@@ -4,8 +4,8 @@ A static blog built using gatsby.
 
 ## Running locally
 
-`yarn install`
+`npm install`
 
-`yarn start`
+`npm start`
 
 Navigate to `localhost:8000`
