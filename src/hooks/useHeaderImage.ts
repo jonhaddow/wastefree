@@ -1,10 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby";
-import { getImage, IGatsbyImageData } from "gatsby-plugin-image";
 
-export const useHeaderImage = (): IGatsbyImageData | undefined => {
-	const { header } = useStaticQuery(
+export const useHeaderImage = (): Queries.HeaderImageQuery["header"] => {
+	const { header } = useStaticQuery<Queries.HeaderImageQuery>(
 		graphql`
-			query {
+			query HeaderImage {
 				header: file(
 					relativePath: { eq: "site_images/header-image.jpg" }
 				) {
@@ -19,5 +18,5 @@ export const useHeaderImage = (): IGatsbyImageData | undefined => {
 		`
 	);
 
-	return getImage(header);
+	return header;
 };

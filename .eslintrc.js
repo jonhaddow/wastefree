@@ -1,5 +1,5 @@
 module.exports = {
-	extends: ["jonhaddow", "jonhaddow/react", "jonhaddow/typescript"],
+	extends: ["jonhaddow", "jonhaddow/react"],
 	parserOptions: {
 		sourceType: "module",
 

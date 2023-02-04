@@ -80,6 +80,7 @@
 		"gatsby-browser.js",
 		"tailwind.config.js",
 		"postcss.config.js",
-		 "netlify/**/*.ts"
+		 "netlify/**/*.ts",
+		 "gatsby-types.d.ts"
 	]
 }

@@ -2,12 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Oswald:wght@200;300;400;500;600;700&display=swap');
-
-/*
-	Gatsby background image doesn't support className 😢
-	So I'm adding wrapping classes to target it directly.
-*/
-.bg-image-wrapper > div {
-	@apply flex h-full justify-center items-center
-}
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Oswald:wght@200;300;400;500;600;700&display=swap");

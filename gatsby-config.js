@@ -16,13 +16,15 @@ module.exports = {
 		tagLine: "My journey to waste free living",
 		instagramLink: "https://www.instagram.com/waste_free_mama/",
 	},
-	flags: {
-		FAST_DEV: true,
+	graphqlTypegen: {
+		// Move the typegen path out of the src folder - it creates an issue with tailwindCSS
+		typesOutputPath: `gatsby-types.d.ts`,
 	},
-
 	plugins: [
 		// typescript plugins
 		"gatsby-plugin-typescript",
+
+		"gatsby-plugin-netlify",
 
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,
@@ -54,21 +56,8 @@ module.exports = {
 		"gatsby-plugin-postcss",
 
 		"gatsby-plugin-typescript-checker",
-		{
-			resolve: "gatsby-plugin-eslint",
-			options: {
-				test: /\.ts$|\.tsx$/,
-				exclude: /(node_modules|.cache|public)/,
-				stages: ["develop"],
-				options: {
-					emitWarning: true,
-					failOnError: false,
-				},
-			},
-		},
+		"gatsby-plugin-eslint",
 
-		// SEO
-		"gatsby-plugin-react-helmet",
 		{
 			resolve: "gatsby-plugin-html-attributes",
 			options: {
@@ -97,8 +86,5 @@ module.exports = {
 				icon: `src/assets/favicon.png`, // This path is relative to the root of the site.
 			},
 		},
-		"gatsby-plugin-offline",
-		"gatsby-plugin-netlify-cms",
-		"netlify-cms-app",
 	],
 };
