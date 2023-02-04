@@ -24,6 +24,8 @@ module.exports = {
 		// typescript plugins
 		"gatsby-plugin-typescript",
 
+		"gatsby-plugin-netlify",
+
 		`gatsby-plugin-image`,
 		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,

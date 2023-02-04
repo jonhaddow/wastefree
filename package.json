@@ -27,6 +27,7 @@
     "gatsby-plugin-html-attributes": "^1.0.5",
     "gatsby-plugin-image": "^3",
     "gatsby-plugin-manifest": "^5",
+    "gatsby-plugin-netlify": "^5.1.0",
     "gatsby-plugin-postcss": "^6.5.0",
     "gatsby-plugin-sharp": "^5",
     "gatsby-plugin-typescript": "^5",
