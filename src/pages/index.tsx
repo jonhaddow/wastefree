@@ -2,8 +2,7 @@ import React, { ReactElement } from "react";
 import { Link, graphql } from "gatsby";
 import { Layout, Slider } from "../components";
 import Post from "../common/post";
-import { IGatsbyImageData } from "gatsby-plugin-image";
-import { BgImage } from "gbimage-bridge";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 
 interface GraphQLSchema {
 	featuredPosts: {
@@ -49,22 +48,25 @@ export default function Home(props: { data: GraphQLSchema }): ReactElement {
 		<Layout>
 			<section className="flex flex-col items-center mt-6 md:px-12">
 				<Slider recentPosts={props.data.featuredPosts.nodes} />
-				<ul className="flex flex-wrap w-full lg:max-w-5xl mt-10">
+				<ul className="flex flex-wrap w-full max-w-3xl mt-10 gap-5">
 					{itemDetails.map(({ link, title, imageSrc }) => (
 						<li
 							key={title}
-							className="w-full md:w-auto md:mr-5 md:flex-grow h-52 bg-image-wrapper  transform-gpu transition-transform hover:scale-105"
+							className="w-full md:w-auto md:flex-grow h-52 transform-gpu transition-transform hover:scale-105 grid"
 						>
-							<BgImage image={imageSrc.gatsbyImageData}>
-								<Link
-									to={link}
-									className="h-full w-full flex justify-center items-center opacity-80 hover:opacity-100 shadow-lg focus:outline-black"
-								>
-									<h3 className="py-3 px-5 bg-white text-black inline-block font-semibold text-sm uppercase tracking-wider">
-										{title}
-									</h3>
-								</Link>
-							</BgImage>
+							<GatsbyImage
+								className="col-start-1 row-start-1 -z-10"
+								image={imageSrc.gatsbyImageData}
+								alt=""
+							/>
+							<Link
+								to={link}
+								className="h-full w-full flex justify-center items-center opacity-80 hover:opacity-100 shadow-lg focus:outline-black col-start-1 row-start-1"
+							>
+								<h3 className="py-3 px-5 bg-white text-black inline-block font-semibold text-sm uppercase tracking-wider">
+									{title}
+								</h3>
+							</Link>
 						</li>
 					))}
 				</ul>
@@ -77,7 +79,7 @@ export const query = graphql`
 	query {
 		featuredPosts: allMarkdownRemark(
 			filter: { fileAbsolutePath: { regex: "/(blogs|recipes)/" } }
-			sort: { fields: frontmatter___date, order: DESC }
+			sort: { frontmatter: { date: DESC } }
 			limit: 3
 		) {
 			nodes {

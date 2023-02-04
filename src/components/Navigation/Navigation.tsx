@@ -1,7 +1,7 @@
-import React, { useState, useEffect, ReactElement } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { Link } from "gatsby";
 import { navigate } from "@reach/router";
-import { Search, Cross } from "../icons";
+import { Cross, Search } from "../icons";
 import { StaticImage } from "gatsby-plugin-image";
 
 const LINKS = [

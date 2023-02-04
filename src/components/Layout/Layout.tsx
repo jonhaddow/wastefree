@@ -32,16 +32,17 @@ export const Layout = (props: LayoutProps): ReactElement => {
 
 	return (
 		<>
-			<Helmet>
-				<meta
-					name="Description"
-					content={pageDescription ? pageDescription : description}
-				></meta>
-				<title>
-					{pageTitle ? `${pageTitle} - ` : ""}
-					{title}
-				</title>
-			</Helmet>
+			<Helmet
+				title={`${pageTitle ? `${pageTitle} - ` : ""} ${title}`}
+				meta={[
+					{
+						name: "Description",
+						content: pageDescription
+							? pageDescription
+							: description,
+					},
+				]}
+			/>
 			<div className="min-h-screen">
 				<Header title={title} description={tagLine} />
 				<Navigation />

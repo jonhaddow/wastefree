@@ -41,7 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
 				{
 					allMarkdownRemark(
 						filter: { fileAbsolutePath: { regex: "/${type}/.*.md/" } }
-						sort: { fields: frontmatter___date, order: DESC }
+						sort: { frontmatter: { date: DESC } }
 						limit: 1000
 					) {
 						edges {
@@ -108,7 +108,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const tagsQuery = await graphql(`
 		{
 			postsRemark: allMarkdownRemark(
-				sort: { order: DESC, fields: [frontmatter___date] }
+				sort: { frontmatter: { date: DESC } }
 				limit: 2000
 			) {
 				edges {
@@ -123,7 +123,7 @@ exports.createPages = async ({ graphql, actions }) => {
 				}
 			}
 			tagsGroup: allMarkdownRemark(limit: 2000) {
-				group(field: frontmatter___tags) {
+				group(field: { frontmatter: { tags: SELECT } }) {
 					fieldValue
 				}
 			}
