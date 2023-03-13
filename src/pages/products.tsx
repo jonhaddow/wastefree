@@ -17,7 +17,7 @@ const fetchProductImage = async (
 };
 
 export default function Products(): React.ReactElement {
-	const products = useProducts();
+	const { results: products, isLoading } = useProducts();
 
 	const pageTitle = "Products";
 
@@ -25,7 +25,9 @@ export default function Products(): React.ReactElement {
 		<Layout pageTitle={pageTitle}>
 			{products.length === 0 ? (
 				<div className="flex mt-6">
-					<p className="m-auto">No products</p>
+					<p className="m-auto">
+						{isLoading ? "Loading..." : "No products"}
+					</p>
 				</div>
 			) : (
 				<PostList
