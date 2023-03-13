@@ -91,7 +91,7 @@ export const Navigation = (): ReactElement => {
 						{LINKS.map((l) => (
 							<li className="px-1 m-0 " key={l.name}>
 								<Link
-									className="py-2 h-full text-gray-700 uppercase font-normal hover:bg-gray-100 rounded-md tracking-wide px-4 leading-10"
+									className="py-1 md:py-2 h-full text-gray-700 uppercase font-normal hover:bg-gray-100 rounded-md tracking-wide px-2 md:px-4 leading-10"
 									to={l.link}
 									activeClassName="text-primary"
 								>
