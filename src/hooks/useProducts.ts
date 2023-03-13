@@ -5,8 +5,9 @@ interface EtsyApi {
 	results: Product[];
 }
 
-export const useProducts = (): Product[] => {
+export const useProducts = (): { results: Product[]; isLoading: boolean } => {
 	const [products, setProducts] = useState<Product[]>([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		void (async () => {
@@ -20,8 +21,9 @@ export const useProducts = (): Product[] => {
 				console.error("Failed to fetch etsy listings");
 				setProducts([]);
 			}
+			setIsLoading(false);
 		})();
 	}, []);
 
-	return products;
+	return { results: products, isLoading };
 };

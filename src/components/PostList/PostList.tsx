@@ -57,11 +57,11 @@ export const ExternalListItem = (props: Item): ReactElement => {
 		<li className="m-auto py-4 md:p-4 h-96 w-full transform-gpu transition-transform hover:scale-105">
 			<div
 				style={{
-					backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${
+					backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(${
 						image ?? ""
 					})`,
 				}}
-				className="bg-cover bg-center"
+				className="bg-cover bg-center h-full"
 			>
 				<a
 					className="flex flex-col justify-center p-4 w-full items-center text-center text-white h-full focus:outline-black"
