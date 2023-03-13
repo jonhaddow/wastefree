@@ -11,7 +11,6 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "cms": "npx netlify-cms-proxy-server",
     "generateIcons": "npx @svgr/cli -d ./src/components/icons/generated --typescript ./src/components/icons/svgs/"
   },
   "dependencies": {
