@@ -21,9 +21,6 @@ module.exports = {
 		typesOutputPath: `gatsby-types.d.ts`,
 	},
 	plugins: [
-		// typescript plugins
-		"gatsby-plugin-typescript",
-
 		"gatsby-plugin-netlify",
 
 		`gatsby-plugin-image`,
@@ -55,7 +52,6 @@ module.exports = {
 
 		"gatsby-plugin-postcss",
 
-		"gatsby-plugin-typescript-checker",
 		"gatsby-plugin-eslint",
 
 		{
