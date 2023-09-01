@@ -29,7 +29,7 @@
     "gatsby-plugin-netlify": "^5.1.0",
     "gatsby-plugin-postcss": "^6.10.0",
     "gatsby-plugin-sharp": "^5.11.0",
-    "gatsby-remark-copy-linked-files": "^6.9.0",
+    "gatsby-remark-copy-linked-files": "^6.12.0",
     "gatsby-remark-images": "^7.11.0",
     "gatsby-source-filesystem": "^5.11.0",
     "gatsby-transformer-remark": "^6.10.0",
