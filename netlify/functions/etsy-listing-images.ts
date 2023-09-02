@@ -33,7 +33,7 @@ export const handler: Handler = async (event) => {
 				headers: {
 					"x-api-key": process.env.ETSY_API_KEY,
 				},
-			}
+			},
 		);
 		const response = await getListingImages.json();
 

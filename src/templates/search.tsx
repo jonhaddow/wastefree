@@ -37,14 +37,14 @@ export default function SearchTemplate(props: {
 	engine.addIndex("tags");
 	engine.addDocuments(
 		props.data.allMarkdownRemark.nodes.map(
-			(x): SearchDocument => new SearchDocument(x)
-		)
+			(x): SearchDocument => new SearchDocument(x),
+		),
 	);
 
 	const searchResults = engine.search(query ?? "") as SearchDocument[];
 	const resultSlugs = searchResults.map((x): string => x.slug);
 	const filteredPosts = posts.filter((x): boolean =>
-		resultSlugs.includes(x.fields?.slug)
+		resultSlugs.includes(x.fields?.slug),
 	);
 
 	return (

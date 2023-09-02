@@ -5,7 +5,7 @@ interface DirectionalLinkProps {
 	to: string;
 }
 const DirectionalLink = (
-	props: React.PropsWithChildren<DirectionalLinkProps>
+	props: React.PropsWithChildren<DirectionalLinkProps>,
 ): ReactElement => {
 	return (
 		<Link

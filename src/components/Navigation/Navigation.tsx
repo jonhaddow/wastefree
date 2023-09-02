@@ -39,7 +39,7 @@ export const Navigation = (): ReactElement => {
 	}, [searchBox]);
 
 	const onSubmit = async (
-		e: React.FormEvent<HTMLFormElement>
+		e: React.FormEvent<HTMLFormElement>,
 	): Promise<void> => {
 		e.preventDefault();
 

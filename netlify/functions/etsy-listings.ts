@@ -25,7 +25,7 @@ const handler: Handler = async () => {
 				headers: {
 					"x-api-key": process.env.ETSY_API_KEY,
 				},
-			}
+			},
 		);
 		const response = await getProducts.json();
 

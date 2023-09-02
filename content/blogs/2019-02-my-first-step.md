@@ -3,10 +3,11 @@ title: My First Step
 date: 2019-02-23T21:42:06.586Z
 featuredImage: ../images/img_0346-1140x760.jpg
 tags:
-  - waste free
-  - wastefree
-  - wastefreemama
+    - waste free
+    - wastefree
+    - wastefreemama
 ---
+
 I made my first step towards eco friendly living three years ago, when i became vegetarian. This followed a university module on animal welfare, specifically that of animals farmed for meat and dairy. I remember coming out of some of the lectures with a heavy heart, filled with guilt and shame that I’d made no attempt to understand where my food was coming from and how these animals were treated. Instead I opted for the cheapest meat to satisfy my student budget.
 
 Following this module I decided to do more research into the environmental impacts of rearing meat.

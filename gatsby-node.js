@@ -53,7 +53,7 @@ exports.createPages = async ({ graphql, actions }) => {
 						}
 					}
 				}
-			`
+			`,
 		);
 		const posts = result.data.allMarkdownRemark.edges;
 		const postsPerPage = 6;
