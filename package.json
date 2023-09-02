@@ -14,7 +14,7 @@
     "generateIcons": "npx @svgr/cli -d ./src/components/icons/generated --typescript ./src/components/icons/svgs/"
   },
   "dependencies": {
-    "@netlify/functions": "^1.6.0",
+    "@netlify/functions": "^2.0.2",
     "@tailwindcss/typography": "^0.5.9",
     "@types/js-search": "^1.4.0",
     "@types/lodash": "^4.14.195",
