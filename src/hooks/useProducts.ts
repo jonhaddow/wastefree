@@ -13,7 +13,7 @@ export const useProducts = (): { results: Product[]; isLoading: boolean } => {
 		void (async () => {
 			try {
 				const getProducts = await fetch(
-					"/.netlify/functions/etsy-listings"
+					"/.netlify/functions/etsy-listings",
 				);
 				const { results } = (await getProducts.json()) as EtsyApi;
 				setProducts(results);

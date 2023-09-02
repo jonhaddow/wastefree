@@ -3,10 +3,11 @@ title: Reusable Nappies Explained
 date: 2019-03-03
 featuredImage: ../images/reusable_nappies_explained.jpg
 tags:
-  - waste free
-  - wastefree
-  - wastefreemama
+    - waste free
+    - wastefree
+    - wastefreemama
 ---
+
 Hey all! This post will be looking at the different sizing and types of reusable nappies. This is a relatively brief explanation, but I hope it helps you have a better understanding of what each type consists of and some of their benefits. I hope you enjoy!
 
 I have a previous post that explains the different components of cloth nappies, common misconceptions, some hints and tips, and the items I would recommend when getting started with reusable nappies. Here's the link: <https://wastefreemama.com/2019/02/28/switching-to-reusable-nappies/>
@@ -17,15 +18,15 @@ There are two main sizing differences in cloth nappies.
 
 1. **Sized nappies** - These are similar to disposable nappies and come in a range of different sizes specific to the weight of your child. Most commonly they come in three sizes.
 
-* Size 1: 7 to 18lbs
-* Size 2: 18 to 35lbs
-* Size 3: 35lb +
+-   Size 1: 7 to 18lbs
+-   Size 2: 18 to 35lbs
+-   Size 3: 35lb +
 
 These are often a better fit for your baby, meaning there are less leakages. However, this is a more costly option, as you will need to purchase more nappies each time your child grows to the next size.
 
 1. **Birth to potty nappies** - These are the type of nappy we use for our child, as they are the most cost effective. These have a range of snap fasteners and velcro that allow the nappies to be adjusted to suit your child as they grow. However, these usually start at around 8lbs, and are not often suitable for newborn babies.
 
-- - -
+---
 
 ### Types of nappies
 

@@ -13,7 +13,7 @@ interface TagProps {
 			edges: [
 				{
 					node: Post;
-				}
+				},
 			];
 		};
 	};

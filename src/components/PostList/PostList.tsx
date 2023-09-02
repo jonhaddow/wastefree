@@ -81,7 +81,7 @@ export const PostList = ({ items }: { items: Item[] }): ReactElement => {
 			{items.map((item) => {
 				return React.createElement(
 					item.getImage ? ExternalListItem : ListItem,
-					{ key: item.url, ...item }
+					{ key: item.url, ...item },
 				);
 			})}
 		</ul>

@@ -20,16 +20,20 @@ export default class RelatedPostsBuilder {
 	}
 
 	public generate(): Post[] {
-		const postScoreMap = this.posts.map((post): {
-			post: Post;
-			score: number;
-		} => {
-			const tagScore = this.calculateTagScore(post);
-			return {
-				post: post,
-				score: tagScore,
-			};
-		});
+		const postScoreMap = this.posts.map(
+			(
+				post,
+			): {
+				post: Post;
+				score: number;
+			} => {
+				const tagScore = this.calculateTagScore(post);
+				return {
+					post: post,
+					score: tagScore,
+				};
+			},
+		);
 
 		postScoreMap.sort((postScoreA, postScoreB): number => {
 			return postScoreB.score - postScoreA.score;

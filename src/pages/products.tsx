@@ -3,11 +3,11 @@ import { Layout, PostList } from "../components";
 import { useProducts } from "../hooks";
 
 const fetchProductImage = async (
-	listingId: string
+	listingId: string,
 ): Promise<string | undefined> => {
 	try {
 		const getListingImages = await fetch(
-			`/.netlify/functions/etsy-listing-images?listingId=${listingId}`
+			`/.netlify/functions/etsy-listing-images?listingId=${listingId}`,
 		);
 		const response = await getListingImages.json();
 		return (response.results?.[0]?.["url_570xN"] as string | null) ?? "";

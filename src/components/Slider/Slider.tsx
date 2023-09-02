@@ -111,7 +111,7 @@ export const Slider = ({ recentPosts }: SliderProps): ReactElement | null => {
 								</div>
 							</li>
 						);
-					}
+					},
 				)}
 			</ul>
 

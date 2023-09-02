@@ -19,12 +19,12 @@ export const Layout = (props: LayoutProps): ReactElement => {
 
 		script.setAttribute(
 			"src",
-			"https://static.cloudflareinsights.com/beacon.min.js"
+			"https://static.cloudflareinsights.com/beacon.min.js",
 		);
 
 		script.setAttribute(
 			"data-cf-beacon",
-			'{"token": "bf66bc112e1b4b3bb4bd45139ce4d6d2"}'
+			'{"token": "bf66bc112e1b4b3bb4bd45139ce4d6d2"}',
 		);
 
 		document.body.appendChild(script);

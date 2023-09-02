@@ -3,15 +3,15 @@ title: One For The Ladies
 date: 2019-03-12T21:35:47.057Z
 featuredImage: ../images/img_2763-1140x760.jpg
 tags:
-  - ecofriendly
-  - Menstrual
-  - Menstrual cup
-  - Periods
-  - Tampons
-  - waste free
-  - Waste free mama
-  - wastefreemama
-  - zero waste
+    - ecofriendly
+    - Menstrual
+    - Menstrual cup
+    - Periods
+    - Tampons
+    - waste free
+    - Waste free mama
+    - wastefreemama
+    - zero waste
 ---
 
 Another change I have made in the quest to becoming waste free, was switching from sanitary towels and tampons to a menstrual cup.

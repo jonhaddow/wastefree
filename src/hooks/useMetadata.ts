@@ -8,20 +8,18 @@ interface Metadata {
 }
 
 export const useMetadata = (): Metadata => {
-	const data = useStaticQuery<{ site: { siteMetadata: Metadata } }>(
-		graphql`
-			query {
-				site {
-					siteMetadata {
-						title
-						description
-						tagLine
-						instagramLink
-					}
+	const data = useStaticQuery<{ site: { siteMetadata: Metadata } }>(graphql`
+		query {
+			site {
+				siteMetadata {
+					title
+					description
+					tagLine
+					instagramLink
 				}
 			}
-		`
-	);
+		}
+	`);
 
 	return data.site.siteMetadata;
 };
