@@ -1,10 +1,14 @@
 version: 2
 updates:
-    - package-ecosystem: "npm"
-      directory: "/"
-      schedule:
-          interval: "monthly"
-      open-pull-requests-limit: 10
-      groups:
-        typescript-eslint:
-            patterns: ["@typescript-eslint/"]
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 10
+    groups:
+      typescript-eslint:
+        patterns: ["@typescript-eslint/"]
+      gatsby:
+        patterns:
+          - "gatsby"
+          - "gatsby-*"
