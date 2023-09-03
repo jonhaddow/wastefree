@@ -17,7 +17,7 @@
     "@netlify/functions": "^2.0.2",
     "@tailwindcss/typography": "^0.5.9",
     "@types/js-search": "^1.4.0",
-    "@types/lodash": "^4.14.195",
+    "@types/lodash": "^4.14.197",
     "@types/react-helmet": "^6.1.6",
     "autoprefixer": "^10.4.14",
     "gatsby": "^5.11.0",
