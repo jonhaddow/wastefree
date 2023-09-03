@@ -19,7 +19,7 @@
     "@types/js-search": "^1.4.0",
     "@types/lodash": "^4.14.197",
     "@types/react-helmet": "^6.1.6",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.15",
     "gatsby": "^5.12.3",
     "gatsby-plugin-canonical-urls": "^5.12.0",
     "gatsby-plugin-eslint": "^4.0.4",
