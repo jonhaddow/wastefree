@@ -45,7 +45,7 @@
     "typography": "^0.16.24"
   },
   "devDependencies": {
-    "@svgr/cli": "^8.0.1",
+    "@svgr/cli": "^8.1.0",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@types/typography": "^0.16.4",
