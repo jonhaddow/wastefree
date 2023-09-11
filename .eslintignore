@@ -1,5 +1,0 @@
-gatsby-node.js
-gatsby-config.js
-
-# ignore auto generated icons
-src/components/icons/generated/*
