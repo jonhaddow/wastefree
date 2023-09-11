@@ -11,7 +11,10 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "generateIcons": "npx @svgr/cli -d ./src/components/icons/generated --typescript ./src/components/icons/svgs/"
+    "generateIcons": "npx @svgr/cli -d ./src/components/icons/generated --typescript ./src/components/icons/svgs/",
+    "type-check": "tsc",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore",
+    "prettier": "prettier . -c"
   },
   "dependencies": {
     "@netlify/functions": "^2.0.2",
