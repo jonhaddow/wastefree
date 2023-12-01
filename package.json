@@ -19,9 +19,9 @@
   "dependencies": {
     "@netlify/functions": "^2.3.0",
     "@tailwindcss/typography": "^0.5.10",
-    "@types/js-search": "^1.4.2",
-    "@types/lodash": "^4.14.200",
-    "@types/react-helmet": "^6.1.8",
+    "@types/js-search": "^1.4.4",
+    "@types/lodash": "^4.14.202",
+    "@types/react-helmet": "^6.1.9",
     "autoprefixer": "^10.4.16",
     "gatsby": "^5.12.9",
     "gatsby-plugin-canonical-urls": "^5.12.0",
