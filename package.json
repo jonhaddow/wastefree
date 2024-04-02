@@ -49,8 +49,8 @@
   },
   "devDependencies": {
     "@svgr/cli": "^8.1.0",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.23",
     "@types/typography": "^0.16.7",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
@@ -58,8 +58,8 @@
     "eslint": "^8.57.0",
     "eslint-config-jonhaddow": "^3.6.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react": "^7.34.1",
     "prettier": "^3.2.5",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.3"
   }
 }
