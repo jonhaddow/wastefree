@@ -13,7 +13,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "generateIcons": "npx @svgr/cli -d ./src/components/icons/generated --typescript ./src/components/icons/svgs/",
     "type-check": "tsc",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore",
+    "lint": "eslint ./src",
     "prettier": "prettier . -c"
   },
   "dependencies": {
@@ -52,13 +52,9 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
     "@types/typography": "^0.16.7",
-    "@typescript-eslint/eslint-plugin": "^6.13.1",
-    "@typescript-eslint/parser": "^6.13.1",
     "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
-    "eslint-config-jonhaddow": "^3.6.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-react": "^7.34.1",
+    "eslint-config-jonhaddow": "^5.0.1",
     "prettier": "^3.2.5",
     "typescript": "^5.4.3"
   }

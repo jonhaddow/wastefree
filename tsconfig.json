@@ -14,7 +14,7 @@
 		"forceConsistentCasingInFileNames": true
 	},
 	"include": [
-		".eslintrc.js",
+		"eslint.config.js",
 		"src",
 		"gatsby-config.js",
 		"gatsby-node.js",
