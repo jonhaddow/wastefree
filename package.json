@@ -55,7 +55,7 @@
     "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "eslint-config-jonhaddow": "^5.0.1",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.0",
     "typescript": "^5.4.3"
   }
 }
