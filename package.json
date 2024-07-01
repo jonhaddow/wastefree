@@ -17,10 +17,10 @@
     "prettier": "prettier . -c"
   },
   "dependencies": {
-    "@netlify/functions": "^2.7.0",
+    "@netlify/functions": "^2.8.0",
     "@tailwindcss/typography": "^0.5.13",
     "@types/js-search": "^1.4.4",
-    "@types/lodash": "^4.17.4",
+    "@types/lodash": "^4.17.6",
     "@types/react-helmet": "^6.1.11",
     "autoprefixer": "^10.4.19",
     "gatsby": "^5.13.6",
@@ -39,12 +39,12 @@
     "gatsby-transformer-sharp": "^5.13.1",
     "js-search": "^2.0.1",
     "node-fetch": "^3.3.2",
-    "postcss": "^8.4.38",
+    "postcss": "^8.4.39",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-typography": "^0.16.23",
-    "tailwindcss": "^3.4.3",
+    "tailwindcss": "^3.4.4",
     "typography": "^0.16.24"
   },
   "devDependencies": {
