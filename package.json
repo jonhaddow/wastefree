@@ -20,7 +20,7 @@
     "@netlify/functions": "^2.8.2",
     "@tailwindcss/typography": "^0.5.15",
     "@types/js-search": "^1.4.4",
-    "@types/lodash": "^4.17.9",
+    "@types/lodash": "^4.17.13",
     "@types/react-helmet": "^6.1.11",
     "autoprefixer": "^10.4.20",
     "gatsby": "^5.13.7",
@@ -44,7 +44,7 @@
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-typography": "^0.16.23",
-    "tailwindcss": "^3.4.13",
+    "tailwindcss": "^3.4.14",
     "typography": "^0.16.24"
   },
   "devDependencies": {
